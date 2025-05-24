@@ -3,19 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Dark theme colors as default */
+  --background: #050505;
+  --foreground: #FFFFFF; /* Primary text */
+  --primary: #12FF8E;     /* Primary accent color */
+  --secondary-text: #A7A7A7; /* Secondary text */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Optional: Define light mode colors if you plan to support a theme switcher */
+  /* @media (prefers-color-scheme: light) {
+    --background: #ffffff;
+    --foreground: #171717;
+    --primary: #10b981;
+    --secondary-text: #gray-500;
+  } */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
 }
