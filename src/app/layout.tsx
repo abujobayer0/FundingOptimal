@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased min-h-screen`}>
         <Header />
-        <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
+        <main className="mx-auto py-8">{children}</main>
       </body>
     </html>
   );
