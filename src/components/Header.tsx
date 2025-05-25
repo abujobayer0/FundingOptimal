@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import NavLink from './NavLink';
-
+import logo from '@/assets/fundingoptimal-logo.png';
 const Header = () => {
   return (
     <div
@@ -18,12 +18,7 @@ const Header = () => {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="text-lg font-bold text-foreground">
               <div className="flex-shrink-0 flex  flex-col items-center gap-1">
-                <Image
-                  src={require('@/assets/fundingoptimal-logo.png')}
-                  alt="FundingOptimal"
-                  width={30}
-                  height={30}
-                />
+                <Image src={logo} alt="FundingOptimal" width={30} height={30} />
                 <div className="flex flex-col justify-center items-center">
                   <p className="text-[16px]">FUNDINGOPTIMAL</p>
                   <p className="text-[10px] -mt-3 text-gray-400">

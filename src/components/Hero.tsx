@@ -2,15 +2,10 @@
 import React from 'react';
 import { ArrowLeftRight, ArrowRight, DollarSign } from 'lucide-react';
 import Image from 'next/image';
-import {
-  motion,
-  useInView,
-  useSpring,
-  useMotionValue,
-  useTransform,
-} from 'framer-motion';
+import { motion, useInView, useSpring, useMotionValue } from 'framer-motion';
 import StatCard from './StatCard';
 import TrustpilotRating from './TrustPilot';
+import logo from '@/assets/fundingoptimal-logo.png';
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -48,12 +43,7 @@ const TradingHero = () => {
       <div className="relative z-10 flex justify-center pt-6 md:pt-0 md:py-6">
         <div className="flex items-center space-x-2 px-3 py-2 rounded-lg relative before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent">
           <div className="bg-[rgba(18, 255, 142, 0.05)] w-8 h-8 border-2 border-white/25 flex items-center p-2 justify-center rounded-lg">
-            <Image
-              src={require('@/assets/fundingoptimal-logo.png')}
-              width={30}
-              height={30}
-              alt="logo"
-            />
+            <Image src={logo} width={30} height={30} alt="logo" />
           </div>
           <span className="text-[14px] text-gray-300">
             We Fund the Fearless
@@ -61,7 +51,6 @@ const TradingHero = () => {
         </div>
       </div>
 
-      {/* Main content container */}
       <div className="relative z-10 px-6">
         <div className="mx-auto">
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-12 space-y-8 lg:space-y-0">
@@ -75,29 +64,27 @@ const TradingHero = () => {
               />
             </div>
 
-            {/* Center main text */}
             <div className="text-center flex-1 lg:px-12">
               <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold md:mb-4 leading-tight">
                 <span className="bg-gradient-to-l from-primary via-primary to-white bg-clip-text text-transparent">
-                  You're Not Here To Beat The Market.
+                  You&apos;re Not Here To Beat The Market.
                 </span>
               </h1>
               <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-4 leading-tight">
                 <span className="bg-gradient-to-l from-primary via-[#12FF8E] to-white bg-clip-text text-transparent">
-                  You're Here To Master Yourself Within It.
+                  You&apos;re Here To Master Yourself Within It.
                 </span>
               </h2>
 
               <p className="text-sm sm:text-base lg:text-[16px] text-gray-300 mb-4 mx-auto leading-relaxed max-w-2xl">
                 Join traders worldwide and become a funded trader with the
-                world's most trusted prop firm.
+                world&apos;s most trusted prop firm.
               </p>
 
               <div className="mb-6">
                 <TrustpilotRating />
               </div>
 
-              {/* CTA buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <button
                   className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white rounded-lg flex items-center justify-center transition-all duration-300 text-base sm:text-lg"
@@ -125,7 +112,6 @@ const TradingHero = () => {
               </div>
             </div>
 
-            {/* Right Total Earned Card - Hidden on mobile, shown on larger screens */}
             <div className="hidden lg:block">
               <StatCard
                 title="Total Amount Earned"
@@ -137,7 +123,6 @@ const TradingHero = () => {
             </div>
           </div>
 
-          {/* Mobile stat cards - Only shown on smaller screens */}
           <div className="flex flex-row lg:hidden gap-4 mb-12 max-w-md mx-auto">
             <StatCard
               title="Withdrawal Amount"
@@ -155,7 +140,6 @@ const TradingHero = () => {
             />
           </div>
 
-          {/* Bottom stats grid */}
           <div
             ref={ref}
             className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 max-w-7xl mx-auto relative before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary before:to-transparent py-6 sm:py-8"
@@ -224,7 +208,6 @@ const TradingHero = () => {
         </div>
       </div>
 
-      {/* Subtle decorative dots */}
       <div className="absolute top-1/4 left-16 w-1 h-1 bg-emerald-400 rounded-full opacity-40"></div>
       <div className="absolute top-1/3 right-24 w-1.5 h-1.5 bg-emerald-300 rounded-full opacity-30"></div>
       <div className="absolute bottom-1/4 left-1/4 w-1 h-1 bg-emerald-500 rounded-full opacity-50"></div>
