@@ -195,7 +195,7 @@ const TradingHero = () => {
             </motion.div>
           </div>
 
-          <div className="flex flex-row lg:hidden gap-4 mb-12 max-w-md mx-auto">
+          <div className="flex flex-row lg:hidden gap-4 mb-12 w-full justify-center items-center mx-auto">
             <StatCard
               title="Withdrawal Amount"
               value={44}

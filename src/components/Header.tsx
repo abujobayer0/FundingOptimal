@@ -135,12 +135,12 @@ const Header = () => {
 
           {/* Mobile Menu Panel */}
           <div
-            className={`mobile-menu-container absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-gray-900/95 to-black/95 backdrop-blur-xl border-l border-gray-700/50 shadow-2xl transform transition-transform duration-300 ease-in-out ${
+            className={`mobile-menu-container absolute top-0 right-0 h-screen w-80 max-w-[85vw] bg-gradient-to-br from-gray-900/95 to-black/95 backdrop-blur-xl border-l border-gray-700/50 shadow-2xl transform transition-transform duration-300 ease-in-out ${
               isMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
             {/* Menu Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
+            <div className="flex items-center justify-between p-6 border-b border-gray-700/50 flex-shrink-0">
               <div className="flex items-center space-x-3">
                 <Image src={logo} alt="FundingOptimal" width={24} height={24} />
                 <span className="text-white font-semibold text-lg">Menu</span>
@@ -165,10 +165,8 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Menu Content */}
-            <div className="flex flex-col h-full">
-              {/* Navigation Links */}
-              <nav className="flex-1 px-6 py-8 space-y-2">
+            <div className="flex flex-col min-h-0">
+              <nav className="flex-1 px-6 py-4 space-y-2 overflow-y-auto min-h-0">
                 {[
                   { href: '/', label: 'Home' },
                   { href: '/become-a-partner', label: 'Become A Partner' },
@@ -211,8 +209,7 @@ const Header = () => {
                 ))}
               </nav>
 
-              {/* Action Buttons */}
-              <div className="px-6 py-6 border-t border-gray-700/50 space-y-3">
+              <div className="px-6 py-3 pb-8 border-t border-gray-700/50 space-y-3 flex-shrink-0">
                 <div
                   className={`transform transition-all duration-300 ease-out ${
                     isMenuOpen

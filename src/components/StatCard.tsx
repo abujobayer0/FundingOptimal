@@ -46,7 +46,7 @@ const StatCard: React.FC<StatCardProps> = ({
   return (
     <div
       ref={ref}
-      className={`${gradientClass} backdrop-blur-md border justify-center p-4 border-gray-800 rounded-2xl w-[160px] md:w-[221px] h-[240px] shadow-2xl`}
+      className={`${gradientClass} backdrop-blur-md border justify-center p-4 border-gray-800 rounded-2xl w-full md:w-[221px] h-[240px] shadow-2xl`}
     >
       <div className="flex items-center justify-between mb-6">
         <div className="p-3 bg-white/10 rounded-full">
