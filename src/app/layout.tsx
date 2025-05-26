@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
+import { Header } from '@/components';
 
 const inter = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -21,6 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet" />
+      </head>
+
       <body className={`${inter.variable} antialiased min-h-screen`}>
         <Header />
         <main className="mx-auto py-8">{children}</main>

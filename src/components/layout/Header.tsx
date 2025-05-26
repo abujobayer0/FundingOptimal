@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
 
@@ -79,12 +80,57 @@ const Header = () => {
 
             {/* Desktop Buttons */}
             <div className="hidden md:flex space-x-4">
-              <button className="rounded-md border border-white px-4 py-2 text-sm font-medium text-white hover:text-primary hover:border-primary transition-all duration-300 ease-in-out hover:shadow-lg hover:shadow-primary/20">
-                Login
-              </button>
-              <button className="rounded-md bg-primary px-4 py-2 text-sm text-black shadow-sm hover:bg-opacity-80 transition-all duration-300 ease-in-out hover:shadow-lg hover:shadow-primary/20">
-                Dashboard
-              </button>
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  transition: { duration: 0.2, ease: 'easeOut' },
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative rounded-md border border-white px-4 py-2 text-sm font-medium text-white transition-all duration-500 ease-in-out overflow-hidden"
+              >
+                {/* Animated background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Border glow effect */}
+                <div className="absolute inset-0 rounded-md border border-transparent group-hover:border-primary/50 transition-colors duration-300" />
+
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
+
+                {/* Subtle glow */}
+                <div className="absolute inset-0 rounded-md shadow-[0_0_0_1px_rgba(18,255,142,0)] group-hover:shadow-[0_0_0_1px_rgba(18,255,142,0.3),0_0_15px_rgba(18,255,142,0.1)] transition-shadow duration-500" />
+
+                <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                  Login
+                </span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  transition: { duration: 0.2, ease: 'easeOut' },
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative rounded-md bg-primary px-4 py-2 text-sm text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
+              >
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Ripple effect */}
+                <div className="absolute inset-0 rounded-md bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+
+                {/* Enhanced glow */}
+                <div className="absolute inset-0 rounded-md shadow-[0_0_0_1px_rgba(18,255,142,0.5)] group-hover:shadow-[0_0_0_1px_rgba(18,255,142,0.8),0_0_20px_rgba(18,255,142,0.4),0_0_40px_rgba(18,255,142,0.2)] transition-shadow duration-500" />
+
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+
+                <span className="relative z-10 font-medium group-hover:text-black transition-colors duration-300">
+                  Dashboard
+                </span>
+              </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -218,12 +264,29 @@ const Header = () => {
                   }`}
                   style={{ transitionDelay: '250ms' }}
                 >
-                  <button
+                  <motion.button
                     onClick={closeMenu}
-                    className="w-full rounded-lg border border-gray-600 px-4 py-3 text-sm font-medium text-white hover:text-primary hover:border-primary transition-all duration-300 ease-in-out hover:shadow-lg hover:shadow-primary/20"
+                    whileHover={{
+                      scale: 1.02,
+                      y: -1,
+                      transition: { duration: 0.2, ease: 'easeOut' },
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative w-full rounded-lg border border-gray-600 px-4 py-3 text-sm font-medium text-white transition-all duration-500 ease-in-out overflow-hidden"
                   >
-                    Login
-                  </button>
+                    {/* Animated background */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Border glow effect */}
+                    <div className="absolute inset-0 rounded-lg border border-transparent group-hover:border-primary/50 transition-colors duration-300" />
+
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
+
+                    <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                      Login
+                    </span>
+                  </motion.button>
                 </div>
                 <div
                   className={`transform transition-all duration-300 ease-out ${
@@ -233,12 +296,29 @@ const Header = () => {
                   }`}
                   style={{ transitionDelay: '300ms' }}
                 >
-                  <button
+                  <motion.button
                     onClick={closeMenu}
-                    className="w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm hover:bg-opacity-80 transition-all duration-300 ease-in-out hover:shadow-lg hover:shadow-primary/20"
+                    whileHover={{
+                      scale: 1.02,
+                      y: -1,
+                      transition: { duration: 0.2, ease: 'easeOut' },
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
                   >
-                    Dashboard
-                  </button>
+                    {/* Animated background gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Ripple effect */}
+                    <div className="absolute inset-0 rounded-lg bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+
+                    <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+                      Dashboard
+                    </span>
+                  </motion.button>
                 </div>
               </div>
             </div>

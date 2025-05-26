@@ -3,9 +3,10 @@ import React from 'react';
 import { ArrowLeftRight, ArrowRight, DollarSign } from 'lucide-react';
 import Image from 'next/image';
 import { motion, useInView, useSpring, useMotionValue } from 'framer-motion';
-import StatCard from './StatCard';
-import TrustpilotRating from './TrustPilot';
+
 import logo from '@/assets/fundingoptimal-logo.png';
+import { StatCard } from '../common';
+import TrustpilotRating from '../common/TrustPilot';
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -145,36 +146,77 @@ const TradingHero = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 1.5 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                    transition: { duration: 0.2, ease: 'easeOut' },
+                  }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white rounded-lg flex items-center justify-center transition-all duration-300 text-base sm:text-lg"
+                  className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white rounded-lg flex items-center justify-center transition-all duration-500 text-base sm:text-lg overflow-hidden"
                   style={{
                     boxShadow:
                       'rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset',
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.boxShadow =
-                      'rgba(18, 255, 142, 0.7) 0px 0px 25px 0px inset, rgba(18, 255, 142, 0.6) 0px 0px 35px 0px inset, rgba(18, 255, 142, 0.3) 0px 0px 45px 0px inset';
+                      'rgba(18, 255, 142, 0.8) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.7) 0px 0px 40px 0px inset, rgba(18, 255, 142, 0.4) 0px 0px 50px 0px inset, rgba(18, 255, 142, 0.6) 0px 0px 60px 10px';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.boxShadow =
                       'rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset';
                   }}
                 >
-                  Get Funded Now
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-emerald-400/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+
+                  <div className="absolute inset-0 rounded-lg border border-primary/30 group-hover:border-primary/60 transition-colors duration-300" />
+
+                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                    Get Funded Now
+                  </span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    animate={{ x: 0 }}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </motion.div>
                 </motion.button>
 
                 <motion.button
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 1.7 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                    transition: { duration: 0.2, ease: 'easeOut' },
+                  }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto text-gray-400 px-6 sm:px-8 py-3 sm:py-4 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-emerald-500/10"
+                  className="group relative w-full sm:w-auto text-gray-400 px-6 sm:px-8 py-3 sm:py-4 rounded-xl flex items-center justify-center transition-all duration-500 overflow-hidden border border-gray-600/30 hover:border-emerald-400/50"
                 >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  {/* Animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Ripple effect */}
+                  <div className="absolute inset-0 rounded-xl bg-emerald-400/5 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+
+                  {/* Subtle glow */}
+                  <div className="absolute inset-0 rounded-xl shadow-[0_0_0_1px_rgba(16,185,129,0)] group-hover:shadow-[0_0_0_1px_rgba(16,185,129,0.3),0_0_20px_rgba(16,185,129,0.1)] transition-shadow duration-500" />
+
+                  <span className="relative z-10 group-hover:text-emerald-300 transition-colors duration-300">
+                    Learn More
+                  </span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    animate={{ x: 0 }}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-emerald-300 transition-colors duration-300" />
+                  </motion.div>
                 </motion.button>
               </motion.div>
             </motion.div>
