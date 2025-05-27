@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp, LucideIcon } from 'lucide-react';
-import { motion, useInView, useSpring, useTransform } from 'framer-motion';
+import { motion, useInView, useSpring, useTransform } from 'motion/react';
 
 interface StatCardProps {
   title: string;

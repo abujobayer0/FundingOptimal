@@ -2,7 +2,7 @@
 import React from 'react';
 import { ArrowLeftRight, ArrowRight, DollarSign } from 'lucide-react';
 import Image from 'next/image';
-import { motion, useInView, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useInView, useSpring, useMotionValue } from 'motion/react';
 
 import logo from '@/assets/fundingoptimal-logo.png';
 import { StatCard } from '../common';
