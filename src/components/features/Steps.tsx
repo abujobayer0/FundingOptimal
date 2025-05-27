@@ -17,7 +17,7 @@ const Steps: React.FC = () => {
           className="md:mt-0"
           noMargin={true}
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 md:mt-12 w-full max-w-7xl">
+        <div className="grid grid-cols-1 items-center justify-center  mx-auto md:grid-cols-3 gap-6 mt-8 md:mt-12 w-full max-w-7xl">
           {stepsData.map((step, index) => (
             <StepCard key={index} {...step} index={index} />
           ))}
