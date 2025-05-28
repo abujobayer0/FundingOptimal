@@ -1,6 +1,6 @@
-import { Evaluation, Steps } from '@/components';
-import TradingHero from '@/components/features/Hero';
-import React from 'react';
+import { Evaluation, Steps } from "@/components";
+import TradingHero from "@/components/features/Hero";
+import React from "react";
 
 const Page = () => {
   return (

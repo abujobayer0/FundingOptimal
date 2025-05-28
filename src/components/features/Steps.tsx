@@ -1,9 +1,9 @@
-'use client';
-import React from 'react';
-import { SectionHeader } from '../common';
-import StepCard from './Steps/StepCard';
-import BackgroundSVG from './Steps/BackgroundSVG';
-import { stepsData } from './Steps/data';
+"use client";
+import React from "react";
+import { SectionHeader } from "../common";
+import StepCard from "./Steps/StepCard";
+import BackgroundSVG from "./Steps/BackgroundSVG";
+import { stepsData } from "./Steps/data";
 
 const Steps: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const Steps: React.FC = () => {
           badge="How it works"
           title="Your Funding starts here"
           description="Our traders don't wait for payouts. Receive your first payout as early as your first funded trading day upon request—no maximum or minimum amount."
-          className="md:mt-0"
+          className="md:mt-0 items-center"
           noMargin={true}
         />
         <div className="grid grid-cols-1 items-center justify-center  mx-auto md:grid-cols-3 gap-6 mt-8 md:mt-12 w-full max-w-7xl">
