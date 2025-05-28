@@ -1,12 +1,15 @@
-'use client';
-import React from 'react';
-import { ArrowLeftRight, ArrowRight, DollarSign } from 'lucide-react';
-import Image from 'next/image';
-import { motion, useInView, useSpring, useMotionValue } from 'motion/react';
+"use client";
+import React from "react";
+import { ArrowLeftRight, ArrowRight, DollarSign } from "lucide-react";
+import Image from "next/image";
+import { motion, useInView, useSpring, useMotionValue } from "motion/react";
 
-import logo from '@/assets/fundingoptimal-logo.png';
-import { StatCard } from '../common';
-import TrustpilotRating from '../common/TrustPilot';
+import logo from "@/assets/fundingoptimal-logo.png";
+import { StatCard } from "../common";
+import TrustpilotRating from "../common/TrustPilot";
+import TitleWithLogo from "../common/TitleWithLogo";
+import GradientButton from "../common/button/GradientButton";
+import OutlineButton from "../common/button/OutlineButton";
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -32,7 +35,7 @@ const useCountAnimation = (targetValue: number) => {
 
 const TradingHero = () => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const tradersCount = useCountAnimation(350);
   const payoutsCount = useCountAnimation(10);
@@ -41,36 +44,7 @@ const TradingHero = () => {
 
   return (
     <div className="bg-[#050505] mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 flex justify-center pt-6 md:pt-0 md:py-6"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex items-center space-x-2 px-3 py-2 rounded-lg relative before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent"
-        >
-          <motion.div
-            initial={{ opacity: 0, rotate: -180 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="bg-[rgba(18, 255, 142, 0.05)] w-8 h-8 border-2 border-white/25 flex items-center p-2 justify-center rounded-lg"
-          >
-            <Image src={logo} width={30} height={30} alt="logo" />
-          </motion.div>
-          <motion.span
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-[14px] text-gray-300"
-          >
-            We Fund the Fearless
-          </motion.span>
-        </motion.div>
-      </motion.div>
+      <TitleWithLogo title=" We Fund the Fearless" />
 
       <div className="relative z-10 px-6">
         <div className="mx-auto">
@@ -142,82 +116,9 @@ const TradingHero = () => {
                 transition={{ duration: 0.8, delay: 1.3 }}
                 className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
               >
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.5 }}
-                  whileHover={{
-                    scale: 1.05,
-                    y: -2,
-                    transition: { duration: 0.2, ease: 'easeOut' },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white rounded-lg flex items-center justify-center transition-all duration-500 text-base sm:text-lg overflow-hidden"
-                  style={{
-                    boxShadow:
-                      'rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow =
-                      'rgba(18, 255, 142, 0.8) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.7) 0px 0px 40px 0px inset, rgba(18, 255, 142, 0.4) 0px 0px 50px 0px inset, rgba(18, 255, 142, 0.6) 0px 0px 60px 10px';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow =
-                      'rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset';
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-emerald-400/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <GradientButton showIcon>Get Funded Now</GradientButton>
 
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-
-                  <div className="absolute inset-0 rounded-lg border border-primary/30 group-hover:border-primary/60 transition-colors duration-300" />
-
-                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-                    Get Funded Now
-                  </span>
-                  <motion.div
-                    className="relative z-10 ml-2"
-                    animate={{ x: 0 }}
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </motion.div>
-                </motion.button>
-
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.7 }}
-                  whileHover={{
-                    scale: 1.05,
-                    y: -2,
-                    transition: { duration: 0.2, ease: 'easeOut' },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative w-full sm:w-auto text-gray-400 px-6 sm:px-8 py-3 sm:py-4 rounded-xl flex items-center justify-center transition-all duration-500 overflow-hidden border border-gray-600/30 hover:border-emerald-400/50"
-                >
-                  {/* Animated background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  {/* Ripple effect */}
-                  <div className="absolute inset-0 rounded-xl bg-emerald-400/5 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
-
-                  {/* Subtle glow */}
-                  <div className="absolute inset-0 rounded-xl shadow-[0_0_0_1px_rgba(16,185,129,0)] group-hover:shadow-[0_0_0_1px_rgba(16,185,129,0.3),0_0_20px_rgba(16,185,129,0.1)] transition-shadow duration-500" />
-
-                  <span className="relative z-10 group-hover:text-emerald-300 transition-colors duration-300">
-                    Learn More
-                  </span>
-                  <motion.div
-                    className="relative z-10 ml-2"
-                    animate={{ x: 0 }}
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-emerald-300 transition-colors duration-300" />
-                  </motion.div>
-                </motion.button>
+                <OutlineButton showIcon>Learn More</OutlineButton>
               </motion.div>
             </motion.div>
 

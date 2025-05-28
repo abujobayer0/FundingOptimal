@@ -1,6 +1,6 @@
-'use client';
-import { motion } from 'motion/react';
-import React from 'react';
+"use client";
+import { motion } from "motion/react";
+import React from "react";
 
 interface SectionHeaderProps {
   badge?: string;
@@ -21,25 +21,25 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   badge,
   title,
   description,
-  className = '',
-  titleClassName = '',
-  descriptionClassName = '',
-  badgeClassName = '',
-  maxWidth = 'max-w-3xl',
-  descriptionMaxWidth = 'max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl',
+  className = "",
+  titleClassName = "",
+  descriptionClassName = "",
+  badgeClassName = "",
+  maxWidth = "max-w-3xl",
+  descriptionMaxWidth = "max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl",
   showBadge = true,
   centerAlign = true,
   noMargin = false,
 }) => {
   const containerClasses = centerAlign
     ? `text-center flex justify-center ${
-        noMargin ? '' : 'md:mt-24'
-      } items-center flex-col gap-4 mb-16 ${className}`
+        noMargin ? "" : "md:mt-24"
+      } flex-col gap-4 mb-16 ${className}`
     : `flex flex-col gap-4 mb-16 ${className}`;
 
   const titleClasses = centerAlign
-    ? `text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold text-center ${maxWidth} leading-relaxed ${titleClassName}`
-    : `text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold ${maxWidth} leading-relaxed ${titleClassName}`;
+    ? `text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold ${maxWidth} ${titleClassName}`
+    : `text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold ${maxWidth} ${titleClassName}`;
 
   const descriptionClasses = centerAlign
     ? `text-center text-sm md:text-base lg:text-[16px] font-light ${descriptionMaxWidth} ${descriptionClassName}`
@@ -64,7 +64,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className={titleClasses}
+        className={`${titleClasses}`}
       >
         {title}
       </motion.h1>
