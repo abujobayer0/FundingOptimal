@@ -1,15 +1,12 @@
-"use client";
-import React from "react";
-import { ArrowLeftRight, ArrowRight, DollarSign } from "lucide-react";
-import Image from "next/image";
-import { motion, useInView, useSpring, useMotionValue } from "motion/react";
-
-import logo from "@/assets/fundingoptimal-logo.png";
-import { StatCard } from "../common";
-import TrustpilotRating from "../common/TrustPilot";
-import TitleWithLogo from "../common/TitleWithLogo";
-import GradientButton from "../common/button/GradientButton";
-import OutlineButton from "../common/button/OutlineButton";
+'use client';
+import React from 'react';
+import { ArrowLeftRight, DollarSign } from 'lucide-react';
+import { motion, useInView, useSpring, useMotionValue } from 'motion/react';
+import { StatCard } from '../common';
+import TrustpilotRating from '../common/TrustPilot';
+import TitleWithLogo from '../common/TitleWithLogo';
+import GradientButton from '../common/button/GradientButton';
+import OutlineButton from '../common/button/OutlineButton';
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -35,7 +32,7 @@ const useCountAnimation = (targetValue: number) => {
 
 const TradingHero = () => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const tradersCount = useCountAnimation(350);
   const payoutsCount = useCountAnimation(10);
