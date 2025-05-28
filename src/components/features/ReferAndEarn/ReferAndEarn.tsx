@@ -1,36 +1,36 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
-import { ReferTierCard } from "@/components/common/card/ReferTierCard";
-import { SectionHeader } from "@/components/common";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ReferTierCard } from '@/components/common/card/ReferTierCard';
+import { SectionHeader } from '@/components/common';
 
 const REFER_TIERS = [
   {
-    tier: "Tier 1",
-    points: "25k",
+    tier: 'Tier 1',
+    points: '25k',
     description:
-      "Refer 25 people and receive a FREE 25k challenge account as a reward.",
+      'Refer 25 people and receive a FREE 25k challenge account as a reward.',
   },
   {
-    tier: "Tier 2",
-    points: "100k",
+    tier: 'Tier 2',
+    points: '100k',
     description:
-      "Refer 100 people and receive a FREE 100k challenge account as a reward.",
+      'Refer 100 people and receive a FREE 100k challenge account as a reward.',
   },
   {
-    tier: "Tier 3",
-    points: "200k",
+    tier: 'Tier 3',
+    points: '200k',
     description:
-      "Refer 200 people and receive a FREE 200k challenge account as a reward.",
+      'Refer 200 people and receive a FREE 200k challenge account as a reward.',
   },
 ];
 
 export default function ReferAndEarn() {
   return (
-    <div className="">
-      <div className="bg-gradient-to-b from-green-500/30 to-transparent h-36"></div>
-      <div className="max-w-7xl mx-auto px-4 md:px-6 bg-transparent text-white -mt-36">
+    <div>
+      <div className="bg-gradient-to-b from-green-500/30 to-transparent h-36 mx-auto relative before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary before:to-transparent py-6 sm:py-8"></div>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 bg-transparent text-white -mt-24 md:-mt-36">
         <SectionHeader
           title="Refer And Earn Rewards"
           description="Learn and grow together in a community of experienced and aspiring traders."
