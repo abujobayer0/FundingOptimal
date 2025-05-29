@@ -31,6 +31,8 @@ const REFER_TIERS = [
 export default function ReferAndEarn() {
   return (
     <div className="">
+      <div className="bg-gradient-to-r from-green-500/40 via-green-500 to-green-500/40 h-[3px]" />
+
       <div className="bg-gradient-to-b from-green-500/30 to-transparent h-48"></div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 bg-transparent text-white -mt-24 md:-mt-36">
         <SectionHeader
