@@ -60,8 +60,8 @@ const AffiliatePartnerFAQs: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center space-x-2 bg-green-500/5 border border-green-500 rounded-md px-4 py-2 text-sm">
-              <span className="text-green-500">FAQs</span>
+            <div className="inline-flex items-center space-x-2 bg-primary/5 border border-primary rounded-md px-4 py-2 text-sm">
+              <span className="text-primary">FAQs</span>
             </div>
 
             <div className="space-y-4">
@@ -76,7 +76,7 @@ const AffiliatePartnerFAQs: React.FC = () => {
             </p>
 
             <div className="md:pt-4 pb-4 md:pb-0">
-              <button className="bg-green-400 hover:bg-green-500 text-black font-medium px-8 py-3 rounded-lg transition-all duration-200 hover:scale-105">
+              <button className="bg-primary hover:bg-primary text-black font-medium px-8 py-3 rounded-lg transition-all duration-200 hover:scale-105">
                 See Affiliate FAQs
               </button>
             </div>

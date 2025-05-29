@@ -22,7 +22,7 @@ const AffiliateProgramHero = () => {
               <h1 className="text-2xl md:text-3xl lg:text-[38px] xl:text-[44px] font-bold leading-[70px]">
                 Join The FundingOptimal™
               </h1>
-              <h2 className="text-3xl md:text-5xl lg:text-[70px] font-bold text-green-400">
+              <h2 className="text-3xl md:text-5xl lg:text-[70px] font-bold text-primary">
                 Affiliate Program
               </h2>
             </div>
@@ -43,7 +43,7 @@ const AffiliateProgramHero = () => {
           </div>
 
           {/* Right Content - Video Player */}
-          <div className="flex justify-center lg:justify-end border border-green-500 h-[360px]"></div>
+          <div className="flex justify-center lg:justify-end border border-primary h-[360px]"></div>
         </div>
       </div>
     </div>

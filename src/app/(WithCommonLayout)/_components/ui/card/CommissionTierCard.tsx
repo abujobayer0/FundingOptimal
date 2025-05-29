@@ -17,7 +17,7 @@ const CommissionTierCard: React.FC<CommissionTierCardProps> = ({
 }) => {
   return (
     <div
-      className={`h-fit border border-green-500/30 rounded-md p-8 relative overflow-hidden group hover:border-green-500/60 transition-all duration-300 bg-gradient-to-bl from-green-900/50 via-green-800/10 to-transparent flex flex-col justify-center gap-3 ${size}`}
+      className={`h-fit border border-primary/30 rounded-md p-8 relative overflow-hidden group hover:border-primary/60 transition-all duration-300 bg-gradient-to-bl from-primary/50 via-primary/10 to-transparent flex flex-col justify-center gap-3 ${size}`}
       style={{ width: "100%" }}
     >
       {/* Threshold */}
@@ -43,7 +43,7 @@ const CommissionTierCard: React.FC<CommissionTierCardProps> = ({
 
       {/* Tier badge */}
       <div className="relative z-10 mb-6 mt-10">
-        <div className="inline-block bg-green-500/10 rounded-full px-3 py-1 text-sm text-green-400">
+        <div className="inline-block bg-primary/10 rounded-full px-3 py-1 text-sm text-primary">
           {tier}
         </div>
       </div>
@@ -53,7 +53,7 @@ const CommissionTierCard: React.FC<CommissionTierCardProps> = ({
         <div className="text-4xl lg:text-[54px] font-bold text-white mb-2">
           {commission}
         </div>
-        <div className="text-green-400 text-[16px] mt-5">Commission</div>
+        <div className="text-primary text-[16px] mt-5">Commission</div>
       </div>
 
       {/* Description */}
@@ -62,8 +62,8 @@ const CommissionTierCard: React.FC<CommissionTierCardProps> = ({
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-20 h-20 bg-green-500/10 rounded-full blur-xl"></div>
-      <div className="absolute bottom-4 left-4 w-16 h-16 bg-green-500/5 rounded-full blur-lg"></div>
+      <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+      <div className="absolute bottom-4 left-4 w-16 h-16 bg-primary/5 rounded-full blur-lg"></div>
     </div>
   );
 };

@@ -26,14 +26,14 @@ export const ReferTierCard: React.FC<ReferTierCardProps> = ({
       }}
       viewport={{ once: true }}
       className={`h-fit border ${
-        index === 1 ? "border-green-500" : "border-green-500/0"
-      } rounded-md p-8 relative overflow-hidden group hover:border-green-500/60 transition-all duration-300 bg-gradient-to-br from-green-800/20 via-green-800/0 to-transparent group`}
+        index === 1 ? "border-primary" : "border-primary/0"
+      } rounded-md p-8 relative overflow-hidden group hover:border-primary/60 transition-all duration-300 bg-gradient-to-br from-primary/20 via-primary/0 to-transparent group`}
     >
       {/* Content */}
       <div className="relative z-10">
         {/* Green badge at top */}
         <div className="mb-8">
-          <span className="bg-green-500 text-black text-sm font-medium px-4 py-2 rounded-full">
+          <span className="bg-primary text-black text-sm font-medium px-4 py-2 rounded-full">
             Refer {refer} people
           </span>
         </div>
@@ -48,7 +48,7 @@ export const ReferTierCard: React.FC<ReferTierCardProps> = ({
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-transparent via-green-500 to-transparent h-[2px] my-5">
+        <div className="bg-gradient-to-r from-transparent via-primary to-transparent h-[2px] my-5">
           {/* Content here */}
         </div>
 
@@ -59,8 +59,8 @@ export const ReferTierCard: React.FC<ReferTierCardProps> = ({
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-20 h-20 bg-green-500/10 rounded-full blur-xl"></div>
-      <div className="absolute bottom-4 left-4 w-16 h-16 bg-green-500/5 rounded-full blur-lg"></div>
+      <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+      <div className="absolute bottom-4 left-4 w-16 h-16 bg-primary/5 rounded-full blur-lg"></div>
     </motion.div>
   );
 };

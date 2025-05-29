@@ -25,7 +25,7 @@ const StepCard: React.FC<StepCardProps> = ({
 
   const ContentSection = () => (
     <div className="flex flex-col items-start space-y-5 md:space-y-8 w-full lg:w-1/2">
-      <h2 className="text-green-500 text-2xl md:text-[64px] font-semibold">
+      <h2 className="text-primary text-2xl md:text-[64px] font-semibold">
         {stepNumber}
       </h2>
       <h4 className="text-white text-lg md:text-[34px] max-w-sm leading-[44px]">
@@ -39,7 +39,7 @@ const StepCard: React.FC<StepCardProps> = ({
 
   const ImageSection = () => (
     <div className="flex justify-center lg:justify-end w-full lg:w-1/2">
-      <div className="h-[360px] w-full border border-emerald-400 rounded-lg bg-gradient-to-br from-emerald-500/5 to-transparent"></div>
+      <div className="h-[360px] w-full border border-primary rounded-lg bg-gradient-to-br from-primary/5 to-transparent"></div>
     </div>
   );
 
@@ -66,7 +66,7 @@ const StepCard: React.FC<StepCardProps> = ({
 
 const BackgroundGlow: React.FC = () => (
   <div className="w-full flex items-center justify-center">
-    <div className="absolute top-72 w-1/2 h-[300px] bg-emerald-500/30 rounded-full blur-[200px] z-[-1]" />
+    <div className="absolute top-72 w-1/2 h-[300px] bg-primary/30 rounded-full blur-[200px] z-[-1]" />
   </div>
 );
 

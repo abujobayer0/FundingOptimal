@@ -35,13 +35,13 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full py-2 max-w-[140px] justify-center flex mx-auto px-3 border border-green-500/30 bg-primary/10 text-white rounded-lg text-xs sm:text-sm relative overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/20 hover:border-green-400/50 hover:bg-green-500/5"
+            className="w-full py-2 max-w-[140px] justify-center flex mx-auto px-3 border border-primary/30 bg-primary/10 text-white rounded-lg text-xs sm:text-sm relative overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:bg-primary/5"
           >
             <span className="relative z-10 transition-all duration-300 group-hover:text-green-300">
               Get Funded Now
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/0 via-green-500/10 to-green-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 bg-green-500/5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-primary/5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           </motion.button>
         </div>
       </div>
