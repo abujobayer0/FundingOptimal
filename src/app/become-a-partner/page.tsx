@@ -1,5 +1,6 @@
 import { SecondaryHero } from "@/components";
 import AffiliateCommissionTiers from "@/components/features/AffiliateCommission/AffiliateCommissionTiers";
+import AffiliatePartnerFAQs from "@/components/features/AffiliatePartnerFAQs/AffiliatePartnerFAQs";
 import JoinPartnerProgram from "@/components/features/JoinPartnerProgram/JoinPartnerProgram";
 import ReferAndEarn from "@/components/features/ReferAndEarn/ReferAndEarn";
 import React from "react";
@@ -11,6 +12,7 @@ export default function BecomeAPartnerPage() {
       <AffiliateCommissionTiers />
       <JoinPartnerProgram />
       <ReferAndEarn />
+      <AffiliatePartnerFAQs />
     </div>
   );
 }

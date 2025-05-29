@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 interface ReferTierCardProps {
-  tier: string;
+  refer: number;
   points: string;
   description: string;
   index: number;
@@ -14,6 +14,7 @@ export const ReferTierCard: React.FC<ReferTierCardProps> = ({
   points,
   description,
   index,
+  refer,
 }) => {
   return (
     <motion.div
@@ -24,14 +25,16 @@ export const ReferTierCard: React.FC<ReferTierCardProps> = ({
         delay: index * 0.2,
       }}
       viewport={{ once: true }}
-      className="h-fit border border-green-500/0 rounded-md p-8 relative overflow-hidden group hover:border-green-500/60 transition-all duration-300 bg-gradient-to-br from-green-800/20 via-green-800/0 to-transparent group"
+      className={`h-fit border ${
+        index === 1 ? "border-green-500" : "border-green-500/0"
+      } rounded-md p-8 relative overflow-hidden group hover:border-green-500/60 transition-all duration-300 bg-gradient-to-br from-green-800/20 via-green-800/0 to-transparent group`}
     >
       {/* Content */}
       <div className="relative z-10">
         {/* Green badge at top */}
         <div className="mb-8">
           <span className="bg-green-500 text-black text-sm font-medium px-4 py-2 rounded-full">
-            Refer 250 people
+            Refer {refer} people
           </span>
         </div>
 

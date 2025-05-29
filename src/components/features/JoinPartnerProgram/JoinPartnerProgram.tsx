@@ -1,16 +1,105 @@
+"use client";
+
 import { SectionHeader } from "@/components/common";
 import React from "react";
 
+interface StepData {
+  stepNumber: string;
+  title: string;
+  description: string;
+  imagePosition: "left" | "right";
+}
+
+interface StepCardProps extends StepData {
+  index: number;
+}
+
+const StepCard: React.FC<StepCardProps> = ({
+  stepNumber,
+  title,
+  description,
+  imagePosition,
+  index,
+}) => {
+  const isImageLeft = imagePosition === "left";
+
+  const ContentSection = () => (
+    <div className="flex flex-col items-start space-y-5 md:space-y-8 w-full lg:w-1/2">
+      <h2 className="text-green-500 text-2xl md:text-[64px] font-semibold">
+        {stepNumber}
+      </h2>
+      <h4 className="text-white text-lg md:text-[34px] max-w-sm leading-[44px]">
+        {title}
+      </h4>
+      <p className="text-gray-400 text-sm md:text-[16px] leading-[24px] md:leading-[38px] max-w-lg">
+        {description}
+      </p>
+    </div>
+  );
+
+  const ImageSection = () => (
+    <div className="flex justify-center lg:justify-end w-full lg:w-1/2">
+      <div className="h-[360px] w-full border border-emerald-400 rounded-lg bg-gradient-to-br from-emerald-500/5 to-transparent"></div>
+    </div>
+  );
+
+  return (
+    <div
+      className={`flex flex-col lg:flex-row gap-10 items-center ${
+        index > 0 ? "mt-12 md:mt-24" : ""
+      }`}
+    >
+      {isImageLeft ? (
+        <>
+          <ImageSection />
+          <ContentSection />
+        </>
+      ) : (
+        <>
+          <ContentSection />
+          <ImageSection />
+        </>
+      )}
+    </div>
+  );
+};
+
+const BackgroundGlow: React.FC = () => (
+  <div className="w-full flex items-center justify-center">
+    <div className="absolute top-72 w-1/2 h-[300px] bg-emerald-500/30 rounded-full blur-[200px] z-[-1]" />
+  </div>
+);
+
 export default function JoinPartnerProgram() {
+  const steps: StepData[] = [
+    {
+      stepNumber: "01.",
+      title: "Sign up to become an Affiliate",
+      description:
+        "Create an account within our trader dashboard here and then submit your application by filling out the form within the affiliate section. Our team will evaluate your application and ensure you meet our affiliate criteria.",
+      imagePosition: "right",
+    },
+    {
+      stepNumber: "02.",
+      title: "Create and share your Affiliate link",
+      description:
+        "Create, manage and track the performance of your affiliate links right from your Fundingoptimal™ account.",
+      imagePosition: "left",
+    },
+    {
+      stepNumber: "03.",
+      title: "Earn up to 20% Commissions",
+      description:
+        "When users create an account with your affiliate link, you'll receive commission.",
+      imagePosition: "right",
+    },
+  ];
+
   return (
     <div className="relative max-w-7xl mx-auto px-4 md:px-6 w-full">
-      <div className="w-full flex items-center justify-center">
-        <div className="absolute top-48 w-1/2 h-[300px] bg-emerald-500/30 rounded-full blur-[200px] z-[-1]" />
-      </div>
-      <div className="z-0 py-12 overflow-hidden backdrop-blur-3xl">
-        {/* Blurred Green Background Glow */}
+      <BackgroundGlow />
 
-        {/* Section Header */}
+      <div className="z-0 py-12 overflow-hidden backdrop-blur-3xl">
         <SectionHeader
           badge="How to Join"
           title="How to Join our Partner Program"
@@ -19,67 +108,10 @@ export default function JoinPartnerProgram() {
           noMargin={true}
         />
 
-        {/* Main Content */}
-        <div className="flex flex-col lg:flex-row gap-10 items-center ">
-          {/* Left Content */}
-          <div className="flex flex-col items-start space-y-5 md:space-y-8 w-full lg:w-1/2">
-            <h2 className="text-green-500 text-2xl md:text-[64px] font-semibold">
-              01.
-            </h2>
-            <h4 className="text-white text-lg md:text-[34px] max-w-sm leading-[44px]">
-              Sign up to becomean Affiliate
-            </h4>
-            <p className="text-gray-400 text-sm md:text-[16px] leading-[24px] md:leading-[38px] max-w-lg">
-              Create an account within our trader dashboard here and then submit
-              your application by filling out the form within the affiliate
-              section. Our team will evaluate your application and ensure you
-              meet our affiliate criteria.
-            </p>
-          </div>
-
-          {/* Right Content (Visual Box with border or image) */}
-          <div className="flex justify-center lg:justify-end w-full lg:w-1/2">
-            <div className="h-[360px] w-full border border-emerald-400"></div>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row gap-10 items-center mt-12 md:mt-24">
-          {/* Left Content (Visual Box with border or image) */}
-          <div className="flex justify-center lg:justify-end w-full lg:w-1/2">
-            <div className="h-[360px] w-full border border-emerald-400"></div>
-          </div>
-          {/* Right Content */}
-          <div className="flex flex-col items-start space-y-5 md:space-y-8 w-full lg:w-1/2">
-            <h2 className="text-green-500 text-2xl md:text-[64px] font-semibold">
-              02.
-            </h2>
-            <h4 className="text-white text-lg md:text-[34px] max-w-sm leading-[44px]">
-              Create and shareyour Affiliate link
-            </h4>
-            <p className="text-gray-400 text-sm md:text-[16px] leading-[24px] md:leading-[38px] max-w-lg">
-              Create, manage and track the performance of your affiliate
-              linksright from your Fundingoptimal™ account.
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row gap-10 items-center mt-12 md:mt-24">
-          {/* Left Content */}
-          <div className="flex flex-col items-start space-y-5 md:space-y-8 w-full lg:w-1/2">
-            <h2 className="text-green-500 text-2xl md:text-[64px] font-semibold">
-              03.
-            </h2>
-            <h4 className="text-white text-lg md:text-[34px] max-w-sm leading-[44px]">
-              Earn up to 20%Commissions
-            </h4>
-            <p className="text-gray-400 text-sm md:text-[16px] leading-[24px] md:leading-[38px] max-w-lg">
-              When users create an account with your affiliate link, you’ll
-              receive commission.
-            </p>
-          </div>
-
-          {/* Right Content (Visual Box with border or image) */}
-          <div className="flex justify-center lg:justify-end w-full lg:w-1/2">
-            <div className="h-[360px] w-full border border-emerald-400"></div>
-          </div>
+        <div className="space-y-0 flex flex-col w-full gap-10 md:gap-20">
+          {steps.map((step, index) => (
+            <StepCard key={step.stepNumber} {...step} index={index} />
+          ))}
         </div>
       </div>
     </div>
