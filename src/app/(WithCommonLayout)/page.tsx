@@ -5,7 +5,7 @@ import {
   AnalyticsDashboard,
 } from '@/app/(WithCommonLayout)/_components/module';
 import React from 'react';
-import { ProfitCalculator } from './_components/module/home';
+import { Features, ProfitCalculator } from './_components/module/home';
 
 const Page = () => {
   return (
@@ -13,6 +13,7 @@ const Page = () => {
       <TradingHero />
       <Steps />
       <Evaluation />
+      <Features />
       <AnalyticsDashboard />
       <ProfitCalculator />
     </div>

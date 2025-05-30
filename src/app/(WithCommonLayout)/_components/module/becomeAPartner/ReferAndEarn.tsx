@@ -1,36 +1,36 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 import {
   SectionHeader,
   ReferTierCard,
-} from "@/app/(WithCommonLayout)/_components/ui";
+} from '@/app/(WithCommonLayout)/_components/ui';
 
 const REFER_TIERS = [
   {
     refer: 25,
-    points: "25k",
+    points: '25k',
     description:
-      "Refer 25 people and receive a FREE 25k challenge account as a reward.",
+      'Refer 25 people and receive a FREE 25k challenge account as a reward.',
   },
   {
     refer: 100,
-    points: "100k",
+    points: '100k',
     description:
-      "Refer 100 people and receive a FREE 100k challenge account as a reward.",
+      'Refer 100 people and receive a FREE 100k challenge account as a reward.',
   },
   {
     refer: 200,
-    points: "200k",
+    points: '200k',
     description:
-      "Refer 200 people and receive a FREE 200k challenge account as a reward.",
+      'Refer 200 people and receive a FREE 200k challenge account as a reward.',
   },
 ];
 
 export default function ReferAndEarn() {
   return (
-    <div className="">
+    <div>
       <div className="bg-gradient-to-r from-primary/40 via-primary to-primary/40 h-[3px]" />
 
       <div className="bg-gradient-to-b from-primary/30 to-transparent h-48"></div>

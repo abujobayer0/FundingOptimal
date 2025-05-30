@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AccountSizeSlider } from '../../ui';
+import { AccountSizeSlider } from '../../../ui';
 
 const ProfitCalculator = () => {
   const [accountSize, setAccountSize] = useState(100000);
