@@ -57,13 +57,15 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-1/2 h-[100px] bg-primary/30 rounded-full blur-[100px]"></div>
-        <SectionHeader
-          badge={badge}
-          title={title}
-          description={description}
-          className="items-center text-center sm:text-left"
-        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-1/2 h-[100px] bg-primary/30 rounded-full  blur-[100px]"></div>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-0 bg-transparent">
+          <SectionHeader
+            badge={badge}
+            title={title}
+            description={description}
+            className="items-center text-center sm:text-left"
+          />
+        </div>
       </motion.div>
 
       <motion.div

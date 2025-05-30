@@ -41,7 +41,7 @@ const TradingHero = () => {
 
   return (
     <div className="bg-black mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
-      <TitleWithIcon title=" We Fund the Fearless" />
+      <TitleWithIcon title="We Fund the Fearless" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="mx-auto">
