@@ -19,7 +19,7 @@ import {
   WinRateGauge,
   ActionCard,
 } from './components';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { OutlineButton } from '@/components/ui/button';
 
 const AnalyticsDashboard: React.FC<DashboardProps> = ({

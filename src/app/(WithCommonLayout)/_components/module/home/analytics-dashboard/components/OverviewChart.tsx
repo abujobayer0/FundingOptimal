@@ -8,7 +8,6 @@ import {
 } from 'recharts';
 import { ChevronDown } from 'lucide-react';
 import { ChartDataPoint } from '../types';
-import { div } from 'framer-motion/client';
 
 interface OverviewChartProps {
   data: ChartDataPoint[];
