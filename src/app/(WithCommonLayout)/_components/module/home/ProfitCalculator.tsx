@@ -23,7 +23,7 @@ const ProfitCalculator = () => {
   return (
     <div className="text-white p-4 sm:p-6 md:p-8 max-w-7xl mx-auto my-0 mb-20 md:my-24">
       <div className="space-y-3 mb-8 md:mb-12">
-        <span className="inline-block bg-primary/10 border border-primary/50 rounded-md px-3 sm:px-5 py-1.5 sm:py-2.5 text-primary/50 text-xs sm:text-sm">
+        <span className="inline-block bg-primary/10 border border-primary/50 rounded-md px-3 sm:px-5 py-1.5 sm:py-2.5 text-primary/90 text-xs sm:text-sm">
           Calculator
         </span>
         <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-white pt-4">
