@@ -1,6 +1,6 @@
-"use client";
-import { motion } from "motion/react";
-import React from "react";
+'use client';
+import { motion } from 'motion/react';
+import React from 'react';
 
 interface SectionHeaderProps {
   badge?: string;
@@ -17,23 +17,40 @@ interface SectionHeaderProps {
   noMargin?: boolean;
 }
 
+// Helper function to parse title and highlight text within curly braces
+const parseTitle = (title: string) => {
+  const parts = title.split(/(\{[^}]+\})/);
+
+  return parts.map((part, index) => {
+    if (part.startsWith('{') && part.endsWith('}')) {
+      const text = part.slice(1, -1); // Remove curly braces
+      return (
+        <span key={index} className="text-primary">
+          {text}
+        </span>
+      );
+    }
+    return part;
+  });
+};
+
 const SectionHeader: React.FC<SectionHeaderProps> = ({
   badge,
   title,
   description,
-  className = "",
-  titleClassName = "",
-  descriptionClassName = "",
-  badgeClassName = "",
-  maxWidth = "max-w-3xl",
-  descriptionMaxWidth = "max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl",
+  className = '',
+  titleClassName = '',
+  descriptionClassName = '',
+  badgeClassName = '',
+  maxWidth = 'max-w-3xl',
+  descriptionMaxWidth = 'max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl',
   showBadge = true,
   centerAlign = true,
   noMargin = false,
 }) => {
   const containerClasses = centerAlign
     ? `text-center flex justify-center ${
-        noMargin ? "" : "md:mt-24"
+        noMargin ? '' : 'md:mt-24'
       } flex-col gap-4 mb-16 ${className}`
     : `flex flex-col gap-4 mb-16 ${className}`;
 
@@ -66,7 +83,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         transition={{ duration: 0.8, delay: 0.3 }}
         className={`${titleClasses}`}
       >
-        {title}
+        {parseTitle(title)}
       </motion.h1>
 
       {description && (

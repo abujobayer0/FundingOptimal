@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
-import { ArrowLeftRight, DollarSign } from "lucide-react";
-import { motion, useInView, useSpring, useMotionValue } from "motion/react";
-import { StatCard } from "../../../ui";
-import TrustpilotRating from "../../../ui/TrustPilot";
-import TitleWithIcon from "../../../ui/TitleWithIcon";
-import GradientButton from "../../../../../../components/ui/button/GradientButton";
-import OutlineButton from "../../../../../../components/ui/button/OutlineButton";
+'use client';
+import React from 'react';
+import { ArrowLeftRight, DollarSign } from 'lucide-react';
+import { motion, useInView, useSpring, useMotionValue } from 'motion/react';
+import { StatCard } from '../../../ui';
+import TrustpilotRating from '../../../ui/TrustPilot';
+import TitleWithIcon from '../../../ui/TitleWithIcon';
+import GradientButton from '../../../../../../components/ui/button/GradientButton';
+import OutlineButton from '../../../../../../components/ui/button/OutlineButton';
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -32,18 +32,18 @@ const useCountAnimation = (targetValue: number) => {
 
 const TradingHero = () => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const tradersCount = useCountAnimation(350);
-  const payoutsCount = useCountAnimation(10);
-  const countriesCount = useCountAnimation(44);
+  const tradersCount = useCountAnimation(1000);
+  const payoutsCount = useCountAnimation(100);
+  const countriesCount = useCountAnimation(100);
   const supportCount = useCountAnimation(24);
 
   return (
-    <div className="bg-[#050505] mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <div className="bg-black mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
       <TitleWithIcon title=" We Fund the Fearless" />
 
-      <div className="relative z-10 px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="mx-auto">
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-12 space-y-8 lg:space-y-0">
             <motion.div
@@ -74,19 +74,9 @@ const TradingHero = () => {
                 className="text-xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold md:mb-4 leading-tight"
               >
                 <span className="bg-gradient-to-l from-primary via-primary to-white bg-clip-text text-transparent">
-                  You&apos;re Not Here To Beat The Market.
+                  Master yourself,achieve the optimal.
                 </span>
               </motion.h1>
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="text-xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-4 leading-tight"
-              >
-                <span className="bg-gradient-to-l from-primary via-[#12FF8E] to-white bg-clip-text text-transparent">
-                  You&apos;re Here To Master Yourself Within It.
-                </span>
-              </motion.h2>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

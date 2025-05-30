@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "motion/react";
-import NavLink from "./NavLink";
-import logo from "@/assets/fundingoptimal-logo.png";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'motion/react';
+import NavLink from './NavLink';
+import logo from '@/assets/fundingoptimal-logo.png';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,30 +15,30 @@ const Navbar = () => {
   // Close menu when clicking outside or on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setIsMenuOpen(false);
       }
     };
 
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (isMenuOpen && !target.closest(".mobile-menu-container")) {
+      if (isMenuOpen && !target.closest('.mobile-menu-container')) {
         setIsMenuOpen(false);
       }
     };
 
     if (isMenuOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.addEventListener("click", handleClickOutside);
-      document.body.style.overflow = "hidden"; // Prevent background scroll
+      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('click', handleClickOutside);
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.removeEventListener("click", handleClickOutside);
-      document.body.style.overflow = "unset";
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('click', handleClickOutside);
+      document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
 
@@ -52,7 +52,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 h-auto bg-black">
-      <header className="text-foreground shadow-sm py-6 relative overflow-hidden">
+      <header className="text-foreground shadow-sm max-w-7xl mx-auto py-6 relative overflow-hidden">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -87,9 +87,9 @@ const Navbar = () => {
                 whileHover={{
                   scale: 1.05,
                   y: -2,
-                  transition: { duration: 0.2, ease: "easeOut" },
+                  transition: { duration: 0.2, ease: 'easeOut' },
                 }}
-                onClick={() => router.push("/auth/login")}
+                onClick={() => router.push('/auth/login')}
                 whileTap={{ scale: 0.95 }}
                 className="group relative rounded-md border border-white px-4 py-2 text-sm font-medium text-white transition-all duration-500 ease-in-out overflow-hidden"
               >
@@ -114,7 +114,7 @@ const Navbar = () => {
                 whileHover={{
                   scale: 1.05,
                   y: -2,
-                  transition: { duration: 0.2, ease: "easeOut" },
+                  transition: { duration: 0.2, ease: 'easeOut' },
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="group relative rounded-md bg-primary px-4 py-2 text-sm text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
@@ -150,17 +150,17 @@ const Navbar = () => {
                 <div className="w-6 h-6 relative">
                   <span
                     className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${
-                      isMenuOpen ? "rotate-45 translate-y-2" : "translate-y-0"
+                      isMenuOpen ? 'rotate-45 translate-y-2' : 'translate-y-0'
                     }`}
                   />
                   <span
                     className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out translate-y-2 ${
-                      isMenuOpen ? "opacity-0" : "opacity-100"
+                      isMenuOpen ? 'opacity-0' : 'opacity-100'
                     }`}
                   />
                   <span
                     className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${
-                      isMenuOpen ? "-rotate-45 translate-y-2" : "translate-y-4"
+                      isMenuOpen ? '-rotate-45 translate-y-2' : 'translate-y-4'
                     }`}
                   />
                 </div>
@@ -172,13 +172,13 @@ const Navbar = () => {
         {/* Mobile Menu Overlay */}
         <div
           className={`md:hidden fixed inset-0 z-[60] transition-opacity duration-300 ease-in-out ${
-            isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}
         >
           {/* Background Overlay */}
           <div
             className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-              isMenuOpen ? "opacity-100" : "opacity-0"
+              isMenuOpen ? 'opacity-100' : 'opacity-0'
             }`}
             onClick={closeMenu}
           />
@@ -186,7 +186,7 @@ const Navbar = () => {
           {/* Mobile Menu Panel */}
           <div
             className={`mobile-menu-container absolute top-0 right-0 h-screen w-80 max-w-[85vw] bg-gradient-to-br from-gray-900/95 to-black/95 backdrop-blur-xl border-l border-gray-700/50 shadow-2xl transform transition-transform duration-300 ease-in-out ${
-              isMenuOpen ? "translate-x-0" : "translate-x-full"
+              isMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
             {/* Menu Header */}
@@ -218,18 +218,18 @@ const Navbar = () => {
             <div className="flex flex-col min-h-0">
               <nav className="flex-1 px-6 py-4 space-y-2 overflow-y-auto min-h-0">
                 {[
-                  { href: "/", label: "Home" },
-                  { href: "/become-a-partner", label: "Become A Partner" },
-                  { href: "/about", label: "About Us" },
-                  { href: "/contact", label: "Contact Us" },
-                  { href: "/faqs", label: "FAQs" },
+                  { href: '/', label: 'Home' },
+                  { href: '/become-a-partner', label: 'Become A Partner' },
+                  { href: '/about', label: 'About Us' },
+                  { href: '/contact', label: 'Contact Us' },
+                  { href: '/faqs', label: 'FAQs' },
                 ].map((item, index) => (
                   <div
                     key={item.href}
                     className={`transform transition-all duration-300 ease-out ${
                       isMenuOpen
-                        ? "translate-x-0 opacity-100"
-                        : "translate-x-8 opacity-0"
+                        ? 'translate-x-0 opacity-100'
+                        : 'translate-x-8 opacity-0'
                     }`}
                     style={{ transitionDelay: `${index * 50}ms` }}
                   >
@@ -263,17 +263,17 @@ const Navbar = () => {
                 <div
                   className={`transform transition-all duration-300 ease-out ${
                     isMenuOpen
-                      ? "translate-x-0 opacity-100"
-                      : "translate-x-8 opacity-0"
+                      ? 'translate-x-0 opacity-100'
+                      : 'translate-x-8 opacity-0'
                   }`}
-                  style={{ transitionDelay: "250ms" }}
+                  style={{ transitionDelay: '250ms' }}
                 >
                   <motion.button
                     onClick={closeMenu}
                     whileHover={{
                       scale: 1.02,
                       y: -1,
-                      transition: { duration: 0.2, ease: "easeOut" },
+                      transition: { duration: 0.2, ease: 'easeOut' },
                     }}
                     whileTap={{ scale: 0.98 }}
                     className="group relative w-full rounded-lg border border-gray-600 px-4 py-3 text-sm font-medium text-white transition-all duration-500 ease-in-out overflow-hidden"
@@ -295,17 +295,17 @@ const Navbar = () => {
                 <div
                   className={`transform transition-all duration-300 ease-out ${
                     isMenuOpen
-                      ? "translate-x-0 opacity-100"
-                      : "translate-x-8 opacity-0"
+                      ? 'translate-x-0 opacity-100'
+                      : 'translate-x-8 opacity-0'
                   }`}
-                  style={{ transitionDelay: "300ms" }}
+                  style={{ transitionDelay: '300ms' }}
                 >
                   <motion.button
                     onClick={closeMenu}
                     whileHover={{
                       scale: 1.02,
                       y: -1,
-                      transition: { duration: 0.2, ease: "easeOut" },
+                      transition: { duration: 0.2, ease: 'easeOut' },
                     }}
                     whileTap={{ scale: 0.98 }}
                     className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"

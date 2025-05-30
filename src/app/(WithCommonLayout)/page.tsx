@@ -2,8 +2,9 @@ import {
   Evaluation,
   Steps,
   TradingHero,
-} from "@/app/(WithCommonLayout)/_components/module";
-import React from "react";
+  AnalyticsDashboard,
+} from '@/app/(WithCommonLayout)/_components/module';
+import React from 'react';
 
 const Page = () => {
   return (
@@ -11,6 +12,7 @@ const Page = () => {
       <TradingHero />
       <Steps />
       <Evaluation />
+      <AnalyticsDashboard />
     </div>
   );
 };

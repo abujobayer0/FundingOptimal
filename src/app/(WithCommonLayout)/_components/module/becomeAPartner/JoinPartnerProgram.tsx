@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { SectionHeader } from "@/app/(WithCommonLayout)/_components/ui";
-import React from "react";
+import { SectionHeader } from '@/app/(WithCommonLayout)/_components/ui';
+import React from 'react';
 
 interface StepData {
   stepNumber: string;
   title: string;
   description: string;
-  imagePosition: "left" | "right";
+  imagePosition: 'left' | 'right';
 }
 
 interface StepCardProps extends StepData {
@@ -21,7 +21,7 @@ const StepCard: React.FC<StepCardProps> = ({
   imagePosition,
   index,
 }) => {
-  const isImageLeft = imagePosition === "left";
+  const isImageLeft = imagePosition === 'left';
 
   const ContentSection = () => (
     <div className="flex flex-col items-start space-y-5 md:space-y-8 w-full lg:w-1/2">
@@ -46,7 +46,7 @@ const StepCard: React.FC<StepCardProps> = ({
   return (
     <div
       className={`flex flex-col lg:flex-row gap-10 items-center ${
-        index > 0 ? "mt-12 md:mt-24" : ""
+        index > 0 ? 'mt-12 md:mt-24' : ''
       }`}
     >
       {isImageLeft ? (
@@ -64,7 +64,7 @@ const StepCard: React.FC<StepCardProps> = ({
   );
 };
 
-const BackgroundGlow: React.FC = () => (
+export const BackgroundGlow: React.FC = () => (
   <div className="w-full flex items-center justify-center">
     <div className="absolute top-72 w-1/2 h-[300px] bg-primary/30 rounded-full blur-[200px] z-[-1]" />
   </div>
@@ -73,25 +73,25 @@ const BackgroundGlow: React.FC = () => (
 export default function JoinPartnerProgram() {
   const steps: StepData[] = [
     {
-      stepNumber: "01.",
-      title: "Sign up to become an Affiliate",
+      stepNumber: '01.',
+      title: 'Sign up to become an Affiliate',
       description:
-        "Create an account within our trader dashboard here and then submit your application by filling out the form within the affiliate section. Our team will evaluate your application and ensure you meet our affiliate criteria.",
-      imagePosition: "right",
+        'Create an account within our trader dashboard here and then submit your application by filling out the form within the affiliate section. Our team will evaluate your application and ensure you meet our affiliate criteria.',
+      imagePosition: 'right',
     },
     {
-      stepNumber: "02.",
-      title: "Create and share your Affiliate link",
+      stepNumber: '02.',
+      title: 'Create and share your Affiliate link',
       description:
-        "Create, manage and track the performance of your affiliate links right from your Fundingoptimal™ account.",
-      imagePosition: "left",
+        'Create, manage and track the performance of your affiliate links right from your Fundingoptimal™ account.',
+      imagePosition: 'left',
     },
     {
-      stepNumber: "03.",
-      title: "Earn up to 20% Commissions",
+      stepNumber: '03.',
+      title: 'Earn up to 20% Commissions',
       description:
         "When users create an account with your affiliate link, you'll receive commission.",
-      imagePosition: "right",
+      imagePosition: 'right',
     },
   ];
 
