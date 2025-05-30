@@ -282,7 +282,10 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
           </motion.div>
         ))}
       </motion.div>
-      <OutlineButton className="my-8 mx-auto border border-primary">
+      <OutlineButton
+        className="my-8 h-12 mx-auto border text-white border-primary"
+        style={{ borderRadius: 8 }}
+      >
         Get Funded Now
       </OutlineButton>
     </motion.div>
