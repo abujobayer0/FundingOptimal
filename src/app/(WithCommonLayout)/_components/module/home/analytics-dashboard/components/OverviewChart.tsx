@@ -17,7 +17,11 @@ interface OverviewChartProps {
 
 interface CustomTooltipProps extends TooltipProps<number, string> {
   active?: boolean;
-  payload?: any[];
+  payload?: {
+    color: string;
+    dataKey: string;
+    value: number;
+  }[];
   label?: string;
 }
 
