@@ -1,5 +1,5 @@
-import FeatureRow from "./FeatureRow";
-import { features } from "./data";
+import FeatureRow from './FeatureRow';
+import { features } from './data';
 
 export default function TradingStepsCard({
   className,
@@ -8,7 +8,7 @@ export default function TradingStepsCard({
 }) {
   return (
     <div
-      className={`${className} rounded-xl p-[14px] border border-primary/10 shadow-lg flex flex-col`}
+      className={`${className} rounded-xl p-[14px] border border-white/10 shadow-lg flex flex-col`}
     >
       <div className="mb-2 text-xl text-white">One-Step</div>
       <div className="mb-6 text-gray-400/80">
@@ -18,7 +18,7 @@ export default function TradingStepsCard({
         {features.map((col, i) => (
           <div
             key={i}
-            className="bg-transparent backdrop-blur-lg rounded-lg p-2.5 flex flex-col gap-1 border border-primary/10"
+            className="backdrop-blur-lg rounded-lg p-2.5 flex flex-col bg-gradient-to-br from-white/5 to-black/5 gap-1 border border-white/10"
           >
             {col.map((f, j) => (
               <FeatureRow key={j} label={f.label} value={f.value} />
@@ -26,7 +26,7 @@ export default function TradingStepsCard({
           </div>
         ))}
       </div>
-      <button className="w-full py-2 rounded-lg border border-gray-400/50 text-gray-400/90 bg-transparent hover:bg-primary/10 transition font-normal text-sm">
+      <button className="w-full py-2 rounded-lg border-[0.5px] border-white/50 text-white bg-transparent hover:bg-primary/10 transition font-normal text-sm">
         Buy Now
       </button>
     </div>

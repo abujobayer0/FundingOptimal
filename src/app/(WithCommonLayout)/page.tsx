@@ -3,9 +3,10 @@ import {
   Steps,
   TradingHero,
   AnalyticsDashboard,
-} from "@/app/(WithCommonLayout)/_components/module";
-import React from "react";
-import { ProfitCalculator, TradingStepsUI } from "./_components/module/home";
+} from '@/app/(WithCommonLayout)/_components/module';
+import React from 'react';
+import { ProfitCalculator, TradingStepsUI } from './_components/module/home';
+import Features from './_components/module/home/features';
 
 const Page = () => {
   return (
@@ -14,6 +15,7 @@ const Page = () => {
       <Steps />
       <Evaluation />
       <TradingStepsUI />
+      <Features />
       <AnalyticsDashboard />
       <ProfitCalculator />
     </div>
