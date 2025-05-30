@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React, { ReactNode } from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import React, { ReactNode } from 'react';
+import { motion, HTMLMotionProps } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-interface OutlineButtonProps extends HTMLMotionProps<"button"> {
+interface OutlineButtonProps extends HTMLMotionProps<'button'> {
   children?: ReactNode;
   showIcon?: boolean;
 }
 
 const OutlineButton: React.FC<OutlineButtonProps> = ({
-  children = "Learn More",
-  className = "",
+  children = 'Learn More',
+  className = '',
   showIcon = true,
   ...rest
 }) => {
@@ -23,10 +23,10 @@ const OutlineButton: React.FC<OutlineButtonProps> = ({
       whileHover={{
         scale: 1.05,
         y: -2,
-        transition: { duration: 0.2, ease: "easeOut" },
+        transition: { duration: 0.2, ease: 'easeOut' },
       }}
       whileTap={{ scale: 0.95 }}
-      className={`group relative w-full sm:w-auto text-gray-400 px-6 sm:px-8 py-3 sm:py-4 rounded-xl flex items-center justify-center overflow-hidden border border-gray-600/30 hover:border-emerald-400/50 transition-all duration-500 ${className}`}
+      className={`group relative w-full sm:w-auto text-gray-400 px-6 sm:px-8 py-3 sm:py-4 rounded-xl flex items-center justify-center overflow-hidden hover:border-emerald-400/50 transition-all duration-500 ${className}`}
       {...rest}
     >
       {/* Background hover gradient */}
