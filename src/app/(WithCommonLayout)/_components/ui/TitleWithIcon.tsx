@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "motion/react";
-import Image from "next/image";
-import logo from "@/assets/fundingoptimal-logo.png";
+import React from 'react';
+import { motion } from 'motion/react';
+import Image from 'next/image';
+import logo from '@/assets/fundingoptimal-logo.png';
 
 interface TTitleWithIconProps {
   title: string;
@@ -11,8 +11,8 @@ interface TTitleWithIconProps {
 }
 
 export default function TitleWithIcon({
-  title = "We Fund the Fearless",
-  className = "justify-center",
+  title = 'We Fund the Fearless',
+  className = 'justify-center',
 }: TTitleWithIconProps) {
   return (
     <motion.div

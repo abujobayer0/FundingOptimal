@@ -25,7 +25,7 @@ const Features = () => {
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <div className="bg-gradient-to-r from-primary/40 via-primary to-primary/40 h-[3px]" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 bg-transparent text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-0 bg-transparent text-white">
           <SectionHeader
             title="Features of {Fundingoptimal}"
             description="Experience the Fundingoptimal Advantage - on-demand payouts, flexible funding, and
