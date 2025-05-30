@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from 'react';
 
 const AccountSizeSlider = ({
   minValue = 10000,
@@ -10,8 +10,8 @@ const AccountSizeSlider = ({
   step = 1000,
   formatValue = (value: number) => `$${(value / 1000).toFixed(0)}k`,
   onChange = (newValue: number) => {},
-  className = "",
-  label = "",
+  className = '',
+  label = '',
 }) => {
   const [value, setValue] = useState(initialValue);
   const [isDragging, setIsDragging] = useState(false);
@@ -37,8 +37,8 @@ const AccountSizeSlider = ({
 
   React.useEffect(() => {
     const handleGlobalMouseUp = () => setIsDragging(false);
-    document.addEventListener("mouseup", handleGlobalMouseUp);
-    return () => document.removeEventListener("mouseup", handleGlobalMouseUp);
+    document.addEventListener('mouseup', handleGlobalMouseUp);
+    return () => document.removeEventListener('mouseup', handleGlobalMouseUp);
   }, []);
 
   return (
@@ -61,7 +61,7 @@ const AccountSizeSlider = ({
         {/* Thumb */}
         <div
           className={`absolute top-1/2 w-8 h-2.5 bg-primary rounded-full transform -translate-y-1/2 -translate-x-1/2 transition-all duration-150 ${
-            isDragging ? "scale-110 shadow-xl" : "hover:scale-105"
+            isDragging ? 'scale-110 shadow-xl' : 'hover:scale-105'
           }`}
           style={{ left: `${percentage}%` }}
         />
