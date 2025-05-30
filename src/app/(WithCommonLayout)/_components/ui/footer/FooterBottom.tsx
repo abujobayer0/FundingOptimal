@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "@/assets/fundingoptimal-logo.png";
-import logo2 from "@/assets/propfirm.png";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '@/assets/fundingoptimal-logo.png';
+import logo2 from '@/assets/propfirm.png';
 
 const FooterBottom = () => {
   const year = new Date(Date.now()).getFullYear();
@@ -243,7 +243,7 @@ const FooterBottom = () => {
                   <strong>Educational Purpose</strong> Our platform is designed
                   for skill development, strategy testing, and performance
                   evaluation. All content and services provided are for
-                  simulation and educational purposes only. ©2024
+                  simulation and educational purposes only. ©2025
                   [coinprops.io]. All Rights Reserved. Registered in British
                   Columbia, Canada.
                 </p>
