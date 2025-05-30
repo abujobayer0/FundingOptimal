@@ -1,13 +1,17 @@
 'use client';
 
 import { SectionHeader } from '@/app/(WithCommonLayout)/_components/ui';
+import NewIcon from './icons/NewIcon';
 import React from 'react';
+import NewIconTwo from './icons/NewIconTwo';
+import NewIconThree from './icons/NewIconThree';
 
 interface StepData {
   stepNumber: string;
   title: string;
   description: string;
   imagePosition: 'left' | 'right';
+  icon: React.ReactNode;
 }
 
 interface StepCardProps extends StepData {
@@ -20,6 +24,7 @@ const StepCard: React.FC<StepCardProps> = ({
   description,
   imagePosition,
   index,
+  icon,
 }) => {
   const isImageLeft = imagePosition === 'left';
 
@@ -39,7 +44,7 @@ const StepCard: React.FC<StepCardProps> = ({
 
   const ImageSection = () => (
     <div className="flex justify-center lg:justify-end w-full lg:w-1/2">
-      <div className="h-[360px] w-full border border-primary rounded-lg bg-gradient-to-br from-primary/5 to-transparent"></div>
+      <div className="h-[360px] w-full rounded-lg  to-transparent">{icon}</div>
     </div>
   );
 
@@ -78,6 +83,7 @@ export default function JoinPartnerProgram() {
       description:
         'Create an account within our trader dashboard here and then submit your application by filling out the form within the affiliate section. Our team will evaluate your application and ensure you meet our affiliate criteria.',
       imagePosition: 'right',
+      icon: <NewIcon />,
     },
     {
       stepNumber: '02.',
@@ -85,6 +91,7 @@ export default function JoinPartnerProgram() {
       description:
         'Create, manage and track the performance of your affiliate links right from your Fundingoptimal™ account.',
       imagePosition: 'left',
+      icon: <NewIconTwo />,
     },
     {
       stepNumber: '03.',
@@ -92,6 +99,7 @@ export default function JoinPartnerProgram() {
       description:
         "When users create an account with your affiliate link, you'll receive commission.",
       imagePosition: 'right',
+      icon: <NewIconThree />,
     },
   ];
 
