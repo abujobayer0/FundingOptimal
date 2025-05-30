@@ -40,6 +40,7 @@ const ProfitCalculator = () => {
             How Much Can You Get?
           </h2>
 
+          {/* slider */}
           <div className="space-y-6">
             <AccountSizeSlider
               minValue={100000}
