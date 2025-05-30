@@ -51,7 +51,7 @@ const Features = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           whileHover={{ transition: { duration: 0.2 } }}
         >
-          <div className="absolute top-0 h-full left-0 w-full transition-opacity duration-300 object-cover">
+          <div className="absolute -top-3  h-[319px] left-0 w-full transition-opacity duration-300">
             <OnDemandPayouts />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#D4F7F10D] via-[#D4F7F100] to-transparent" />
@@ -84,7 +84,7 @@ const Features = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           whileHover={{ transition: { duration: 0.2 } }}
         >
-          <div className="absolute top-0 left-0 w-full opacity-80 group-hover:opacity-95 transition-opacity duration-300 object-cover object-top-left">
+          <div className="absolute top-0 left-0 w-full  transition-opacity duration-300 object-cover object-top-left">
             <StartingCapital />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#D4F7F10D] via-[#D4F7F100] to-transparent" />

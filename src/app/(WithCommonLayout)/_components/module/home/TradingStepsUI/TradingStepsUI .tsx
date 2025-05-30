@@ -62,7 +62,7 @@ export default function TradingStepsUI() {
       </motion.div>
       {/* Progress Bar */}
       <motion.div
-        className="flex flex-row overflow-x-auto items-center w-full max-w-3xl mb-12 px-2 md:px-0"
+        className="flex flex-row overflow-x-auto items-center w-full max-w-3xl mb-12 px-2"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
@@ -70,21 +70,21 @@ export default function TradingStepsUI() {
       >
         {amounts.map((amt, idx) => (
           <React.Fragment key={amt.label}>
-            <div className="flex flex-col items-center min-w-0 flex-shrink-0">
+            <div className="flex flex-col items-center min-w-fit">
               <div
-                className={`size-4 sm:size-5 rounded-full flex items-center justify-center border mb-1 p-[2px] ${
+                className={`size-4 md:size-5 rounded-full flex items-center justify-center border mb-1 p-[2px]  ${
                   amt.active ? 'border-primary' : 'border-gray-600/50'
                 }
                `}
               >
                 <span
-                  className={`size-2 sm:size-3 rounded-full ${
+                  className={`size-2 md:size-3 rounded-full ${
                     amt.active ? 'bg-primary' : ''
                   }`}
                 ></span>
               </div>
               <span
-                className={`text-xs sm:text-sm mt-0.5 text-center px-1 whitespace-nowrap ${
+                className={`text-xs md:text-sm mt-0.5 text-center whitespace-nowrap ${
                   amt.active ? 'text-primary' : 'text-[#a7a7a7]'
                 }`}
               >
@@ -92,7 +92,7 @@ export default function TradingStepsUI() {
               </span>
             </div>
             {idx < amounts.length - 1 && (
-              <div className="flex-1 h-[1px] sm:h-[2px] bg-gray-100/30 mx-3 sm:mx-5 md:mx-7 min-w-[20px] sm:min-w-[30px]" />
+              <div className="flex-1 h-[2px] bg-gray-100/30 mx-3 md:mx-7 min-w-[20px]" />
             )}
           </React.Fragment>
         ))}
