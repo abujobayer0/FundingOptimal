@@ -44,7 +44,7 @@ const ProfitCalculator = () => {
             <AccountSizeSlider
               minValue={100000}
               maxValue={500000}
-              initialValue={100000}
+              initialValue={200000}
               step={10000}
               onChange={handleAccountSizeChange}
               formatValue={(value) => `$${value.toLocaleString()}`}
