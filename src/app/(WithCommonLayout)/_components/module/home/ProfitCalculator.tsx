@@ -35,7 +35,7 @@ const ProfitCalculator = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 border border-primary/50 p-3 sm:p-4 rounded-md">
-        <div className="space-y-6 sm:space-y-8 border-[3px] border-primary/5 p-4 sm:p-8 rounded-xl">
+        <div className="space-y-6 sm:space-y-8 border-[3px] border-gray-400/10 p-4 sm:p-8 rounded-xl">
           <h2 className="text-xl sm:text-2xl font-bold">
             How Much Can You Get?
           </h2>
