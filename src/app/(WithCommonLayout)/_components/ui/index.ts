@@ -12,3 +12,4 @@ export { default as TitleWithIcon } from "./TitleWithIcon";
 export { default as TrustPilot } from "./TrustPilot";
 export { default as SectionHeader } from "./SectionHeader";
 export { default as CheckIcon } from "./CheckIcon";
+export { default as AccountSizeSlider } from "./AccountSizeSlider ";
