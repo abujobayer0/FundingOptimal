@@ -1,41 +1,45 @@
-import { ArrowRight } from "lucide-react";
-import React, { ReactNode } from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { ArrowRight } from 'lucide-react';
+import React, { ReactNode } from 'react';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface GradientButtonProps extends HTMLMotionProps<"button"> {
+interface GradientButtonProps extends HTMLMotionProps<'button'> {
   children?: ReactNode;
   showIcon?: boolean;
+  animation?: boolean;
 }
 
 export default function GradientButton({
-  children = "Get Funded Now",
-  className = "",
+  children = 'Get Funded Now',
+  className = '',
   showIcon = true,
+  animation = true,
   ...rest
 }: GradientButtonProps) {
   return (
     <motion.button
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: 1.5 }}
+      {...(animation && {
+        initial: { opacity: 0, scale: 0.9 },
+        animate: { opacity: 1, scale: 1 },
+        transition: { duration: 0.6, delay: 1.5 },
+      })}
       whileHover={{
         scale: 1.05,
         y: -2,
-        transition: { duration: 0.2, ease: "easeOut" },
+        transition: { duration: 0.2, ease: 'easeOut' },
       }}
       whileTap={{ scale: 0.95 }}
       className={`group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white rounded-lg flex items-center justify-center transition-all duration-500 text-base sm:text-lg overflow-hidden ${className}`}
       style={{
         boxShadow:
-          "rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset",
+          'rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow =
-          "rgba(18, 255, 142, 0.8) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.7) 0px 0px 40px 0px inset, rgba(18, 255, 142, 0.4) 0px 0px 50px 0px inset, rgba(18, 255, 142, 0.6) 0px 0px 60px 10px";
+          'rgba(18, 255, 142, 0.8) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.7) 0px 0px 40px 0px inset, rgba(18, 255, 142, 0.4) 0px 0px 50px 0px inset, rgba(18, 255, 142, 0.6) 0px 0px 60px 10px';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow =
-          "rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset";
+          'rgba(18, 255, 142, 0.5) 0px 0px 20px 0px inset, rgba(18, 255, 142, 0.5) 0px 0px 30px 0px inset, rgba(18, 255, 142, 0.1) 0px 0px 40px 0px inset';
       }}
       {...rest}
     >

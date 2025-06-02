@@ -87,16 +87,7 @@ const StepCard: React.FC<StepCardProps> = ({
     : '';
 
   return (
-    <motion.div
-      className={`relative text-center ${dividerClasses}`}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={ANIMATION_CONFIG.viewport}
-      transition={{
-        duration: ANIMATION_CONFIG.duration,
-        delay: animationDelay,
-      }}
-    >
+    <motion.div className={`relative text-center ${dividerClasses}`}>
       <div className="text-[64px] font-bold text-primary mb-4 leading-none">
         {step.number}
       </div>

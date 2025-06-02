@@ -9,13 +9,7 @@ import { ActionCard } from '../../_components/module/home/analytics-dashboard/co
 export const FeaturesSection = () => {
   return (
     <div>
-      <motion.div
-        className="bg-gradient-to-b from-primary/30 to-transparent"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
+      <motion.div className="bg-gradient-to-b from-primary/30 to-transparent">
         <div className="bg-gradient-to-r from-primary/40 via-primary to-primary/40 h-[3px]" />
         <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-0 bg-transparent text-white">
           <SectionHeader

@@ -7,19 +7,23 @@ import { ArrowRight } from 'lucide-react';
 interface OutlineButtonProps extends HTMLMotionProps<'button'> {
   children?: ReactNode;
   showIcon?: boolean;
+  animation?: boolean;
 }
 
 const OutlineButton: React.FC<OutlineButtonProps> = ({
   children = 'Learn More',
   className = '',
   showIcon = true,
+  animation = true,
   ...rest
 }) => {
   return (
     <motion.button
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: 1.7 }}
+      {...(animation && {
+        initial: { opacity: 0, scale: 0.9 },
+        animate: { opacity: 1, scale: 1 },
+        transition: { duration: 0.6, delay: 1.7 },
+      })}
       whileHover={{
         scale: 1.05,
         y: -2,

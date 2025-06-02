@@ -13,7 +13,7 @@ import {
 const AboutUsPage = () => {
   return (
     <div className="mx-auto">
-      <SectionWrapper className="mt-[80px] md:mt-[100px]">
+      <SectionWrapper>
         <HeroSection />
       </SectionWrapper>
 

@@ -39,10 +39,31 @@ const AffiliateProgramHero = () => {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <HeroIcon />
+            <div
+              className="animate-pulse w-full"
+              style={{
+                animation: 'float 3s ease-in-out infinite',
+              }}
+            >
+              <HeroIcon />
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+      `}</style>
     </div>
   );
 };

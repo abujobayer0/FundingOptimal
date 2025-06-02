@@ -15,6 +15,7 @@ interface SectionHeaderProps {
   showBadge?: boolean;
   centerAlign?: boolean;
   noMargin?: boolean;
+  animation?: boolean;
 }
 
 // Helper function to parse title and highlight text within curly braces
@@ -47,6 +48,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   showBadge = true,
   centerAlign = true,
   noMargin = false,
+  animation = true,
 }) => {
   const containerClasses = centerAlign
     ? `text-center flex justify-center ${
@@ -77,10 +79,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       )}
 
       <motion.h1
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        {...(animation && {
+          initial: { opacity: 0 },
+          whileInView: { opacity: 1 },
+          viewport: { once: true },
+          transition: { duration: 0.8, delay: 0.3 },
+        })}
         className={`${titleClasses}`}
       >
         {parseTitle(title)}
@@ -88,10 +92,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
       {description && (
         <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          {...(animation && {
+            initial: { opacity: 0 },
+            whileInView: { opacity: 1 },
+            viewport: { once: true },
+            transition: { duration: 0.8, delay: 0.4 },
+          })}
           className={descriptionClasses}
         >
           {description}

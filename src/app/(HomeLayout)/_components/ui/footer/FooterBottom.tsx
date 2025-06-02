@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/assets/fundingoptimal-logo.png';
@@ -8,6 +8,11 @@ import logo2 from '@/assets/propfirm.png';
 
 const FooterBottom = () => {
   const year = new Date(Date.now()).getFullYear();
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+
+  const toggleDisclaimer = () => {
+    setIsDisclaimerOpen(!isDisclaimerOpen);
+  };
 
   return (
     <footer className="bg-gradient-to-t  from-primary/25 to-transparent">
@@ -193,60 +198,131 @@ const FooterBottom = () => {
                 </div>
               </div>
 
-              <div className="text-white mt-8 text-[14px] leading-relaxed space-y-4">
-                <p>
-                  <strong>
-                    Legal Disclaimers and Disclosures (Footer) Allowed Trading
-                  </strong>
-                  Our platform allows simulated trading of cryptocurrency pairs
-                  only. Trading of actual cryptocurrencies, stocks, forex,
-                  options, futures, or other financial instruments is not
-                  provided nor permitted in our program.
-                </p>
+              <div className="mt-8">
+                <button
+                  onClick={toggleDisclaimer}
+                  className="flex items-center justify-between w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                      <svg
+                        className="w-4 h-4 text-primary"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-white font-semibold text-[16px]">
+                      Legal Disclaimers & Risk Warnings
+                    </span>
+                  </div>
+                  <svg
+                    className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${
+                      isDisclaimerOpen ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
 
-                <p>
-                  <strong>Challenge Success Rate</strong> Historical data shows
-                  that less than 3% of participants successfully complete our
-                  trading challenges. While we maintain strict evaluation
-                  standards, success in our simulation does not guarantee
-                  success in live trading.
-                </p>
+                <div
+                  className={`grid grid-cols-1 gap-4 transition-all duration-500 ease-in-out overflow-hidden ${
+                    isDisclaimerOpen
+                      ? 'mt-4 opacity-100 max-h-[2000px]'
+                      : 'mt-0 opacity-0 max-h-0'
+                  }`}
+                >
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Allowed Trading
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      Our platform allows simulated trading of cryptocurrency
+                      pairs only. Trading of actual cryptocurrencies, stocks,
+                      forex, options, futures, or other financial instruments is
+                      not provided nor permitted in our program.
+                    </p>
+                  </div>
 
-                <p>
-                  <strong>Simulation Limitations</strong> In alignment with
-                  Canadian consumer protection standards and financial services
-                  best practices, our trading simulation platform has inherent
-                  limitations. Results are from simulated trading only and do
-                  not represent actual cryptocurrency trading. Performance in
-                  our challenges does not guarantee similar results in live
-                  trading.
-                </p>
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Challenge Success Rate
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      Historical data shows that less than 3% of participants
+                      successfully complete our trading challenges. While we
+                      maintain strict evaluation standards, success in our
+                      simulation does not guarantee success in live trading.
+                    </p>
+                  </div>
 
-                <p>
-                  <strong>Risk Warning</strong> Cryptocurrency trading involves
-                  substantial risk and is not suitable for all investors. Market
-                  volatility can be extreme, prices can move rapidly, and
-                  technical issues can affect trading. Past performance does not
-                  guarantee future results.
-                </p>
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Simulation Limitations
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      In alignment with Canadian consumer protection standards
+                      and financial services best practices, our trading
+                      simulation platform has inherent limitations. Results are
+                      from simulated trading only and do not represent actual
+                      cryptocurrency trading.
+                    </p>
+                  </div>
 
-                <p>
-                  <strong>Prohibited Conduct</strong> To maintain program
-                  integrity, any gambling behavior, exploitation of the
-                  simulation environment, or violation of our terms will be
-                  reviewed. We reserve the right to delete trading days, reset
-                  accounts, terminate participation, or ban users from our
-                  platform.
-                </p>
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Risk Warning
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      Cryptocurrency trading involves substantial risk and is
+                      not suitable for all investors. Market volatility can be
+                      extreme, prices can move rapidly, and technical issues can
+                      affect trading. Past performance does not guarantee future
+                      results.
+                    </p>
+                  </div>
 
-                <p>
-                  <strong>Educational Purpose</strong> Our platform is designed
-                  for skill development, strategy testing, and performance
-                  evaluation. All content and services provided are for
-                  simulation and educational purposes only. ©2025
-                  [coinprops.io]. All Rights Reserved. Registered in British
-                  Columbia, Canada.
-                </p>
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Prohibited Conduct
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      To maintain program integrity, any gambling behavior,
+                      exploitation of the simulation environment, or violation
+                      of our terms will be reviewed. We reserve the right to
+                      delete trading days, reset accounts, terminate
+                      participation, or ban users from our platform.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Educational Purpose
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      Our platform is designed for skill development, strategy
+                      testing, and performance evaluation. All content and
+                      services provided are for simulation and educational
+                      purposes only. ©2025 [coinprops.io]. All Rights Reserved.
+                      Registered in British Columbia, Canada.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
