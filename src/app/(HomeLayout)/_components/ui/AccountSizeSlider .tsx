@@ -3,6 +3,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useCallback } from 'react';
 
+interface AccountSizeSliderProps {
+  minValue?: number;
+  maxValue?: number;
+  initialValue?: number;
+  step?: number;
+  formatValue?: (value: number) => string;
+  onChange?: (newValue: number) => void;
+  className?: string;
+  label?: string;
+  discreteValues?: number[];
+}
+
 const AccountSizeSlider = ({
   minValue = 10000,
   maxValue = 500000,
@@ -12,19 +24,50 @@ const AccountSizeSlider = ({
   onChange = (newValue: number) => {},
   className = '',
   label = '',
-}) => {
+  discreteValues = [],
+}: AccountSizeSliderProps) => {
   const [value, setValue] = useState(initialValue);
   const [isDragging, setIsDragging] = useState(false);
 
-  const percentage = ((value - minValue) / (maxValue - minValue)) * 100;
+  // Use discrete values if provided, otherwise use continuous range
+  const isDiscrete = discreteValues.length > 0;
+  const actualMinValue = isDiscrete ? 0 : minValue;
+  const actualMaxValue = isDiscrete ? discreteValues.length - 1 : maxValue;
+
+  // Convert slider position to actual value
+  const getActualValue = (sliderValue: number) => {
+    if (isDiscrete) {
+      const index = Math.round(sliderValue);
+      return discreteValues[
+        Math.min(Math.max(index, 0), discreteValues.length - 1)
+      ];
+    }
+    return sliderValue;
+  };
+
+  // Convert actual value to slider position
+  const getSliderValue = (actualValue: number) => {
+    if (isDiscrete) {
+      const index = discreteValues.findIndex((val) => val === actualValue);
+      return index >= 0 ? index : 0;
+    }
+    return actualValue;
+  };
+
+  const currentSliderValue = getSliderValue(value);
+  const percentage =
+    ((currentSliderValue - actualMinValue) /
+      (actualMaxValue - actualMinValue)) *
+    100;
 
   const handleSliderChange = useCallback(
     (e: { target: { value: string } }) => {
-      const newValue = parseInt(e.target.value);
-      setValue(newValue);
-      onChange(newValue);
+      const sliderValue = parseInt(e.target.value);
+      const newActualValue = getActualValue(sliderValue);
+      setValue(newActualValue);
+      onChange(newActualValue);
     },
-    [onChange]
+    [onChange, isDiscrete, discreteValues]
   );
 
   const handleMouseDown = useCallback(() => {
@@ -68,10 +111,10 @@ const AccountSizeSlider = ({
 
         <input
           type="range"
-          min={minValue}
-          max={maxValue}
-          value={value}
-          step={step}
+          min={actualMinValue}
+          max={actualMaxValue}
+          value={currentSliderValue}
+          step={isDiscrete ? 1 : step}
           onChange={handleSliderChange}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}

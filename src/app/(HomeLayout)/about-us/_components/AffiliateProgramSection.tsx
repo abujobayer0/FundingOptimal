@@ -73,10 +73,8 @@ const BlurBackground: React.FC = () => (
 
 const StepCard: React.FC<StepCardProps> = ({
   step,
-  index,
   left = false,
   showDivider = false,
-  animationDelay = 0,
 }) => {
   const dividerClasses = showDivider
     ? `sm:after:absolute w-full sm:after:right-0 sm:after:top-0 sm:after:h-full sm:after:w-[1px] sm:after:bg-gradient-to-b ${

@@ -1,24 +1,104 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { AccountSizeSlider } from "../../ui";
+import React, { useState } from 'react';
+import { AccountSizeSlider } from '../../ui';
+
+const challengePricing = {
+  'Two Step Challenge': {
+    5000: 35.99,
+    10000: 71.99,
+    25000: 167.99,
+    50000: 299.99,
+    100000: 599.99,
+    200000: 1079.99,
+  },
+  'One Step Challenge': {
+    5000: 59.99,
+    10000: 107.99,
+    25000: 215.99,
+    50000: 323.99,
+    100000: 575.99,
+    200000: 1139.99,
+  },
+  'Instant Funding': {
+    5000: 78.0,
+    10000: 114.0,
+    25000: 226.8,
+    50000: 334.8,
+    100000: 586.8,
+    200000: 1173.6,
+  },
+  'Three Steps Challenge': {
+    25000: 180.0,
+    50000: 288.0,
+    100000: 468.0,
+    200000: 816.0,
+  },
+  'Africa Starter Challenge': {
+    2500: 23.99,
+    5000: 41.99,
+    10000: 71.99,
+    25000: 131.99,
+    50000: 227.99,
+  },
+};
 
 const ProfitCalculator = () => {
   const [accountSize, setAccountSize] = useState(100000);
   const [profitMode, setProfitMode] = useState(10);
   const [calculatedProfit, setCalculatedProfit] = useState(10000);
+  const [challengeType, setChallengeType] = useState('Two Step Challenge');
+
+  const getAvailableAccountSizes = (type: string) => {
+    const pricing = challengePricing[type as keyof typeof challengePricing];
+    return Object.keys(pricing)
+      .map(Number)
+      .sort((a, b) => a - b);
+  };
+
+  const getChallengeCost = (size: number, type: string) => {
+    const pricing = challengePricing[type as keyof typeof challengePricing];
+    if (!pricing) return 0;
+
+    const availableSizes = Object.keys(pricing)
+      .map(Number)
+      .sort((a, b) => a - b);
+    const exactMatch = pricing[size as keyof typeof pricing];
+
+    if (exactMatch) return exactMatch;
+
+    const closestSize = availableSizes.reduce((prev, curr) =>
+      Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
+    );
+
+    return pricing[closestSize as keyof typeof pricing] || 0;
+  };
 
   const handleAccountSizeChange = (newAccountSize: number) => {
     setAccountSize(newAccountSize);
-    // Recalculate profit when account size changes
     setCalculatedProfit(newAccountSize * (profitMode / 100));
   };
 
   const handleProfitModeChange = (newProfitMode: number) => {
     setProfitMode(newProfitMode);
-
     setCalculatedProfit(accountSize * (newProfitMode / 100));
   };
+
+  const handleChallengeTypeChange = (newChallengeType: string) => {
+    setChallengeType(newChallengeType);
+
+    const availableSizes = getAvailableAccountSizes(newChallengeType);
+    if (availableSizes.length > 0) {
+      const newAccountSize = availableSizes.includes(accountSize)
+        ? accountSize
+        : availableSizes[0];
+      setAccountSize(newAccountSize);
+      setCalculatedProfit(newAccountSize * (profitMode / 100));
+    }
+  };
+
+  const challengeCost = getChallengeCost(accountSize, challengeType);
+  const availableAccountSizes = getAvailableAccountSizes(challengeType);
 
   return (
     <div className=" bg-gradient-to-bl from-primary/5 to-transparent">
@@ -28,7 +108,7 @@ const ProfitCalculator = () => {
             Calculator
           </span>
           <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-white pt-4">
-            How Much Can You Earn As{" "}
+            How Much Can You Earn As{' '}
             <span className="text-primary">Funded Trader?</span>
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-white">
@@ -43,19 +123,42 @@ const ProfitCalculator = () => {
             </h2>
 
             <div className="space-y-6">
+              {/* Challenge Type Selector */}
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-white">
+                  Challenge Type
+                </label>
+                <select
+                  value={challengeType}
+                  onChange={(e) => handleChallengeTypeChange(e.target.value)}
+                  className="w-full p-3 bg-black/20 border border-primary/30 rounded-lg text-white focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/60"
+                >
+                  <option value="Two Step Challenge">Two Step Challenge</option>
+                  <option value="One Step Challenge">One Step Challenge</option>
+                  <option value="Instant Funding">Instant Funding</option>
+                  <option value="Three Steps Challenge">
+                    Three Steps Challenge
+                  </option>
+                  <option value="Africa Starter Challenge">
+                    Africa Starter Challenge
+                  </option>
+                </select>
+              </div>
+
               <AccountSizeSlider
-                minValue={100000}
-                maxValue={500000}
-                initialValue={200000}
-                step={10000}
+                minValue={Math.min(...availableAccountSizes)}
+                maxValue={Math.max(...availableAccountSizes)}
+                initialValue={accountSize}
+                step={1}
                 onChange={handleAccountSizeChange}
                 formatValue={(value) => `$${value.toLocaleString()}`}
                 label="Account Size"
+                discreteValues={availableAccountSizes}
               />
 
               <AccountSizeSlider
                 minValue={5}
-                maxValue={20}
+                maxValue={10}
                 initialValue={10}
                 step={1}
                 onChange={handleProfitModeChange}
@@ -87,7 +190,9 @@ const ProfitCalculator = () => {
                 <p className="text-xs sm:text-sm mt-1 text-gray-300">
                   Challenge Cost
                 </p>
-                <span className="text-xl sm:text-4xl font-bold">$38.00</span>
+                <span className="text-xl sm:text-4xl font-bold">
+                  ${challengeCost.toFixed(2)}
+                </span>
               </div>
             </div>
           </div>
