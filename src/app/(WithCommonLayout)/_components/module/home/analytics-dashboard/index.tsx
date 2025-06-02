@@ -23,7 +23,7 @@ import { Menu, X } from 'lucide-react';
 import { OutlineButton } from '@/components/ui/button';
 
 const AnalyticsDashboard: React.FC<DashboardProps> = ({
-  title = 'Fundingoptimal {Analytics Dashboard}',
+  title = 'FundingOptimal {Analytics Dashboard}',
   badge = 'Our Dashboard',
   description = 'Learn and grow together in a community of experienced and aspiring traders alike.',
   chartData = defaultChartData,

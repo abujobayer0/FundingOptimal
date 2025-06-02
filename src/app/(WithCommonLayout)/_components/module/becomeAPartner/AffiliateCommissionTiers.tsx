@@ -1,31 +1,31 @@
-"use client";
+'use client';
 
 import {
   CommissionTierCard,
   SectionHeader,
-} from "@/app/(WithCommonLayout)/_components/ui";
+} from '@/app/(WithCommonLayout)/_components/ui';
 
 const AffiliateCommissionTiers: React.FC = () => {
   const tiers = [
     {
-      tier: "Tier One",
-      commission: "10%",
-      description: "You will get 10% commission for each referral.",
-      size: "lg:mt-64" as const,
+      tier: 'Tier One',
+      commission: '10%',
+      description: 'You will get 10% commission for each referral.',
+      size: 'lg:mt-64' as const,
     },
     {
-      tier: "Tier Two",
-      signUpThreshold: "After 100 Sign Ups",
-      commission: "15%",
-      description: "You will get 15% commission for each referral.",
-      size: "lg:mt-20" as const,
+      tier: 'Tier Two',
+      signUpThreshold: 'After 100 Sign Ups',
+      commission: '15%',
+      description: 'You will get 15% commission for each referral.',
+      size: 'lg:mt-20' as const,
     },
     {
-      tier: "Tier Three",
-      signUpThreshold: "After 500 Sign Ups",
-      commission: "20%",
-      description: "You will get 20% commission for each referral.",
-      size: "lg:-mt-20" as const,
+      tier: 'Tier Three',
+      signUpThreshold: 'After 500 Sign Ups',
+      commission: '20%',
+      description: 'You will get 20% commission for each referral.',
+      size: 'lg:-mt-20' as const,
     },
   ];
 
@@ -34,7 +34,7 @@ const AffiliateCommissionTiers: React.FC = () => {
       {/* Section Header */}
       <SectionHeader
         badge="How it works"
-        title="How Funding optimal Affiliate Model Works"
+        title="How FundingOptimal Affiliate Model Works"
         className="lg:mt-0 mt-10 mb-5 items-start"
         titleClassName="text-start"
         maxWidth="max-w-2xl"

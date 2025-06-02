@@ -27,8 +27,8 @@ const Features = () => {
         <div className="bg-gradient-to-r from-primary/40 via-primary to-primary/40 h-[3px]" />
         <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-0 bg-transparent text-white">
           <SectionHeader
-            title="Features of {Fundingoptimal}"
-            description="Experience the Fundingoptimal Advantage - on-demand payouts, flexible funding, and
+            title="Features of {FundingOptimal}"
+            description="Experience the FundingOptimal Advantage - on-demand payouts, flexible funding, and
             tailored programs built to elevate your trading performance."
             badge="Features"
             className="items-center mt-0"

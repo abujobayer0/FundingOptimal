@@ -66,7 +66,7 @@ const AffiliatePartnerFAQs: React.FC = () => {
 
             <div className="space-y-4">
               <h1 className="text-2xl lg:text-[44px] font-bold leading-tight">
-                Funding Optimal Affiliate Partner FAQs?
+                FundingOptimal Affiliate Partner FAQs?
               </h1>
             </div>
 

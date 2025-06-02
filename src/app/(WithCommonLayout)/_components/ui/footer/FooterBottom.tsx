@@ -174,7 +174,7 @@ const FooterBottom = () => {
             <div className="flex-1">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <p className="text-white text-[16px] font-semibold">
-                  © Fundingoptimal, {year} All Rights Reserved
+                  © FundingOptimal, {year} All Rights Reserved
                 </p>
                 <div className="flex items-center gap-3 bg-primary/10 px-4 py-2 border border-primary/40 rounded-lg flex-shrink-0">
                   <span className="text-white text-[16px] whitespace-nowrap">
