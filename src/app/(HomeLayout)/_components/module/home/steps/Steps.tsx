@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import BackgroundSVG from './BackgroundSVG';
-import { SectionHeader } from '@/app/(WithCommonLayout)/_components/ui';
+import { SectionHeader } from '@/app/(HomeLayout)/_components/ui';
 import { stepsData } from './data';
 import StepCard from './StepCard';
 

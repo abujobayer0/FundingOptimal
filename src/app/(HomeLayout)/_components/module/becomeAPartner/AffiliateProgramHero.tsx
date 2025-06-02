@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { TitleWithIcon } from '@/app/(WithCommonLayout)/_components/ui';
+import { TitleWithIcon } from '@/app/(HomeLayout)/_components/ui';
 import { GradientButton, OutlineButton } from '@/components';
 import HeroIcon from './icons/HeroIcon';
 

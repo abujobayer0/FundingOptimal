@@ -3,7 +3,7 @@
 import {
   CommissionTierCard,
   SectionHeader,
-} from '@/app/(WithCommonLayout)/_components/ui';
+} from '@/app/(HomeLayout)/_components/ui';
 
 const AffiliateCommissionTiers: React.FC = () => {
   const tiers = [

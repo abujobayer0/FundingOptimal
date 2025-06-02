@@ -6,6 +6,6 @@ export * from './home';
 export * from './becomeAPartner';
 export * from './FAQs';
 export * from './contactUs';
-export * from './aboutUs';
+export * from './aboutUs/page';
 export * from '../../../../types/evaluation.types';
 export * from './home/evaluation/data';

@@ -4,7 +4,7 @@ import {
   AffiliateProgramHero,
   JoinPartnerProgram,
   ReferAndEarn,
-} from "@/app/(WithCommonLayout)/_components/module";
+} from '@/app/(HomeLayout)/_components/module';
 
 export default function BecomeAPartnerPage() {
   return (

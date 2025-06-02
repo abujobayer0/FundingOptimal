@@ -3,7 +3,7 @@ import {
   Steps,
   TradingHero,
   AnalyticsDashboard,
-} from '@/app/(WithCommonLayout)/_components/module';
+} from '@/app/(HomeLayout)/_components/module';
 import React from 'react';
 import { ProfitCalculator, TradingStepsUI } from './_components/module/home';
 import Features from './_components/module/home/features';

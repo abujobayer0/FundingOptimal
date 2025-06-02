@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
   SectionHeader,
   ReferTierCard,
-} from '@/app/(WithCommonLayout)/_components/ui';
+} from '@/app/(HomeLayout)/_components/ui';
 
 const REFER_TIERS = [
   {

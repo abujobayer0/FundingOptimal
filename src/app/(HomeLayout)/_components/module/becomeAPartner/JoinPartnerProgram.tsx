@@ -1,6 +1,6 @@
 'use client';
 
-import { SectionHeader } from '@/app/(WithCommonLayout)/_components/ui';
+import { SectionHeader } from '@/app/(HomeLayout)/_components/ui';
 import NewIcon from './icons/NewIcon';
 import React from 'react';
 import NewIconTwo from './icons/NewIconTwo';
