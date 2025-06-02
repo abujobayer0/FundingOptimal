@@ -268,11 +268,11 @@ const FooterBottom = () => {
                     </h4>
                     <p className="text-gray-300 text-[13px] leading-relaxed">
                       All content published or distributed by FundingOptimal and
-                      its affiliates (collectively, "the Company") is provided
-                      for general informational purposes only. None of the
-                      information on this website or within any of our services
-                      constitutes investment advice, a recommendation, a
-                      solicitation, or an offer to buy or sell any financial
+                      its affiliates (collectively, &quot;the Company&quot;) is
+                      provided for general informational purposes only. None of
+                      the information on this website or within any of our
+                      services constitutes investment advice, a recommendation,
+                      a solicitation, or an offer to buy or sell any financial
                       instrument or participate in any investment strategy.
                       <br />
                       <br />
