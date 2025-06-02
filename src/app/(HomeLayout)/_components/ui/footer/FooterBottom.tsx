@@ -249,64 +249,51 @@ const FooterBottom = () => {
                 >
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
                     <h4 className="font-semibold text-[15px] mb-3 text-primary">
-                      Allowed Trading
+                      Simulation & Demo Environment
                     </h4>
                     <p className="text-gray-300 text-[13px] leading-relaxed">
-                      Our platform allows simulated trading of cryptocurrency
-                      pairs only. Trading of actual cryptocurrencies, stocks,
-                      forex, options, futures, or other financial instruments is
-                      not provided nor permitted in our program.
+                      All trading accounts provided by FundingOptimal are demo
+                      accounts operating in a simulated trading environment.
+                      These accounts do not involve the use of real capital and
+                      are intended solely for evaluation and educational
+                      purposes. The trading services are powered and managed by
+                      FundingOptimal and are not connected to any live market
+                      trading infrastructure or brokerage execution.
                     </p>
                   </div>
 
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
                     <h4 className="font-semibold text-[15px] mb-3 text-primary">
-                      Challenge Success Rate
+                      General Information Notice
                     </h4>
                     <p className="text-gray-300 text-[13px] leading-relaxed">
-                      Historical data shows that less than 3% of participants
-                      successfully complete our trading challenges. While we
-                      maintain strict evaluation standards, success in our
-                      simulation does not guarantee success in live trading.
+                      All content published or distributed by FundingOptimal and
+                      its affiliates (collectively, "the Company") is provided
+                      for general informational purposes only. None of the
+                      information on this website or within any of our services
+                      constitutes investment advice, a recommendation, a
+                      solicitation, or an offer to buy or sell any financial
+                      instrument or participate in any investment strategy.
+                      <br />
+                      <br />
+                      FundingOptimal does not act as a broker, custodian, or
+                      financial advisor, nor do we manage client funds. Any
+                      decisions made based on the information we provide are at
+                      the sole discretion of the participant.
                     </p>
                   </div>
 
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
                     <h4 className="font-semibold text-[15px] mb-3 text-primary">
-                      Simulation Limitations
+                      Challenge Structure and Fee Use
                     </h4>
                     <p className="text-gray-300 text-[13px] leading-relaxed">
-                      In alignment with Canadian consumer protection standards
-                      and financial services best practices, our trading
-                      simulation platform has inherent limitations. Results are
-                      from simulated trading only and do not represent actual
-                      cryptocurrency trading.
-                    </p>
-                  </div>
-
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
-                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
-                      Risk Warning
-                    </h4>
-                    <p className="text-gray-300 text-[13px] leading-relaxed">
-                      Cryptocurrency trading involves substantial risk and is
-                      not suitable for all investors. Market volatility can be
-                      extreme, prices can move rapidly, and technical issues can
-                      affect trading. Past performance does not guarantee future
-                      results.
-                    </p>
-                  </div>
-
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
-                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
-                      Prohibited Conduct
-                    </h4>
-                    <p className="text-gray-300 text-[13px] leading-relaxed">
-                      To maintain program integrity, any gambling behavior,
-                      exploitation of the simulation environment, or violation
-                      of our terms will be reviewed. We reserve the right to
-                      delete trading days, reset accounts, terminate
-                      participation, or ban users from our platform.
+                      Enrollment in any challenge or program is voluntary. Fees
+                      paid to participate in our programs are not deposits and
+                      are non-refundable, as they are used to cover operational
+                      costs such as technology, platform development,
+                      infrastructure, etc. Participation in a program does not
+                      represent an investment and should not be treated as such.
                     </p>
                   </div>
 
@@ -315,11 +302,48 @@ const FooterBottom = () => {
                       Educational Purpose
                     </h4>
                     <p className="text-gray-300 text-[13px] leading-relaxed">
-                      Our platform is designed for skill development, strategy
-                      testing, and performance evaluation. All content and
-                      services provided are for simulation and educational
-                      purposes only. ©2025 [coinprops.io]. All Rights Reserved.
-                      Registered in British Columbia, Canada.
+                      All programs offered by FundingOptimal are intended for
+                      training, skill evaluation, and educational purposes only.
+                      Our services are not a financial product offering and
+                      should not be construed as a means of generating
+                      investment returns. Traders are evaluated based on
+                      simulated performance and risk management adherence.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Risk Disclosure
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      Trading foreign exchange (forex), contracts for difference
+                      (CFDs), and other derivatives involves a high degree of
+                      risk. The use of leverage can magnify gains, but also
+                      significantly increases the potential for loss. You should
+                      not engage in trading unless you fully understand the
+                      risks involved and can afford to lose the capital used.
+                      Past performance is not indicative of future results.
+                      <br />
+                      <br />
+                      FundingOptimal strongly recommends consulting with a
+                      licensed financial advisor to assess your financial
+                      situation and risk tolerance before engaging in any
+                      trading activity, whether simulated or real.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300">
+                    <h4 className="font-semibold text-[15px] mb-3 text-primary">
+                      Applicable Law
+                    </h4>
+                    <p className="text-gray-300 text-[13px] leading-relaxed">
+                      All legal matters and contractual relationships are
+                      governed by and construed in accordance with the laws of
+                      the United Arab Emirates (UAE).
+                      <br />
+                      <br />
+                      ©2025 FundingOptimal.com. All Rights Reserved. Registered
+                      in the United Arab Emirates (UAE).
                     </p>
                   </div>
                 </div>
