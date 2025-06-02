@@ -25,7 +25,26 @@ export default function TitleWithIcon({
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg relative before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent"
+        className="flex items-center space-x-2 px-3 py-1 rounded-lg relative"
+        style={
+          {
+            '--border-angle': '0deg',
+            animation: 'border-angle-rotate 4s infinite linear',
+            border: '2px solid transparent',
+
+            background: `
+            linear-gradient(#050505, #050505) padding-box,
+            conic-gradient(
+              from var(--border-angle),
+              #12FF8E,
+              rgba(18, 255, 142, 0.6) 90deg,
+              rgba(18, 255, 142, 0.4) 180deg,
+              rgba(18, 255, 142, 0.5) 270deg,
+              #12FF8E 360deg
+            ) border-box
+          `,
+          } as React.CSSProperties
+        }
       >
         <motion.div
           initial={{ opacity: 0, rotate: -180 }}
