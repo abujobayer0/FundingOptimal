@@ -1,5 +1,5 @@
 import FeatureRow from './FeatureRow';
-import { challengePrograms, ChallengeProgram } from './data';
+import { challengePrograms } from './data';
 import { useState, useEffect } from 'react';
 
 export default function TradingStepsCard({

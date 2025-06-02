@@ -97,7 +97,6 @@ export default function TradingStepsUI() {
           </motion.div>
         ))}
       </motion.div>
-      {/* Progress Bar */}
       <motion.div
         className="flex flex-row overflow-x-auto items-center w-full max-w-3xl mb-12 px-2"
         initial={{ opacity: 0, y: 30 }}
