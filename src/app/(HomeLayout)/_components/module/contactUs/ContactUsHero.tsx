@@ -8,7 +8,7 @@ import ContactForm from "./ContactForm";
 const ContactUsHero = () => {
   return (
     <div className="bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 mt-[80px]">
+      <div className="max-w-7xl mx-auto mt-[80px]">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-4 md:space-y-8">
             <TitleWithIcon className="justify-start" title="Contact Us" />

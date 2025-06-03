@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import FAQAccordion from './FAQAccordion';
+import React from "react";
+import { motion } from "framer-motion";
+import FAQAccordion from "./FAQAccordion";
 
 interface FAQItem {
   question: string;
@@ -11,46 +11,46 @@ interface FAQItem {
 
 const textFadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const AffiliatePartnerFAQs: React.FC = () => {
   const faqItems: FAQItem[] = [
     {
-      question: 'Are There Any Fees Associated With The Withdrawal Request?',
+      question: "Are There Any Fees Associated With The Withdrawal Request?",
       answer:
-        'No, there are no fees associated with withdrawal requests. All commission payouts are processed without any deductions or hidden charges.',
+        "No, there are no fees associated with withdrawal requests. All commission payouts are processed without any deductions or hidden charges.",
     },
     {
-      question: 'How Do I Request A Commission Payout?',
+      question: "How Do I Request A Commission Payout?",
       answer:
-        'You can request a commission payout through your affiliate dashboard. Simply navigate to the payouts section and submit your withdrawal request with your preferred payment method.',
+        "You can request a commission payout through your affiliate dashboard. Simply navigate to the payouts section and submit your withdrawal request with your preferred payment method.",
     },
     {
-      question: 'When Will My Payout Request Be Processed?',
+      question: "When Will My Payout Request Be Processed?",
       answer:
-        'Payout requests are typically processed within 24-48 hours during business days. You will receive a confirmation email once your payout has been initiated.',
+        "Payout requests are typically processed within 24-48 hours during business days. You will receive a confirmation email once your payout has been initiated.",
     },
     {
-      question: 'When Can I Request A Payout For My Commissions?',
+      question: "When Can I Request A Payout For My Commissions?",
       answer:
-        'You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.',
+        "You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.",
     },
     {
-      question: 'When Can I Request A Payout For My Commissions?',
+      question: "When Can I Request A Payout For My Commissions?",
       answer:
-        'You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.',
+        "You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.",
     },
     {
-      question: 'Are There Any Additional Resources For Affiliates?',
+      question: "Are There Any Additional Resources For Affiliates?",
       answer:
-        'Yes, we provide comprehensive marketing materials, tracking tools, dedicated affiliate support, and regular training sessions to help you maximize your earning potential.',
+        "Yes, we provide comprehensive marketing materials, tracking tools, dedicated affiliate support, and regular training sessions to help you maximize your earning potential.",
     },
   ];
 
   return (
     <div className="bg-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-6 items-start">
           {/* Left Content */}
           <motion.div
