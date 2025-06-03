@@ -7,10 +7,14 @@ import {
 import React from 'react';
 import { ProfitCalculator, TradingStepsUI } from './_components/module/home';
 import Features from './_components/module/home/features';
+import { DemoAccountNotice } from './_components/ui';
 
 const Page = () => {
   return (
     <div className="w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <DemoAccountNotice variant="floating" showCloseButton={true} />
+      </div>
       <TradingHero />
       <Steps />
       <Evaluation />
