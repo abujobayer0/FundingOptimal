@@ -1,2 +1,1 @@
-// Placeholder for future FAQs components
-export {};
+export { default as ContactUsHero } from "./ContactUseHero";
