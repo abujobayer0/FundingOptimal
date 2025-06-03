@@ -7,7 +7,7 @@ import {
   TooltipProps,
 } from 'recharts';
 import { ChevronDown } from 'lucide-react';
-import { ChartDataPoint } from '../types';
+import { ChartDataPoint } from '@/types';
 
 interface OverviewChartProps {
   data: ChartDataPoint[];

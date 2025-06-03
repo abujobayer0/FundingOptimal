@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MetricCardProps } from '../types';
+import { MetricCardProps } from '@/types';
 
 const MetricCard: React.FC<MetricCardProps> = ({
   title,

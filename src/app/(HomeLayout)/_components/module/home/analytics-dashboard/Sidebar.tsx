@@ -1,14 +1,14 @@
-import React from "react";
-import { motion } from "motion/react";
-import Image from "next/image";
-import { Settings } from "lucide-react";
-import { SidebarProps } from "@/types";
-import SidebarItem from "./SidebarItem";
+import React from 'react';
+import { motion } from 'motion/react';
+import Image from 'next/image';
+import { Settings } from 'lucide-react';
+import { SidebarProps } from '@/types';
+import SidebarItem from './SidebarItem';
 
 const Sidebar: React.FC<SidebarProps> = ({
   logoSrc,
-  companyName = "FUNDINGOPTIMAL",
-  tagline = "We Fund the Fearless",
+  companyName = 'FUNDINGOPTIMAL',
+  tagline = 'We Fund the Fearless',
   menuItems,
   onMenuItemClick,
 }) => (
@@ -65,7 +65,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           icon={Settings}
           label="Settings"
           onClick={() =>
-            onMenuItemClick?.({ icon: Settings, label: "Settings" })
+            onMenuItemClick?.({ icon: Settings, label: 'Settings' })
           }
         />
       </motion.div>
