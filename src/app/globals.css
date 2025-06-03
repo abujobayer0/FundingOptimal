@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Custom Property for animated border */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 :root {
   /* Dark theme colors as default */
   --background: #050505;
@@ -28,4 +35,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Keyframe animation for rotating border */
+@keyframes border-angle-rotate {
+  from { --border-angle: 0deg; }
+  to { --border-angle: 360deg; }
 }
