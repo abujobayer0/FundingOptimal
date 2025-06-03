@@ -35,7 +35,7 @@ const Form = ({ referralCode = '' }: FormProps) => {
     },
   });
 
-  async function onSubmit(data: RegisterFormValues) {
+  async function onSubmit() {
     setIsLoading(true);
     setError(null);
 

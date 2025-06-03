@@ -53,7 +53,7 @@ const DemoNoticePreview: React.FC = () => {
           </h1>
           <p className="text-secondary-text text-lg max-w-2xl mx-auto">
             Choose from different display styles for the demo account notice.
-            Each variant is designed to match your website's dark theme and
+            Each variant is designed to match your website&apos;s dark theme and
             green accent color.
           </p>
         </motion.div>
@@ -97,7 +97,8 @@ const DemoNoticePreview: React.FC = () => {
                     variant.id === 'floating') && (
                     <div className="text-center">
                       <p className="text-secondary-text text-sm mb-2">
-                        Click "Preview" to see this variant in action
+                        Click &ldquo;Preview&rdquo; to see this variant in
+                        action
                       </p>
                       <div className="w-12 h-12 bg-[#12FF8E]/10 rounded-lg flex items-center justify-center mx-auto">
                         <span className="text-primary text-xs">Demo</span>

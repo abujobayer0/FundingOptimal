@@ -21,7 +21,7 @@ const Form = () => {
     },
   });
 
-  async function onSubmit(data: LoginFormValues) {
+  async function onSubmit() {
     setIsLoading(true);
     setError(null);
 

@@ -30,7 +30,7 @@ const Form = ({ email, token }: ResetPasswordFormProps) => {
     },
   });
 
-  async function onSubmit(data: ResetPasswordFormValues) {
+  async function onSubmit() {
     if (!token) {
       setError('Invalid reset password link');
       return;

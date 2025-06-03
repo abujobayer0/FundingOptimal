@@ -22,7 +22,7 @@ const Form = () => {
     },
   });
 
-  async function onSubmit(data: ForgotPasswordFormValues) {
+  async function onSubmit() {
     setIsLoading(true);
     setError(null);
 
