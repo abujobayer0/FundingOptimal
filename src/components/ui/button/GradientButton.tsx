@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import React, { ReactNode } from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'motion/react';
 
 interface GradientButtonProps extends HTMLMotionProps<'button'> {
   children?: ReactNode;

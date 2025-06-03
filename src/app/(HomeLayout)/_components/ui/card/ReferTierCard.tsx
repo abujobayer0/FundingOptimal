@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'motion/react';
 
 interface ReferTierCardProps {
   refer: number;
@@ -26,7 +26,7 @@ export const ReferTierCard: React.FC<ReferTierCardProps> = ({
       }}
       viewport={{ once: true }}
       className={`h-fit border ${
-        index === 1 ? "border-primary" : "border-primary/0"
+        index === 1 ? 'border-primary' : 'border-primary/0'
       } rounded-md p-8 relative overflow-hidden group hover:border-primary/60 transition-all duration-300 bg-gradient-to-br from-primary/20 via-primary/0 to-transparent group`}
     >
       {/* Content */}

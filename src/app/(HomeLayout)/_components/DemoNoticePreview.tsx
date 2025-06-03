@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import DemoAccountNotice from './ui/DemoAccountNotice';
 
 const DemoNoticePreview: React.FC = () => {

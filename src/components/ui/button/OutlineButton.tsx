@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ReactNode } from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
 interface OutlineButtonProps extends HTMLMotionProps<'button'> {
