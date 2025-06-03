@@ -14,7 +14,7 @@ export default function ContactUsPage() {
         <ContactUsHero />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper fullWidth containerized={false}>
         <ContactInfo />
       </SectionWrapper>
 
