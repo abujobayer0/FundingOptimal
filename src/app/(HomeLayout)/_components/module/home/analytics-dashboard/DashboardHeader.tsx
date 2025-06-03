@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
-import { DashboardHeaderProps } from '../types';
+import { DashboardHeaderProps } from '@/types';
 
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   title,
