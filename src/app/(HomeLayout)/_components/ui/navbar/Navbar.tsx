@@ -78,7 +78,7 @@ const Navbar = () => {
               <NavLink href="/become-a-partner">Become A Partner</NavLink>
               <NavLink href="/about-us">About Us</NavLink>
               <NavLink href="/contact-us">Contact Us</NavLink>
-              <NavLink href="/faqs">FAQs</NavLink>
+              {/* <NavLink href="/faqs">FAQs</NavLink> */}
             </nav>
 
             {/* Desktop Buttons */}
@@ -222,7 +222,7 @@ const Navbar = () => {
                   { href: '/become-a-partner', label: 'Become A Partner' },
                   { href: '/about', label: 'About Us' },
                   { href: '/contact', label: 'Contact Us' },
-                  { href: '/faqs', label: 'FAQs' },
+                  // { href: '/faqs', label: 'FAQs' },
                 ].map((item, index) => (
                   <div
                     key={item.href}

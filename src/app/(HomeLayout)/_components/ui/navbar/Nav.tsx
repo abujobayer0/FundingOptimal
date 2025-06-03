@@ -1,6 +1,6 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,13 +76,13 @@ const Nav = () => {
             >
               Contact Us
             </Link>
-            <Link
+            {/* <Link
               href="/faqs"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-foreground hover:bg-gray-800"
               onClick={() => setIsOpen(false)}
             >
               FAQs
-            </Link>
+            </Link> */}
             <div className="pt-4 pb-2 border-t border-gray-700 space-y-1">
               <button className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-foreground hover:bg-gray-800">
                 Login
