@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import {
   AffiliatePartnerFAQs,
   ContactInfo,
   ContactUsHero,
   WorldwideSection,
-} from "../_components/module";
-import { SectionWrapper } from "../_components";
+} from '../_components/module';
+import { SectionWrapper } from '../_components';
 
 export default function ContactUsPage() {
   return (
-    <section className="mx-auto">
+    <div className="mx-auto">
       <SectionWrapper>
         <ContactUsHero />
       </SectionWrapper>
@@ -25,6 +25,6 @@ export default function ContactUsPage() {
       <SectionWrapper>
         <AffiliatePartnerFAQs />
       </SectionWrapper>
-    </section>
+    </div>
   );
 }
