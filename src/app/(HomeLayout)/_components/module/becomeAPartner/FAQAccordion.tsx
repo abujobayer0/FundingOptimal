@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FAQItem {
   question: string;
@@ -27,7 +27,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: 0.1,
+            staggerChildren: 0.01,
           },
         },
       }}
@@ -40,19 +40,19 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          transition={{ duration: 0.3 }}
-          className="bg-transparent border border-gray-500/30 rounded-lg overflow-hidden hover:border-primary/60 transition-all duration-300"
+          transition={{ duration: 0.15, ease: 'easeOut' }}
+          className="bg-transparent border border-gray-500/30 rounded-lg overflow-hidden hover:border-primary/60 transition-all duration-200"
         >
           <button
             onClick={() => toggleAccordion(index)}
-            className="w-full px-6 py-4 text-left flex items-center justify-between text-white hover:bg-primary/5 transition-colors duration-200"
+            className="w-full px-6 py-4 text-left flex items-center justify-between text-white hover:bg-primary/5 transition-colors duration-150"
           >
             <span className="text-sm md:text-base font-medium pr-4 text-gray-400">
               {item.question}
             </span>
             <motion.div
               animate={{ rotate: openIndex === index ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
               className="flex-shrink-0"
             >
               <svg
@@ -79,10 +79,10 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
                 animate="open"
                 exit="collapsed"
                 variants={{
-                  open: { height: "auto", opacity: 1 },
+                  open: { height: 'auto', opacity: 1 },
                   collapsed: { height: 0, opacity: 0 },
                 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
                 className="overflow-hidden"
               >
                 <motion.div
@@ -90,7 +90,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.15, delay: 0.05 }}
                 >
                   {item.answer}
                 </motion.div>

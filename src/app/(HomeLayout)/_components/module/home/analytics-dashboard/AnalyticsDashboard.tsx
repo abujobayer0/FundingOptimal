@@ -1,33 +1,33 @@
-"use client";
-import React, { useState } from "react";
-import { motion } from "motion/react";
-import { SectionHeader } from "../../../ui";
-import logo from "@/assets/fundingoptimal-logo.png";
-import { DashboardProps, SidebarItemProps } from "@/types";
+'use client';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
+import { SectionHeader } from '../../../ui';
+import logo from '@/assets/fundingoptimal-logo.png';
+import { DashboardProps, SidebarItemProps } from '@/types';
 import {
   ActionCards,
   defaultChartData,
   defaultMenuItems,
   defaultMetrics,
-} from "./data";
+} from './data';
 
-import { Menu, X } from "lucide-react";
-import { OutlineButton } from "@/components/ui/button";
-import Sidebar from "./Sidebar";
-import DashboardHeader from "./DashboardHeader";
-import MetricCard from "./MetricCard";
-import OverviewChart from "./OverviewChart";
-import WinRateGauge from "./WinRateGauge";
-import { ActionCard } from "../../../ui/card";
+import { Menu, X } from 'lucide-react';
+import { OutlineButton } from '@/components/ui/button';
+import Sidebar from './Sidebar';
+import DashboardHeader from './DashboardHeader';
+import MetricCard from './MetricCard';
+import OverviewChart from './OverviewChart';
+import WinRateGauge from './WinRateGauge';
+import { ActionCard } from '../../../ui/card';
 
 const AnalyticsDashboard: React.FC<DashboardProps> = ({
-  title = "FundingOptimal {Analytics Dashboard}",
-  badge = "Our Dashboard",
-  description = "Learn and grow together in a community of experienced and aspiring traders alike.",
+  title = 'FundingOptimal {Analytics Dashboard}',
+  badge = 'Our Dashboard',
+  description = 'Learn and grow together in a community of experienced and aspiring traders alike.',
   chartData = defaultChartData,
 }) => {
-  const [activeTab, setActiveTab] = useState("Current Equity");
-  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard");
+  const [activeTab, setActiveTab] = useState('Current Equity');
+  const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const handleMenuItemClick = (item: SidebarItemProps) => {
@@ -53,7 +53,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.05 }}
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-1/2 h-[100px] bg-primary/30 rounded-full  blur-[100px]"></div>
         <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-0 bg-transparent">
@@ -70,21 +70,21 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
         className="flex flex-col lg:flex-row gap-4 bg-black rounded-xl border-2 border-primary p-2 sm:p-4 relative"
         style={{
           maskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
+            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)',
           WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
+            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)',
         }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
       >
         <motion.div
           className="lg:hidden flex justify-between items-center p-4 border border-white/10 rounded-xl bg-black mb-4"
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.15 }}
         >
           <div className="flex items-center space-x-3">
             <img src={logo.src} alt="Logo" className="w-8 h-8" />
@@ -118,7 +118,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
               initial={{ x: -320 }}
               animate={{ x: 0 }}
               exit={{ x: -320 }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
             >
               <Sidebar
@@ -136,7 +136,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
         >
           <Sidebar
             logoSrc={logo}
@@ -150,7 +150,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <DashboardHeader
             title="Dashboard"
@@ -162,23 +162,23 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
           >
             <div className="flex flex-wrap items-center gap-2">
-              {["Current Equity", "Check Limits", "Profit Summary"].map(
+              {['Current Equity', 'Check Limits', 'Profit Summary'].map(
                 (tab, index) => (
                   <motion.button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     className={`relative px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 overflow-hidden group ${
                       activeTab === tab
-                        ? "bg-primary text-black shadow-lg shadow-primary/25"
-                        : "text-gray-400 bg-white/5 backdrop-blur-sm border border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-white/10"
+                        ? 'bg-primary text-black shadow-lg shadow-primary/25'
+                        : 'text-gray-400 bg-white/5 backdrop-blur-sm border border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-white/10'
                     }`}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+                    transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -195,7 +195,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
+              transition={{ duration: 0.3, delay: 0.35 }}
             >
               <div className="flex items-center justify-center sm:justify-start space-x-2 bg-primary px-3 py-2 rounded-lg">
                 <span className="text-black text-sm font-medium">Live</span>
@@ -208,7 +208,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
             {defaultMetrics.map((metric, index) => (
               <motion.div
@@ -216,7 +216,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                transition={{ duration: 0.4, delay: 0.35 + index * 0.05 }}
                 whileHover={{ y: -2 }}
               >
                 <MetricCard
@@ -235,13 +235,13 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
               className="xl:col-span-2"
             >
               <OverviewChart data={chartData} />
@@ -250,7 +250,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: 1.0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
               <WinRateGauge percentage={74} />
             </motion.div>
@@ -262,7 +262,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, delay: 1.1 }}
+        transition={{ duration: 0.6, delay: 0.55 }}
       >
         {ActionCards.map((card, index) => (
           <motion.div
@@ -270,7 +270,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
+            transition={{ duration: 0.4, delay: 0.6 + index * 0.05 }}
             whileHover={{ y: -4 }}
           >
             <ActionCard

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Mail, Phone } from "lucide-react";
-import { SectionHeader } from "../../ui";
+import React from 'react';
+import { Mail, Phone } from 'lucide-react';
+import { SectionHeader } from '../../ui';
 
 interface ContactInfoItem {
   id: string;
@@ -16,10 +16,10 @@ interface ContactInfoItem {
 const ContactInfoSection: React.FC = () => {
   const contactData: ContactInfoItem[] = [
     {
-      id: "whatsapp",
-      title: "Whatsapp",
-      subtitle: "Available",
-      value: "+00-000-547-574",
+      id: 'whatsapp',
+      title: 'Whatsapp',
+      subtitle: 'Available',
+      value: '+00-000-547-574',
       icon: (
         <svg
           width="24"
@@ -28,7 +28,7 @@ const ContactInfoSection: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_415_1011)">
+          <g clipPath="url(#clip0_415_1011)">
             <path
               d="M0.507923 11.8564C0.507365 13.8729 1.03425 15.8418 2.03611 17.5773L0.412109 23.5067L6.4802 21.9157C8.15856 22.8293 10.039 23.3081 11.95 23.3082H11.955C18.2634 23.3082 23.3985 18.1749 23.4012 11.8654C23.4024 8.80804 22.2129 5.93307 20.0516 3.77009C17.8906 1.6073 15.0167 0.41558 11.9545 0.414185C5.64541 0.414185 0.510621 5.54721 0.508016 11.8564"
               fill="url(#paint0_linear_415_1011)"
@@ -51,8 +51,8 @@ const ContactInfoSection: React.FC = () => {
               y2="0.414185"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#1FAF38" />
-              <stop offset="1" stop-color="#60D669" />
+              <stop stopColor="#1FAF38" />
+              <stop offset="1" stopColor="#60D669" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_415_1011"
@@ -62,8 +62,8 @@ const ContactInfoSection: React.FC = () => {
               y2="0"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#F9F9F9" />
-              <stop offset="1" stop-color="white" />
+              <stop stopColor="#F9F9F9" />
+              <stop offset="1" stopColor="white" />
             </linearGradient>
             <clipPath id="clip0_415_1011">
               <rect width="23.814" height="24" fill="white" />
@@ -71,13 +71,13 @@ const ContactInfoSection: React.FC = () => {
           </defs>
         </svg>
       ),
-      href: "https://wa.me/00000547574",
+      href: 'https://wa.me/00000547574',
     },
     {
-      id: "livechat",
-      title: "Live Chat",
-      subtitle: "Chat with us",
-      value: "fundingoptimal.com",
+      id: 'livechat',
+      title: 'Live Chat',
+      subtitle: 'Chat with us',
+      value: 'fundingoptimal.com',
       icon: (
         <svg
           width="24"
@@ -92,35 +92,35 @@ const ContactInfoSection: React.FC = () => {
           />
         </svg>
       ),
-      href: "#",
+      href: '#',
     },
     {
-      id: "email",
-      title: "Email",
-      subtitle: "Email us",
-      value: "fundingoptimal.com",
+      id: 'email',
+      title: 'Email',
+      subtitle: 'Email us',
+      value: 'fundingoptimal.com',
       icon: <Mail className="size-6" />,
-      href: "mailto:contact@fundingoptimal.com",
+      href: 'mailto:contact@fundingoptimal.com',
     },
     {
-      id: "phone",
-      title: "Phone Number",
-      subtitle: "Call Us",
-      value: "24/7",
+      id: 'phone',
+      title: 'Phone Number',
+      subtitle: 'Call Us',
+      value: '24/7',
       icon: <Phone className="size-6" />,
-      href: "tel:+00000547574",
+      href: 'tel:+00000547574',
     },
   ];
 
   const handleContactClick = (item: ContactInfoItem) => {
-    console.log("Contact method clicked:", {
+    console.log('Contact method clicked:', {
       type: item.title,
       value: item.value,
       href: item.href,
     });
 
-    if (item.href && item.href !== "#") {
-      window.open(item.href, "_blank");
+    if (item.href && item.href !== '#') {
+      window.open(item.href, '_blank');
     }
   };
 
@@ -143,7 +143,7 @@ const ContactInfoSection: React.FC = () => {
               className="rounded-xl p-6 bg-primary/5 transition-all duration-300 cursor-pointer group"
               style={{
                 boxShadow:
-                  "rgba(18, 255, 142, 0.3) 0px 0px 15px 0px inset, rgba(18, 255, 142, 0.3) 0px 0px 25px 0px inset, rgba(18, 255, 142, 0.05) 0px 0px 35px 0px inset",
+                  'rgba(18, 255, 142, 0.3) 0px 0px 15px 0px inset, rgba(18, 255, 142, 0.3) 0px 0px 25px 0px inset, rgba(18, 255, 142, 0.05) 0px 0px 35px 0px inset',
               }}
             >
               {/* Icon and Title */}
