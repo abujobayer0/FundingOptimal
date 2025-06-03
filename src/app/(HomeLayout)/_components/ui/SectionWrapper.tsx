@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'motion/react';
+import React from "react";
+import { motion } from "motion/react";
 
 interface SectionWrapperProps {
   children: React.ReactNode;
@@ -13,16 +13,16 @@ interface SectionWrapperProps {
 
 export const SectionWrapper: React.FC<SectionWrapperProps> = ({
   children,
-  className = '',
+  className = "",
   containerized = true,
   fullWidth = false,
   id,
 }) => {
   const containerClasses =
-    containerized && !fullWidth ? 'max-w-7xl mx-auto px-4 md:px-6' : '';
+    containerized && !fullWidth ? "max-w-7xl mx-auto px-4 md:px-6" : "";
 
   return (
-    <motion.section id={id} className={`py-16 md:py-24 ${className}`}>
+    <motion.section id={id} className={`py-16 md:py-20 ${className}`}>
       <div className={containerClasses}>{children}</div>
     </motion.section>
   );

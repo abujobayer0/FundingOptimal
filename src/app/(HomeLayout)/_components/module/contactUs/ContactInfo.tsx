@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Mail, Phone } from "lucide-react";
+import { SectionHeader } from "../../ui";
 
 interface ContactInfoItem {
   id: string;
@@ -126,18 +127,12 @@ const ContactInfoSection: React.FC = () => {
   return (
     <div className="bg-gradient-to-b from-transparent from-[40%] to-[rgba(9,131,70,0.3)] to-[100%] pb-[100px]">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-block bg-green-500/10 text-green-400 text-sm font-medium px-4 py-2 rounded-full mb-4">
-            Contact
-          </div>
-          <h2 className="md:text-3xl text-4xl font-bold text-white mb-4">
-            Contact Us
-          </h2>
-          <p className="text-gray-400 text-[16px] leading-[26px] max-w-md mx-auto">
-            We Have Everything You Need In A Prop Firm.
-          </p>
-        </div>
+        <SectionHeader
+          className="items-center"
+          badge="Worldwide"
+          title="Contact Us"
+          description="We Have Everything You Need In A Prop Firm."
+        />
 
         {/* Contact Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
