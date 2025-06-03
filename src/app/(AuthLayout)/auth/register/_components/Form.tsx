@@ -48,9 +48,11 @@ const Form = ({ referralCode = '' }: FormProps) => {
       //   phone: data.phone,
       //   referralCode: data.referralCode,
       // });
-    } catch (err: any) {
+    } catch (err) {
       setError(
-        err.response?.data?.message || 'Registration failed. Please try again.'
+        err instanceof Error
+          ? err.message
+          : 'Registration failed. Please try again.'
       );
     } finally {
       setIsLoading(false);

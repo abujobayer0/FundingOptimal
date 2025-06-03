@@ -46,10 +46,11 @@ const Form = ({ email, token }: ResetPasswordFormProps) => {
       //   token: token,
       // });
       setIsSuccess(true);
-    } catch (err: any) {
+    } catch (err) {
       setError(
-        err.response?.data?.message ||
-          'Failed to reset password. Please try again.'
+        err instanceof Error
+          ? err.message
+          : 'Failed to reset password. Please try again.'
       );
     } finally {
       setIsLoading(false);

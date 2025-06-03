@@ -27,10 +27,11 @@ const Form = () => {
 
     try {
       // await login(data);
-    } catch (err: any) {
+    } catch (err) {
       setError(
-        err.response?.data?.message ||
-          'Invalid email or password. Please try again.'
+        err instanceof Error
+          ? err.message
+          : 'An error occurred while logging in. Please try again later.'
       );
     } finally {
       setIsLoading(false);

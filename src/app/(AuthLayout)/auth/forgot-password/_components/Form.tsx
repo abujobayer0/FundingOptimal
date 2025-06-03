@@ -29,10 +29,11 @@ const Form = () => {
     try {
       // await resetEmail(data);
       setIsSuccess(true);
-    } catch (err: any) {
+    } catch (err) {
       setError(
-        err.response?.data?.message ||
-          'An error occurred while sending the reset link. Please try again later.'
+        err instanceof Error
+          ? err.message
+          : 'An error occurred while sending the reset link. Please try again later.'
       );
     } finally {
       setIsLoading(false);
