@@ -147,6 +147,14 @@ const FooterBottom = () => {
                       About Us
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/important-trading-terms"
+                      className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                    >
+                      Important Trading Terms
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -181,21 +189,23 @@ const FooterBottom = () => {
                 <p className="text-white text-[16px] font-semibold">
                   © FundingOptimal, {year} All Rights Reserved
                 </p>
-                <div className="flex items-center gap-3 bg-primary/10 px-4 py-2 border border-primary/40 rounded-lg flex-shrink-0">
-                  <span className="text-white text-[16px] whitespace-nowrap">
-                    Proudly Powered By
-                  </span>
-                  <div className="w-8 h-8 bg-primary/20 rounded flex items-center justify-center">
-                    <span className="text-primary font-bold text-lg">
-                      <Image
-                        src={logo2}
-                        alt="Propfirm"
-                        width={40}
-                        height={40}
-                      />
+                <Link href="https://propfirmstech.com/" target="_blank">
+                  <div className="flex items-center gap-3 bg-primary/10 px-4 py-2 border border-primary/40 rounded-lg flex-shrink-0">
+                    <span className="text-white text-[16px] whitespace-nowrap">
+                      Proudly Powered By
                     </span>
+                    <div className="w-8 h-8 bg-primary/20 rounded flex items-center justify-center">
+                      <span className="text-primary font-bold text-lg">
+                        <Image
+                          src={logo2}
+                          alt="Propfirm"
+                          width={40}
+                          height={40}
+                        />
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
 
               <div className="mt-8">

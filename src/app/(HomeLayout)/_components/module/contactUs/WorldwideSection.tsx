@@ -5,7 +5,7 @@ export default function WorldwideSection() {
   return (
     <div>
       <SectionHeader
-        title="People Use {Fundingoptimal} All across {The world}"
+        title="People Use {FundingOptimal} All across {The world}"
         description="we have everything you need in a prop firm."
         badge="Features"
         className="items-center mt-0"

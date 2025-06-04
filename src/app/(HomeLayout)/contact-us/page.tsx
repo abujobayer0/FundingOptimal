@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  AffiliatePartnerFAQs,
   ContactInfo,
   ContactUsHero,
   WorldwideSection,
@@ -20,10 +19,6 @@ export default function ContactUsPage() {
 
       <SectionWrapper>
         <WorldwideSection />
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <AffiliatePartnerFAQs />
       </SectionWrapper>
     </div>
   );
