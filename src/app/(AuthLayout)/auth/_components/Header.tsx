@@ -9,7 +9,7 @@ import logo from '@/assets/fundingoptimal-logo.png';
 const features = [
   {
     icon: <CreditCard className="w-5 h-5 text-primary" />,
-    text: 'No credit card required',
+    text: 'Secure & Fast Registration',
   },
   {
     icon: <LifeBuoy className="w-5 h-5 text-primary" />,

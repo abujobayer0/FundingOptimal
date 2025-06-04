@@ -110,31 +110,36 @@ const Navbar = () => {
                 </span>
               </motion.button>
 
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  y: -2,
-                  transition: { duration: 0.2, ease: 'easeOut' },
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative rounded-md bg-primary px-4 py-2 text-sm text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
+              <Link
+                href="https://dashboard.fundingoptimal.com/"
+                target="_blank"
               >
-                {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                    transition: { duration: 0.2, ease: 'easeOut' },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative rounded-md bg-primary px-4 py-2 text-sm text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
+                >
+                  {/* Animated background gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Ripple effect */}
-                <div className="absolute inset-0 rounded-md bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+                  {/* Ripple effect */}
+                  <div className="absolute inset-0 rounded-md bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
 
-                {/* Enhanced glow */}
-                <div className="absolute inset-0 rounded-md shadow-[0_0_0_1px_rgba(18,255,142,0.5)] group-hover:shadow-[0_0_0_1px_rgba(18,255,142,0.8),0_0_20px_rgba(18,255,142,0.4),0_0_40px_rgba(18,255,142,0.2)] transition-shadow duration-500" />
+                  {/* Enhanced glow */}
+                  <div className="absolute inset-0 rounded-md shadow-[0_0_0_1px_rgba(18,255,142,0.5)] group-hover:shadow-[0_0_0_1px_rgba(18,255,142,0.8),0_0_20px_rgba(18,255,142,0.4),0_0_40px_rgba(18,255,142,0.2)] transition-shadow duration-500" />
 
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
-                <span className="relative z-10 font-medium group-hover:text-black transition-colors duration-300">
-                  Dashboard
-                </span>
-              </motion.button>
+                  <span className="relative z-10 font-medium group-hover:text-black transition-colors duration-300">
+                    Dashboard
+                  </span>
+                </motion.button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}

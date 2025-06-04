@@ -9,17 +9,17 @@ const features = [
   {
     icon: <User className="w-5 h-5 text-primary" />,
     title: 'Invite unlimited colleagues',
-    desc: 'Integrate with guaranteed developer-friendly APIs or openly to choose a build-ready or low-code solution.',
+    desc: 'Collaborate with your team and manage funding opportunities together seamlessly.',
   },
   {
     icon: <LifeBuoy className="w-5 h-5 text-primary" />,
-    title: 'Ensure compliance',
-    desc: 'Receive detailed insights on all your numbers in real-time, see where visitors are coming from.',
+    title: 'Expert support',
+    desc: 'Get dedicated support from our funding experts to maximize your success rate.',
   },
   {
     icon: <DollarSign className="w-5 h-5 text-primary" />,
-    title: 'Built-in security',
-    desc: 'Keep your team members and customers in the loop by sharing your dashboard public.',
+    title: 'Secure platform',
+    desc: 'Your sensitive business data is protected with enterprise-grade security measures.',
   },
 ];
 
@@ -80,14 +80,13 @@ const Info = () => {
           variants={itemVariants}
           className="text-[34px] font-semibold text-white"
         >
-          Start Your 30-Day Free Trial
+          Join FundingOptimal Today
         </motion.h1>
         <motion.p
           variants={itemVariants}
           className="mt-2 text-white flex items-center gap-2 text-[16px]"
         >
-          <CreditCard className="w-4 h-4 text-primary" /> No credit card
-          required
+          Secure registration
         </motion.p>
         <motion.ul variants={containerVariants} className="mt-6 space-y-6">
           {features.map((f, i) => (
