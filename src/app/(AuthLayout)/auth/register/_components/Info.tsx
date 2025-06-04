@@ -1,5 +1,5 @@
 'use client';
-import { CreditCard, DollarSign, LifeBuoy, User } from 'lucide-react';
+import { DollarSign, LifeBuoy, User } from 'lucide-react';
 import React from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
