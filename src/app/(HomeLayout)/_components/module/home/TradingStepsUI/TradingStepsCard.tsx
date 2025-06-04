@@ -59,42 +59,6 @@ export default function TradingStepsCard({
               ${selectedPricing.price}
             </span>
           </div>
-
-          <div className="flex flex-col md:flex-row md:flex-wrap justify-between w-full px-4 text-md text-white/80">
-            <label className="flex items-center  gap-1">
-              <input
-                type="radio"
-                name={`pricing-${challengeId}`}
-                defaultChecked
-                className="w-3 h-3"
-              />
-              Max Drawdown 20%
-            </label>
-            <label className="flex items-center gap-1">
-              <input
-                type="radio"
-                name={`pricing-${challengeId}`}
-                className="w-3 h-3"
-              />
-              Daily Drawdown 8%
-            </label>
-            <label className="flex items-center gap-1">
-              <input
-                type="radio"
-                name={`pricing-${challengeId}`}
-                className="w-3 h-3"
-              />
-              100% Profit Split
-            </label>
-            <label className="flex items-center gap-1">
-              <input
-                type="radio"
-                name={`pricing-${challengeId}`}
-                className="w-3 h-3"
-              />
-              10 Day Payouts
-            </label>
-          </div>
         </div>
 
         <button className="w-full mt-4  md:mt-0 max-w-xs py-2 rounded-lg border-[0.5px] border-white/50 text-white bg-transparent hover:bg-primary/10 transition font-normal text-sm">
