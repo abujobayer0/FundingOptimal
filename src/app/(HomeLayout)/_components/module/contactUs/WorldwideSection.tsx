@@ -31,7 +31,11 @@ export default function WorldwideSection() {
                 }}
               ></div>
             </foreignObject>
-            <g filter="url(#filter0_di_416_78)" data-figma-bg-blur-radius="50">
+            <g
+              filter="url(#filter0_di_416_78)"
+              className="animate-pulse"
+              data-figma-bg-blur-radius="50"
+            >
               <path
                 d="M288.237 273H207.95C200.798 273 195 278.798 195 285.95C195 293.102 200.798 298.899 207.95 298.899H288.237C295.389 298.899 301.187 293.102 301.187 285.95C301.187 278.798 295.389 273 288.237 273Z"
                 fill="white"
@@ -71,7 +75,11 @@ export default function WorldwideSection() {
                 }}
               ></div>
             </foreignObject>
-            <g filter="url(#filter2_di_416_78)" data-figma-bg-blur-radius="50">
+            <g
+              filter="url(#filter2_di_416_78)"
+              className="animate-pulse"
+              data-figma-bg-blur-radius="50"
+            >
               <path
                 d="M888.585 119H836.415C831.767 119 828 124.373 828 131C828 137.627 831.767 143 836.415 143H888.585C893.233 143 897 137.627 897 131C897 124.373 893.233 119 888.585 119Z"
                 fill="white"
@@ -111,7 +119,11 @@ export default function WorldwideSection() {
                 }}
               ></div>
             </foreignObject>
-            <g filter="url(#filter4_di_416_78)" data-figma-bg-blur-radius="50">
+            <g
+              filter="url(#filter4_di_416_78)"
+              className="animate-pulse"
+              data-figma-bg-blur-radius="50"
+            >
               <path
                 d="M802.756 295H739.244C733.586 295 729 300.373 729 307C729 313.627 733.586 319 739.244 319H802.756C808.414 319 813 313.627 813 307C813 300.373 808.414 295 802.756 295Z"
                 fill="white"
@@ -151,7 +163,11 @@ export default function WorldwideSection() {
                 }}
               ></div>
             </foreignObject>
-            <g filter="url(#filter6_di_416_78)" data-figma-bg-blur-radius="50">
+            <g
+              filter="url(#filter6_di_416_78)"
+              className="animate-pulse"
+              data-figma-bg-blur-radius="50"
+            >
               <path
                 d="M487.756 52H424.244C418.586 52 414 57.3726 414 64C414 70.6274 418.586 76 424.244 76H487.756C493.414 76 498 70.6274 498 64C498 57.3726 493.414 52 487.756 52Z"
                 fill="white"
