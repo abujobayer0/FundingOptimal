@@ -23,15 +23,10 @@ const ContactUsHero = () => {
             </div>
 
             <p className="text-gray-400 text-sm md:text-[16px] leading-[24px] md:leading-[38px] max-w-lg">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum
+              Before reaching out, please check our FAQ section for quick
+              answers to common questions. If you can't find what you're looking
+              for, we're here to help via email.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 space-y-2 pt-2 md:space-y-0">
-              <GradientButton showIcon>Get Funded Now</GradientButton>
-              <OutlineButton showIcon>Learn More</OutlineButton>
-            </div>
           </div>
 
           <div className="flex lg:justify-end w-full">
