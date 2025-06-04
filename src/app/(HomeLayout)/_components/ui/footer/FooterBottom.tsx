@@ -104,7 +104,7 @@ const FooterBottom = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="/become-a-partner"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       Partners Program
@@ -112,7 +112,7 @@ const FooterBottom = () => {
                   </li>
                   <li>
                     <Link
-                      href="/terms"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       Terms & Conditions
@@ -120,7 +120,7 @@ const FooterBottom = () => {
                   </li>
                   <li>
                     <Link
-                      href="/privacy"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       Privacy Policy
@@ -133,7 +133,7 @@ const FooterBottom = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="/refund"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       Refund Policy
@@ -141,18 +141,10 @@ const FooterBottom = () => {
                   </li>
                   <li>
                     <Link
-                      href="/about-us"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/important-trading-terms"
-                      className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-                    >
-                      Important Trading Terms
                     </Link>
                   </li>
                 </ul>
@@ -162,7 +154,7 @@ const FooterBottom = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="/careers"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       Careers
@@ -170,7 +162,7 @@ const FooterBottom = () => {
                   </li>
                   <li>
                     <Link
-                      href="/contact-us"
+                      href="/"
                       className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                     >
                       Contact Us

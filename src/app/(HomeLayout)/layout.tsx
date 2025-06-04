@@ -1,6 +1,6 @@
 'use client';
 import React, { ReactNode } from 'react';
-import { Footer, Navbar } from './_components';
+import { Navbar } from './_components';
 
 interface HomeLayoutProps {
   children: ReactNode;
