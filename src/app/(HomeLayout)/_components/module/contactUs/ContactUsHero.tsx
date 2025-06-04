@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { GradientButton, OutlineButton } from "@/components";
-import { TitleWithIcon } from "../../ui";
-import ContactForm from "./ContactForm";
+import React from 'react';
+import { GradientButton, OutlineButton } from '@/components';
+import { TitleWithIcon } from '../../ui';
+import ContactForm from './ContactForm';
 
 const ContactUsHero = () => {
   return (
@@ -29,8 +29,8 @@ const ContactUsHero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 space-y-2 pt-2 md:space-y-0">
-              <GradientButton showIcon>Become A Partner</GradientButton>
-              <OutlineButton showIcon>Get Funded</OutlineButton>
+              <GradientButton showIcon>Get Funded Now</GradientButton>
+              <OutlineButton showIcon>Learn More</OutlineButton>
             </div>
           </div>
 
