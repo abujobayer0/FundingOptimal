@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { GradientButton, OutlineButton } from '@/components';
 import { TitleWithIcon } from '../../ui';
 import ContactForm from './ContactForm';
 
@@ -24,8 +23,8 @@ const ContactUsHero = () => {
 
             <p className="text-gray-400 text-sm md:text-[16px] leading-[24px] md:leading-[38px] max-w-lg">
               Before reaching out, please check our FAQ section for quick
-              answers to common questions. If you can't find what you're looking
-              for, we're here to help via email.
+              answers to common questions. If you can&apos;t find what
+              you&apos;re looking for, we&apos;re here to help via email.
             </p>
           </div>
 
