@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import { ProfitCalculator, TradingStepsUI } from './_components/module/home';
 import Features from './_components/module/home/features';
-import { DemoAccountNotice } from './_components/ui';
+import { DemoAccountNotice, Footer } from './_components/ui';
 
 const Page = () => {
   return (
@@ -22,6 +22,7 @@ const Page = () => {
       <Features />
       <AnalyticsDashboard />
       <ProfitCalculator />
+      <Footer />
     </div>
   );
 };
