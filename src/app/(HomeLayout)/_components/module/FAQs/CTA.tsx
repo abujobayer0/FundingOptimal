@@ -1,6 +1,6 @@
-'use client';
-import { motion } from 'motion/react';
-import React from 'react';
+"use client";
+import { motion } from "motion/react";
+import React from "react";
 
 const CTA = () => {
   return (
@@ -32,10 +32,10 @@ const CTA = () => {
         </motion.span>
         <div className="space-y-4 mt-4 text-center px-4">
           <div className="space-y-0 md:space-y-0">
-            <h1 className="text-3xl md:text-5xl lg:text-[70px] font-bold">
+            <h1 className="text-3xl md:text-5xl lg:text-[60px] font-bold">
               Join FundingOptimal
             </h1>
-            <h2 className="text-3xl md:text-5xl lg:text-[70px] font-bold">
+            <h2 className="text-3xl md:text-5xl lg:text-[60px] font-bold">
               And <span className="text-primary">Get Funded</span>
               Today
             </h2>

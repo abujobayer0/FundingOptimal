@@ -1,8 +1,21 @@
-import { motion } from 'motion/react';
-import { ChevronRight } from 'lucide-react';
-import React from 'react';
+import { motion } from "motion/react";
+import { ChevronRight } from "lucide-react";
+import React from "react";
+import Link from "next/link";
 
-const SliderItem = ({ badge, title }: { badge: string; title: string }) => {
+const SliderItem = ({
+  badge,
+  title,
+  description,
+  id,
+  onReadMore,
+}: {
+  badge: string;
+  title: string;
+  description: string;
+  id: string;
+  onReadMore?: () => void;
+}) => {
   return (
     <motion.div
       className="bg-black rounded-2xl p-4 overflow-hidden border relative border-white/10 hover:border-primary transition-all duration-500 h-[393px] group cursor-pointer"
@@ -11,7 +24,7 @@ const SliderItem = ({ badge, title }: { badge: string; title: string }) => {
         y: -8,
       }}
       transition={{
-        type: 'spring',
+        type: "spring",
         stiffness: 300,
         damping: 20,
       }}
@@ -40,23 +53,30 @@ const SliderItem = ({ badge, title }: { badge: string; title: string }) => {
         </motion.div>
 
         <motion.div
-          className="text-[64px] font-bold transition-all duration-300 group-hover:text-primary/90"
+          className="text-2xl font-bold mt-4 mb-2 transition-all duration-300 group-hover:text-primary/90 text-left w-full"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
           {title}
         </motion.div>
 
-        <div>
-          <motion.button
-            whileHover={{ scale: 1.15, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            className="p-3 rounded-full bg-white/10 text-white group-hover:bg-primary hover:bg-primary/80 transition-all duration-300 backdrop-blur-sm disabled:opacity-50 group-hover:shadow-lg group-hover:shadow-primary/30"
-          >
-            <motion.div whileHover={{ x: 2 }} transition={{ duration: 0.2 }}>
-              <ChevronRight className="w-5 h-5 text-white group-hover:text-white transition-colors duration-300" />
-            </motion.div>
-          </motion.button>
+        <div className="text-gray-400 text-sm mb-4 w-full text-left">
+          {description.length > 30
+            ? description.slice(0, 30) + "..."
+            : description}
+        </div>
+
+        <div className="w-full flex justify-end">
+          <Link href={`/faqs/${id}`} passHref legacyBehavior>
+            <motion.a
+              whileHover={{ scale: 1.15, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-3 rounded-full bg-white/10 text-white group-hover:bg-primary hover:bg-primary/80 transition-all duration-300 backdrop-blur-sm disabled:opacity-50 group-hover:shadow-lg group-hover:shadow-primary/30 flex items-center gap-2"
+              onClick={onReadMore}
+            >
+              <ChevronRight className="w-5 h-5 text-white group-hover:text-black/50 transition-colors duration-300" />
+            </motion.a>
+          </Link>
         </div>
       </div>
 

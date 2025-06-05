@@ -1,48 +1,41 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import SliderItem from './Slider.Item';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import SliderItem from "./Slider.Item";
+import { TFaq } from "@/types";
 
-const faqs = [
-  {
-    badge: '35+ Questions',
-    title: 'General FAQs',
-  },
-  {
-    badge: '28+ Questions',
-    title: 'Pricing Plans',
-  },
-  {
-    badge: '42+ Questions',
-    title: 'Getting Started',
-  },
-  {
-    badge: '31+ Questions',
-    title: 'Trading Basics',
-  },
-  {
-    badge: '19+ Questions',
-    title: 'Technical Support',
-  },
-];
+const ITEMS_PER_PAGE = 6;
 
-const FaqsSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+const FaqsSlider = ({ filteredFaqs }: { filteredFaqs: TFaq[] }) => {
+  const [currentPage] = useState(1);
+
+  // Filter logic
+
+  const paginatedFaqs = filteredFaqs?.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  // Slider navigation logic (for paginatedFaqs)
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const nextSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prev) => (prev + 1) % faqs.length);
+    setCurrentIndex((prev) => (prev + 1) % paginatedFaqs.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
 
   const prevSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prev) => (prev - 1 + faqs.length) % faqs.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + paginatedFaqs.length) % paginatedFaqs.length
+    );
     setTimeout(() => setIsAnimating(false), 500);
   };
 
@@ -53,16 +46,19 @@ const FaqsSlider = () => {
     setTimeout(() => setIsAnimating(false), 500);
   };
 
+  // Reset slider index when page or search changes
+  React.useEffect(() => {
+    setCurrentIndex(0);
+  }, [currentPage]);
+
   const getTransformValue = () => {
     return `translateX(calc(-${currentIndex * 25}% + 50% - 12.5%))`;
   };
 
   return (
     <div className="w-full py-8 overflow-hidden">
-      {/* Navigation Header */}
-
       {/* Slider Container - Full Width */}
-      <div className="w-full relative">
+      <div className="w-full relative mt-8">
         <div className="w-full">
           <motion.div
             className="flex gap-6 px-4"
@@ -70,23 +66,23 @@ const FaqsSlider = () => {
               transform: getTransformValue(),
             }}
             transition={{
-              type: 'spring',
+              type: "spring",
               stiffness: 300,
               damping: 30,
               duration: 0.5,
             }}
             style={{
-              width: `${faqs.length * 25}%`, // Dynamic width based on number of items
+              width: `${paginatedFaqs.length * 25}%`,
             }}
           >
-            {faqs.map((faq, index) => (
+            {paginatedFaqs.map((faq, index) => (
               <motion.div
-                key={index}
+                key={faq.id}
                 className="flex-shrink-0"
                 style={{
-                  width: `calc(${100 / faqs.length}% - 1.5rem)`, // Responsive width
-                  minWidth: '280px', // Minimum width for readability
-                  maxWidth: '400px', // Maximum width for desktop
+                  width: `calc(${100 / paginatedFaqs.length}% - 1.5rem)`,
+                  minWidth: "280px",
+                  maxWidth: "400px",
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -107,19 +103,26 @@ const FaqsSlider = () => {
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <SliderItem {...faq} />
+                  <SliderItem
+                    badge={`${faq.questions.length}+ Questions`}
+                    title={faq.title}
+                    description={faq.description}
+                    id={faq.id}
+                  />
                 </motion.div>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </div>
+      {/* Pagination Controls */}
 
-      <div className="max-w-7xl mt-8 mx-auto px-4 mb-8">
-        <div className="max-w-7xl mx-auto px-4 mt-8">
-          <div className="flex items-center justify-between">
+      {/* Slider Navigation */}
+      <div className="w-full mt-8 mx-auto px-4 mb-8">
+        <div className="w-full mx-auto px-4 mt-8">
+          <div className="flex flex-col md:flex-row gap-5 items-center justify-between">
             <div className="flex justify-center items-center gap-1">
-              {faqs.map((_, index) => (
+              {paginatedFaqs.map((_, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.2 }}
@@ -128,8 +131,8 @@ const FaqsSlider = () => {
                   disabled={isAnimating}
                   className={`w-6 h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? 'bg-primary w-[60px] shadow-lg shadow-primary/50'
-                      : 'bg-white/20 hover:bg-primary/50'
+                      ? "bg-primary w-[60px] shadow-lg shadow-primary/50"
+                      : "bg-white/20 hover:bg-primary/50"
                   }`}
                 />
               ))}
