@@ -61,9 +61,7 @@ const SearchBar = () => {
     return null;
   };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const performSearch = () => {
     if (!searchQuery.trim()) return;
 
     const searchResult = searchFAQs(searchQuery);
@@ -97,9 +95,14 @@ const SearchBar = () => {
     }
   };
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    performSearch();
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      handleSearch(e as any);
+      performSearch();
     }
   };
 
