@@ -124,8 +124,8 @@ const SearchBar = () => {
       {showNoResults && (
         <div className="text-center mt-4 p-4 bg-gray-900/50 border border-white/10 rounded-lg">
           <p className="text-yellow-400 text-sm">
-            No exact match found for "{searchQuery}". Redirecting to general
-            FAQs where you can use the search feature...
+            No exact match found for &quot;{searchQuery}&quot;. Redirecting to
+            general FAQs where you can use the search feature...
           </p>
         </div>
       )}
