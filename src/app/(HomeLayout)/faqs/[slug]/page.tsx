@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
+import { Search, ChevronDown, Menu, X } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
-import { faqs, FAQ, FAQQuestion } from '../../_components/module/FAQs/faqData';
+import { faqs } from '../../_components/module/FAQs/faqData';
 
 // FAQ Question Component
 const FAQQuestionComponent = ({
@@ -60,13 +60,11 @@ const FAQCard = ({
   title,
   description,
   badge,
-  questions,
   onExpand,
 }: {
   title: string;
   description: string;
   badge: string;
-  questions: Array<{ question: string; answer: string }>;
   onExpand: () => void;
 }) => {
   return (
@@ -100,19 +98,14 @@ const Page = () => {
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
     null
   );
-  const [selectedCategory, setSelectedCategory] = useState('all-faqs');
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Get current FAQ category based on slug
   const currentSlug = params.slug as string;
   const currentFAQ = faqs.find(
     (faq) => faq.slug === currentSlug || faq.id === currentSlug
   );
 
-  // If showing detailed view of a specific category
-  const isDetailView = currentFAQ && currentSlug !== 'all-faqs';
-
-  // Filter questions based on search
   const filteredQuestions =
     currentFAQ?.questions.filter(
       (q) =>
@@ -121,11 +114,10 @@ const Page = () => {
     ) || [];
 
   const handleCategoryChange = (categoryId: string) => {
-    setSelectedCategory(categoryId);
     const selectedFAQ = faqs.find((faq) => faq.id === categoryId);
     const slug = selectedFAQ?.slug || categoryId;
     router.push(`/faqs/${slug}`);
-    setIsMobileMenuOpen(false); // Close mobile menu after selection
+    setIsMobileMenuOpen(false);
   };
 
   const handleExpandFAQ = (faqId: string) => {
@@ -339,7 +331,7 @@ const Page = () => {
                 {filteredQuestions.length === 0 && searchQuery && (
                   <div className="text-center py-12">
                     <p className="text-gray-400">
-                      No questions found matching "{searchQuery}"
+                      No questions found matching &ldquo;{searchQuery}&rdquo;
                     </p>
                   </div>
                 )}
@@ -351,7 +343,7 @@ const Page = () => {
                   FAQ Category Not Found
                 </h2>
                 <p className="text-gray-400 mb-6">
-                  The requested FAQ category doesn't exist.
+                  The requested FAQ category doesn&apos;t exist.
                 </p>
                 <button
                   onClick={() => router.push('/faqs/all-faqs')}
