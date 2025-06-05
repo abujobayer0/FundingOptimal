@@ -6,11 +6,9 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
-import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
 
   // Close menu when clicking outside or on escape key
   useEffect(() => {
