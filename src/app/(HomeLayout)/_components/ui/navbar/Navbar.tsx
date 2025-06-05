@@ -111,8 +111,23 @@ const Navbar = () => {
               <NavLink href="/faqs">FAQs</NavLink>
             </nav>
 
-            {/* Desktop Buttons */}
             <div className="hidden md:flex space-x-4">
+              <Link href="/auth/login" onClick={closeMenu}>
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                    transition: { duration: 0.2, ease: 'easeOut' },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative rounded-md bg-transparent border border-white/10 px-4 py-2 text-sm text-white shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
+                >
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                  <span className="relative z-10 font-medium group-hover:text-primary transition-colors duration-300">
+                    Login
+                  </span>
+                </motion.button>
+              </Link>
               <Link
                 href="https://dashboard.fundingoptimal.com/"
                 target="_blank"
@@ -139,7 +154,7 @@ const Navbar = () => {
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
                   <span className="relative z-10 font-medium group-hover:text-black transition-colors duration-300">
-                    Login
+                    Dashboard
                   </span>
                 </motion.button>
               </Link>
@@ -285,6 +300,29 @@ const Navbar = () => {
                   style={{ transitionDelay: '300ms' }}
                 >
                   <motion.button
+                    onClick={() => router.push('/auth/login')}
+                    whileHover={{
+                      scale: 1.02,
+                      y: -1,
+                      transition: { duration: 0.2, ease: 'easeOut' },
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative w-full rounded-lg bg-transparent border border-white/10 mb-2 px-4 py-3 text-sm font-medium text-white shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
+                  >
+                    {/* Animated background gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Ripple effect */}
+                    <div className="absolute inset-0 rounded-lg bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+
+                    <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+                      Login
+                    </span>
+                  </motion.button>
+                  <motion.button
                     onClick={closeMenu}
                     whileHover={{
                       scale: 1.02,
@@ -304,7 +342,7 @@ const Navbar = () => {
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
                     <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-                      Login
+                      Dashboard
                     </span>
                   </motion.button>
                 </div>
