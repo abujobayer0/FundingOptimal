@@ -83,33 +83,6 @@ const Navbar = () => {
 
             {/* Desktop Buttons */}
             <div className="hidden md:flex space-x-4">
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  y: -2,
-                  transition: { duration: 0.2, ease: 'easeOut' },
-                }}
-                onClick={() => router.push('/auth/login')}
-                whileTap={{ scale: 0.95 }}
-                className="group relative rounded-md border border-white px-4 py-2 text-sm font-medium text-white transition-all duration-500 ease-in-out overflow-hidden"
-              >
-                {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Border glow effect */}
-                <div className="absolute inset-0 rounded-md border border-transparent group-hover:border-primary/50 transition-colors duration-300" />
-
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
-
-                {/* Subtle glow */}
-                <div className="absolute inset-0 rounded-md shadow-[0_0_0_1px_rgba(18,255,142,0)] group-hover:shadow-[0_0_0_1px_rgba(18,255,142,0.3),0_0_15px_rgba(18,255,142,0.1)] transition-shadow duration-500" />
-
-                <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
-                  Login
-                </span>
-              </motion.button>
-
               <Link
                 href="https://dashboard.fundingoptimal.com/"
                 target="_blank"
@@ -136,7 +109,7 @@ const Navbar = () => {
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
                   <span className="relative z-10 font-medium group-hover:text-black transition-colors duration-300">
-                    Dashboard
+                    Login
                   </span>
                 </motion.button>
               </Link>

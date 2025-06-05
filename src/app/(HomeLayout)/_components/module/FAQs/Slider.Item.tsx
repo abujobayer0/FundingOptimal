@@ -5,11 +5,7 @@ import React from 'react';
 const SliderItem = ({ badge, title }: { badge: string; title: string }) => {
   return (
     <motion.div
-      className="bg-black rounded-2xl p-4 overflow-hidden border relative border-white/10 hover:border-primary transition-all duration-500 h-[393px] group cursor-pointer"
-      whileHover={{
-        scale: 1.02,
-        y: -8,
-      }}
+      className="bg-black rounded-2xl p-4 overflow-hidden border relative border-white/10 hover:border-primary transition-all duration-500 group cursor-pointer h-80"
       transition={{
         type: 'spring',
         stiffness: 300,
@@ -27,27 +23,26 @@ const SliderItem = ({ badge, title }: { badge: string; title: string }) => {
       {/* Subtle inner glow */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-      <div className="w-full h-full flex flex-col justify-center items-end relative z-10">
+      <div className="w-full h-full flex flex-col justify-between items-start relative z-10">
         <motion.div
           className="flex items-start w-full"
           initial={{ opacity: 1 }}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="text-md rounded-lg bg-primary px-4 py-2 text-black transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/25 group-hover:scale-105">
+          <div className="text-md rounded-lg bg-primary px-4 py-2 text-black transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/25 group-hover:scale-105 whitespace-nowrap">
             {badge}
           </div>
         </motion.div>
 
         <motion.div
-          className="text-[64px] font-bold transition-all duration-300 group-hover:text-primary/90"
-          whileHover={{ scale: 1.02 }}
+          className="text-[32px] leading-tight font-bold transition-all duration-300 group-hover:text-primary/90 flex-1 flex items-center"
           transition={{ duration: 0.3 }}
         >
-          {title}
+          <span className="line-clamp-3">{title}</span>
         </motion.div>
 
-        <div>
+        <div className="self-end">
           <motion.button
             whileHover={{ scale: 1.15, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
