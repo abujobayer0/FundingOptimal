@@ -6,9 +6,36 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const router = useRouter();
+  // Handle scroll behavior for navbar visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show navbar when at top of page
+      if (currentScrollY < 10) {
+        setShowNavbar(true);
+      }
+      // Hide navbar when scrolling down, show when scrolling up
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShowNavbar(false);
+      } else if (currentScrollY < lastScrollY) {
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   // Close menu when clicking outside or on escape key
   useEffect(() => {
@@ -45,11 +72,16 @@ const Navbar = () => {
   };
 
   const closeMenu = () => {
+    router.push('https://dashboard.fundingoptimal.com');
     setIsMenuOpen(false);
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-auto bg-black">
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 h-auto bg-black transition-transform duration-300 ease-in-out ${
+        showNavbar ? 'translate-y-0' : 'md:-translate-y-full'
+      }`}
+    >
       <header className="text-foreground shadow-sm max-w-7xl mx-auto py-6 relative overflow-hidden">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center h-16">
@@ -243,31 +275,7 @@ const Navbar = () => {
                       : 'translate-x-8 opacity-0'
                   }`}
                   style={{ transitionDelay: '250ms' }}
-                >
-                  <motion.button
-                    onClick={closeMenu}
-                    whileHover={{
-                      scale: 1.02,
-                      y: -1,
-                      transition: { duration: 0.2, ease: 'easeOut' },
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    className="group relative w-full rounded-lg border border-gray-600 px-4 py-3 text-sm font-medium text-white transition-all duration-500 ease-in-out overflow-hidden"
-                  >
-                    {/* Animated background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* Border glow effect */}
-                    <div className="absolute inset-0 rounded-lg border border-transparent group-hover:border-primary/50 transition-colors duration-300" />
-
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
-
-                    <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
-                      Login
-                    </span>
-                  </motion.button>
-                </div>
+                ></div>
                 <div
                   className={`transform transition-all duration-300 ease-out ${
                     isMenuOpen
@@ -296,7 +304,7 @@ const Navbar = () => {
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
                     <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-                      Dashboard
+                      Login
                     </span>
                   </motion.button>
                 </div>

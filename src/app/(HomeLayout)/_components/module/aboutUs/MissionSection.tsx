@@ -3,8 +3,10 @@
 import React from 'react';
 import { TwoColumnSection } from '@/components';
 import { TargetIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export const MissionSection = () => {
+  const router = useRouter();
   return (
     <TwoColumnSection
       icon={TargetIcon}
@@ -13,7 +15,7 @@ export const MissionSection = () => {
       buttonText="Get Funded"
       imageSrc="/chart.png"
       imageAlt="About Us"
-      onButtonClick={() => console.log('Get Funded clicked')}
+      onButtonClick={() => router.push('/#get-funded')}
     />
   );
 };

@@ -26,11 +26,12 @@ export default function TradingStepsUI() {
   const [selectedAmount, setSelectedAmount] = useState('$5k');
 
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
+      id="get-funded"
       className="flex flex-col items-center pt-0 md:pt-16 pb-16 md:pb-0 max-w-7xl px-4 md:px-6 mx-auto"
     >
       <motion.div
@@ -156,6 +157,6 @@ export default function TradingStepsUI() {
           selectedCapital={amountToCapitalMap[selectedAmount] || 5000}
         />
       </motion.div>
-    </motion.div>
+    </motion.section>
   );
 }

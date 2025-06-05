@@ -1,12 +1,14 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "motion/react";
-import { OutlineButton } from "@/components";
-import { GradientButton } from "@/components";
-import { SectionHeader } from "../../ui";
+import React from 'react';
+import { motion } from 'motion/react';
+import { OutlineButton } from '@/components';
+import { GradientButton } from '@/components';
+import { SectionHeader } from '../../ui';
+import { useRouter } from 'next/navigation';
 
 export const HeroSection = () => {
+  const router = useRouter();
   return (
     <div className="text-center space-y-8">
       <SectionHeader
@@ -16,7 +18,11 @@ export const HeroSection = () => {
         className="items-center mt-0 mb-0"
       />
       <motion.div className="flex flex-col sm:flex-row items-center justify-center sm:space-y-0 sm:space-x-6">
-        <GradientButton animation={false} showIcon>
+        <GradientButton
+          onClick={() => router.push('/#get-funded')}
+          animation={false}
+          showIcon
+        >
           Get Funded Now
         </GradientButton>
         <OutlineButton animation={false} showIcon>
