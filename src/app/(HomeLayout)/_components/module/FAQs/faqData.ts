@@ -347,6 +347,176 @@ export const faqs = [
       },
     ],
   },
+  {
+    id: 'trading-platform',
+    badge: '1+ Question',
+    title: 'Trading Platform',
+    slug: 'trading-platform',
+    description:
+      'Information about the trading platform offered by FundingOptimal.',
+    questions: [
+      {
+        question: 'What trading platform does FundingOptimal offer?',
+        answer:
+          'FundingOptimal exclusively offers MetaTrader 5 (MT5) as its trading platform for all trading activities.',
+      },
+    ],
+  },
+  {
+    id: 'third-party-payments',
+    badge: '1+ Question',
+    title: 'Third Party Payments',
+    slug: 'third-party-payments',
+    description:
+      'Details on FundingOptimal’s payment policies regarding third-party transactions.',
+    questions: [
+      {
+        question: 'Does FundingOptimal accept third-party payments?',
+        answer:
+          'FundingOptimal does not accept payments via third-party cards or accounts. All transactions must be conducted in the name of the cardholder, with cross-verification against the KYC profile to prevent fraud and ensure platform integrity.',
+      },
+    ],
+  },
+  {
+    id: 'tradable-assets',
+    badge: '1+ Question',
+    title: 'Tradable Assets',
+    slug: 'tradable-assets',
+    description:
+      'List of assets available for trading on FundingOptimal’s platform.',
+    questions: [
+      {
+        question: 'Which assets are tradable on FundingOptimal?',
+        answer:
+          'FundingOptimal offers trading in Forex pairs (e.g., AUDCAD, AUDCHF, EURUSD, USDJPY, etc.), CFDs (e.g., EUSTX50, GER30, NAS100, USOIL, etc.), and Metals (XAGUSD - Silver, XAUUSD - Gold).',
+      },
+    ],
+  },
+  {
+    id: 'daily-drawdown-limit',
+    badge: '1+ Question',
+    title: 'Daily Drawdown Limit',
+    slug: 'daily-drawdown-limit',
+    description:
+      'Explanation of how the daily drawdown limit is calculated and applied.',
+    questions: [
+      {
+        question:
+          'How is the daily drawdown limit calculated at FundingOptimal?',
+        answer:
+          'The daily drawdown limit is calculated based on the account’s starting balance at 00:00 GMT+2, not on equity. For example, with a $10,000 starting balance and a 5% drawdown limit, the maximum daily loss is $500, regardless of unrealized profits or losses. The balance resets daily at midnight GMT+2.',
+      },
+    ],
+  },
+  {
+    id: 'account-credentials-delivery',
+    badge: '2+ Questions',
+    title: 'Account Credentials Delivery and Payment Methods',
+    slug: 'account-credentials-delivery',
+    description:
+      'Details on how and when account credentials are delivered based on payment methods.',
+    questions: [
+      {
+        question: 'When will I receive my account credentials after payment?',
+        answer:
+          'For credit/debit card payments, credentials are sent immediately after successful payment. For cryptocurrency payments, credentials are typically delivered within 24 hours, often sooner, provided the correct network and sufficient funds (including gas fees) are used.',
+      },
+      {
+        question:
+          'What cryptocurrencies does FundingOptimal accept for purchasing a challenge?',
+        answer:
+          'FundingOptimal accepts payments via cryptocurrency, but specific cryptocurrencies are not listed in the provided information. Ensure payments cover both the challenge cost and any transaction (gas) fees to avoid delays or declines.',
+      },
+    ],
+  },
+  {
+    id: 'post-evaluation-process',
+    badge: '1+ Question',
+    title: 'Post-Evaluation Process',
+    slug: 'post-evaluation-process',
+    description:
+      'Steps to follow after passing the evaluation for a funded account.',
+    questions: [
+      {
+        question:
+          'What happens after passing the evaluation at FundingOptimal?',
+        answer:
+          'After passing the evaluation, you’ll receive an email with a link to complete KYC verification. Submit withdrawal details, sign the provided contract, and receive funded account credentials within 3-5 business days after compliance checks.',
+      },
+    ],
+  },
+  {
+    id: 'payouts',
+    badge: '2+ Questions',
+    title: 'Payouts',
+    slug: 'payouts',
+    description:
+      'Information on payout schedules, eligibility, and processing for funded accounts.',
+    questions: [
+      {
+        question: 'How do payouts work at FundingOptimal?',
+        answer:
+          'Payouts are processed biweekly, starting 14 days after your first trade on a funded account. A minimum profit of $20 and 4 trading days using consistent strategies are required. Payouts are made via cryptocurrency within 3-5 business days, provided all trades are closed and no rule breaches are found.',
+      },
+      {
+        question:
+          'What are the requirements for a valid trading day for payouts?',
+        answer:
+          'A trading day counts when a trade is opened and closed on the same day. Trades spanning multiple days count as one trading day. For example, a trade opened on Day 1 and closed on Day 2 counts as one trading day. Minimal lot sizes (e.g., 0.02 lots for a typical 10-lot trader) are not allowed to pass trading days.',
+      },
+    ],
+  },
+  {
+    id: 'kyc-verification',
+    badge: '2+ Questions',
+    title: 'KYC Verification for Funded Accounts',
+    slug: 'kyc-verification',
+    description:
+      'Requirements and guidelines for completing the KYC process for funded accounts.',
+    questions: [
+      {
+        question:
+          'What documentation is required for KYC verification at FundingOptimal?',
+        answer:
+          'KYC requires a valid government-issued ID (passport, driver’s license, or national ID card) and a live selfie for facial recognition. Paper IDs or temporary permits are not accepted. VPNs/VPS tools are prohibited during verification.',
+      },
+      {
+        question: 'What happens if KYC verification fails?',
+        answer:
+          'If KYC fails due to unacceptable documents (e.g., blurry, expired, or invalid) or duplicate accounts, you won’t receive a funded account, and your agreement may be terminated. Resubmit clear, valid documents or contact support@fundingoptimal.com for assistance.',
+      },
+    ],
+  },
+  {
+    id: 'payout-request-process',
+    badge: '1+ Question',
+    title: 'Payout Request Process',
+    slug: 'payout-request-process',
+    description:
+      'Steps to request a payout from a funded account at FundingOptimal.',
+    questions: [
+      {
+        question: 'How do I request a payout at FundingOptimal?',
+        answer:
+          'Log in to your trader dashboard, ensure eligibility (minimum profit, trading period, and rule compliance), click “Request Payout,” provide payment details (e.g., cryptocurrency wallet address), and submit. Payouts are processed within 2-5 business days after verification.',
+      },
+    ],
+  },
+  {
+    id: 'certificate-access',
+    badge: '1+ Question',
+    title: 'Accessing Your Certificate',
+    slug: 'certificate-access',
+    description:
+      'How to access and download your certificate after completing the evaluation or program.',
+    questions: [
+      {
+        question: 'How can I access my certificate at FundingOptimal?',
+        answer:
+          'After passing the evaluation or program and meeting all requirements, log in to your trader dashboard at www.fundingoptimal.com, navigate to the “Certificate” section, and download your certificate as a PDF displaying your name, program status, and completion date.',
+      },
+    ],
+  },
 ];
 
 export type FAQ = (typeof faqs)[0];
