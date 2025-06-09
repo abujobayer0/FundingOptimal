@@ -11,9 +11,9 @@ export const MissionSection = () => {
     <TwoColumnSection
       icon={TargetIcon}
       title="Our Mission"
-      description="At Fundingoptimal, our mission is to empower traders of all levels to achieve financial freedom and professional growth in the Forex markets.where skilled traders can thrive—whether through high-frequency trading, advanced strategies, or unique approaches. By offering accessible funding, swift payouts, and an open path for traders to scale,"
+      description="At FundingOptimal, our mission is to enable and inspire traders from all backgrounds and experience levels to pursue financial freedom, personal growth, and professional excellence through trading in the Forex markets. We believe that true trading talent should never be limited by access to capital. That's why we've built a platform that removes traditional barriers and offers fair, transparent, and accessible funding opportunities."
       buttonText="Get Funded"
-      imageSrc="/chart.png"
+      imageSrc="/mission.png"
       imageAlt="About Us"
       onButtonClick={() => router.push('/#get-funded')}
     />

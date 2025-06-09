@@ -9,9 +9,9 @@ export const VisionSection = () => {
     <TwoColumnSection
       icon={TargetIcon}
       title="Our Vision"
-      description="At Fundingoptimal, our mission is to empower traders of all levels to achieve financial freedom and professional growth in the Forex markets. We're dedicated to creating a fair and flexible trading environment where skilled traders."
+      description="At FundingOptimal, our vision is to revolutionize the trading world by creating a gateway where ambition, discipline, and talent are rewarded — regardless of background, experience, or financial limitations. We envision a future where every committed trader has access to the tools, capital, and support needed to reach their highest potential. We strive to level the playing field in the Forex and financial markets by offering a fair, transparent, and scalable trading environment — one where skill and strategy speak louder than personal wealth or status."
       buttonText="Learn More"
-      imageSrc="/chartwithhand.png"
+      imageSrc="/vision.png"
       imageAlt="Our Vision"
       reverse={true}
       showStats={true}

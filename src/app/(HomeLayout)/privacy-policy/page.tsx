@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { SectionWrapper, SectionHeader } from '../_components';
+import { SectionWrapper } from '../_components';
 import {
   Shield,
-  Lock,
   Eye,
   FileText,
   Users,
