@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { AuthService } from '@/lib/auth';
-import { setTokenCookies } from '@/lib/cookies';
+import { setClientAccessibleTokenCookies } from '@/lib/cookies';
 
 // Validation schema
 const registerSchema = z
@@ -67,8 +67,12 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-    // Set token cookies
-    setTokenCookies(response, authResult.accessToken, authResult.refreshToken);
+    // Set client-accessible token cookies (for js-cookie usage)
+    setClientAccessibleTokenCookies(
+      response,
+      authResult.accessToken,
+      authResult.refreshToken
+    );
 
     return response;
   } catch (error: unknown) {

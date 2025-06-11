@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  getTokensFromCookies,
-  setTokenCookies,
-  clearTokenCookies,
-} from '@/lib/cookies';
+import { getTokensFromCookies, clearTokenCookies } from '@/lib/cookies';
+import { setClientAccessibleTokenCookies } from '@/lib/cookies';
 import { AuthService } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
@@ -33,8 +30,12 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
 
-    // Set new token cookies
-    setTokenCookies(response, authResult.accessToken, authResult.refreshToken);
+    // Set new client-accessible token cookies
+    setClientAccessibleTokenCookies(
+      response,
+      authResult.accessToken,
+      authResult.refreshToken
+    );
 
     return response;
   } catch (error: unknown) {
