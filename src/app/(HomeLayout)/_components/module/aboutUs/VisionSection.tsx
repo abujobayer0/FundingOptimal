@@ -23,6 +23,7 @@ At FundingOptimal, we don't just invest in trades — we invest in traders."
       imageAlt="Our Vision"
       reverse={true}
       showStats={true}
+      showButton={false}
       stats={[
         {
           label: 'Traders',
