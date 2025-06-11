@@ -676,8 +676,8 @@ By trading with FundingOptimal, you confirm that you have carefully read, fully 
           </h2>
           <p className="text-gray-300 leading-relaxed mb-8 text-lg">
             If you have any questions or concerns regarding these Terms &
-            Conditions, please feel free to reach out to us. We're here to help
-            clarify any aspect of our agreement.
+            Conditions, please feel free to reach out to us. We&apos;re here to
+            help clarify any aspect of our agreement.
           </p>
           <a
             href="mailto:support@fundingoptimal.com"
