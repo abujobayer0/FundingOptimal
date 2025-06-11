@@ -3,10 +3,10 @@
 import React from 'react';
 import { TwoColumnSection } from '@/components';
 import { TargetIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 export const MissionSection = () => {
-  const router = useRouter();
+  const { scrollTo } = useScrollTo();
   return (
     <TwoColumnSection
       icon={TargetIcon}
@@ -28,7 +28,9 @@ Join us in shaping the future of trading, one smart decision at a time."
       buttonText="Get Funded"
       imageSrc="/mission.png"
       imageAlt="About Us"
-      onButtonClick={() => router.push('/#get-funded')}
+      onButtonClick={() => {
+        scrollTo('get-funded');
+      }}
     />
   );
 };

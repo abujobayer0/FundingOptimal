@@ -1,10 +1,10 @@
 'use client';
 import { motion } from 'motion/react';
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const CTA = () => {
-  const router = useRouter();
+  const { scrollTo } = useScrollTo();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -50,7 +50,9 @@ const CTA = () => {
           <button
             className="group relative text-xl bg-primary/10 text-white px-8 py-2 border border-primary/20 rounded-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:bg-primary/5"
             style={{ fontWeight: 500 }}
-            onClick={() => router.push('/#get-funded')}
+            onClick={() => {
+              scrollTo('get-funded');
+            }}
           >
             <span className="relative z-10 transition-all duration-300 group-hover:text-primary">
               Get Funded

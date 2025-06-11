@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { AccountSizeSlider } from '../../ui';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const challengePricing = {
   'Two Step Challenge': {
@@ -48,7 +49,7 @@ const ProfitCalculator = () => {
   const [profitMode, setProfitMode] = useState(10);
   const [calculatedProfit, setCalculatedProfit] = useState(10000);
   const [challengeType, setChallengeType] = useState('Two Step Challenge');
-
+  const { scrollTo } = useScrollTo();
   const getAvailableAccountSizes = (type: string) => {
     const pricing = challengePricing[type as keyof typeof challengePricing];
     return Object.keys(pricing)
@@ -170,7 +171,12 @@ const ProfitCalculator = () => {
               </p>
             </div>
 
-            <button className="group relative w-full bg-primary text-black py-2 sm:py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 text-sm sm:text-base overflow-hidden before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-700 hover:before:left-full before:skew-x-12">
+            <button
+              onClick={() => {
+                scrollTo('get-funded');
+              }}
+              className="group relative w-full bg-primary text-black py-2 sm:py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 text-sm sm:text-base overflow-hidden before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-700 hover:before:left-full before:skew-x-12"
+            >
               Get Funded Now
             </button>
           </div>

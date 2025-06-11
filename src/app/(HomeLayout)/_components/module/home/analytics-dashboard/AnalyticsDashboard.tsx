@@ -19,6 +19,7 @@ import MetricCard from './MetricCard';
 import OverviewChart from './OverviewChart';
 import WinRateGauge from './WinRateGauge';
 import { ActionCard } from '../../../ui/card';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const AnalyticsDashboard: React.FC<DashboardProps> = ({
   title = 'FundingOptimal {Analytics Dashboard}',
@@ -29,7 +30,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
   const [activeTab, setActiveTab] = useState('Current Equity');
   const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-
+  const { scrollTo } = useScrollTo();
   const handleMenuItemClick = (item: SidebarItemProps) => {
     setActiveMenuItem(item.label);
     setIsMobileSidebarOpen(false);
@@ -285,6 +286,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
       <OutlineButton
         className="my-8 h-12 mx-auto border text-white border-primary"
         style={{ borderRadius: 8 }}
+        onClick={() => scrollTo('get-funded')}
       >
         Get Funded Now
       </OutlineButton>

@@ -5,10 +5,10 @@ import { motion } from 'motion/react';
 import { OutlineButton } from '@/components';
 import { GradientButton } from '@/components';
 import { SectionHeader } from '../../ui';
-import { useRouter } from 'next/navigation';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 export const HeroSection = () => {
-  const router = useRouter();
+  const { scrollTo } = useScrollTo();
   return (
     <div className="text-center space-y-8">
       <SectionHeader
@@ -19,7 +19,9 @@ export const HeroSection = () => {
       />
       <motion.div className="flex flex-col sm:flex-row items-center justify-center sm:space-y-0 sm:space-x-6">
         <GradientButton
-          onClick={() => router.push('/#get-funded')}
+          onClick={() => {
+            scrollTo('get-funded');
+          }}
           animation={false}
           showIcon
         >

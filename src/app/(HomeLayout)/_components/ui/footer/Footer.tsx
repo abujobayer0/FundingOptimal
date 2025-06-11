@@ -3,8 +3,10 @@ import React from 'react';
 import { motion } from 'motion/react';
 import FooterBottom from './FooterBottom';
 import Background from './Background';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const FooterBanner = () => {
+  const { scrollTo } = useScrollTo();
   return (
     <div className="relative w-full">
       <Background />
@@ -33,6 +35,9 @@ const FooterBanner = () => {
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          onClick={() => {
+            scrollTo('get-funded');
+          }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="w-full py-2 max-w-[140px] justify-center flex mx-auto px-3 border border-primary/30 bg-primary/10 text-white rounded-lg text-xs sm:text-sm relative overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:bg-primary/5"
         >

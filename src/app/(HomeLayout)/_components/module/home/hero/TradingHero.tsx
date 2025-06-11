@@ -7,6 +7,7 @@ import TrustpilotRating from '../../../ui/TrustPilot';
 import TitleWithIcon from '../../../ui/TitleWithIcon';
 import GradientButton from '../../../../../../components/ui/button/GradientButton';
 import OutlineButton from '../../../../../../components/ui/button/OutlineButton';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -33,7 +34,7 @@ const useCountAnimation = (targetValue: number) => {
 const TradingHero = () => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-
+  const { scrollTo } = useScrollTo();
   const tradersCount = useCountAnimation(1000);
   const payoutsCount = useCountAnimation(100);
   const countriesCount = useCountAnimation(100);
@@ -103,7 +104,9 @@ const TradingHero = () => {
                 transition={{ duration: 0.8, delay: 1.3 }}
                 className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
               >
-                <GradientButton showIcon>Get Funded Now</GradientButton>
+                <GradientButton showIcon onClick={() => scrollTo('get-funded')}>
+                  Get Funded Now
+                </GradientButton>
 
                 <OutlineButton showIcon>Learn More</OutlineButton>
               </motion.div>

@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { AccountSizeSlider } from "../../../ui";
+import React, { useState } from 'react';
+import { AccountSizeSlider } from '../../../ui';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const ProfitCalculator = () => {
   const [accountSize, setAccountSize] = useState(100000);
   const [profitMode, setProfitMode] = useState(10);
   const [calculatedProfit, setCalculatedProfit] = useState(10000);
-
+  const { scrollTo } = useScrollTo();
   const handleAccountSizeChange = (newAccountSize: number) => {
     setAccountSize(newAccountSize);
     // Recalculate profit when account size changes
@@ -28,7 +29,7 @@ const ProfitCalculator = () => {
             Calculator
           </span>
           <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-white pt-4">
-            How Much Can You Earn As{" "}
+            How Much Can You Earn As{' '}
             <span className="text-primary">Funded Trader?</span>
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-white">
@@ -67,7 +68,12 @@ const ProfitCalculator = () => {
               </p>
             </div>
 
-            <button className="group relative w-full bg-primary text-black py-2 sm:py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 text-sm sm:text-base overflow-hidden before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-700 hover:before:left-full before:skew-x-12">
+            <button
+              onClick={() => {
+                scrollTo('get-funded');
+              }}
+              className="group relative w-full bg-primary text-black py-2 sm:py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 text-sm sm:text-base overflow-hidden before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-700 hover:before:left-full before:skew-x-12"
+            >
               Get Funded Now
             </button>
           </div>
