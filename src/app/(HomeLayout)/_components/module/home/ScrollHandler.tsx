@@ -1,11 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function ScrollHandler() {
-  const searchParams = useSearchParams();
-
+function ScrollHandlerContent() {
   useEffect(() => {
     // Get the hash from the URL
     const hash = window.location.hash;
@@ -21,7 +19,15 @@ export default function ScrollHandler() {
         }
       }, 100);
     }
-  }, [searchParams]);
+  }, []);
 
   return null;
+}
+
+export default function ScrollHandler() {
+  return (
+    <Suspense fallback={null}>
+      <ScrollHandlerContent />
+    </Suspense>
+  );
 }
