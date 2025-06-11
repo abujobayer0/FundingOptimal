@@ -34,6 +34,8 @@ export const generateAccessToken = (
     issuer: 'fundingoptimal',
     audience: 'fundingoptimal-users',
   };
+  // eslint-disable-next-line
+  // @typescript-eslint/no-explicit-any
   return jwt.sign(payload, JWT_SECRET, options as any);
 };
 
@@ -50,6 +52,8 @@ export const generateRefreshToken = (
     issuer: 'fundingoptimal',
     audience: 'fundingoptimal-users',
   };
+  // eslint-disable-next-line
+  // @typescript-eslint/no-explicit-any
   return jwt.sign(payload, JWT_REFRESH_SECRET, options as any);
 };
 

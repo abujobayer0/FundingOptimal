@@ -150,6 +150,8 @@ export class AuthService {
   ): Promise<IUser | null> {
     await connectDB();
 
+    // @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line
     const { password, ...safeUpdateData } = updateData;
 
     return User.findByIdAndUpdate(userId, safeUpdateData, {

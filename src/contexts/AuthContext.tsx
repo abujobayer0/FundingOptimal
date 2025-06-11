@@ -25,13 +25,21 @@ interface AuthContextType {
   login: (
     email: string,
     password: string
-  ) => Promise<{ success: boolean; message?: string; errors?: any[] }>;
-  register: (
-    data: RegisterData
-  ) => Promise<{ success: boolean; message?: string; errors?: any[] }>;
-  updateUser: (
-    data: UpdateUserData
-  ) => Promise<{ success: boolean; message?: string; errors?: any[] }>;
+  ) => Promise<{
+    success: boolean;
+    message?: string;
+    errors?: { field: string; message: string }[];
+  }>;
+  register: (data: RegisterData) => Promise<{
+    success: boolean;
+    message?: string;
+    errors?: { field: string; message: string }[];
+  }>;
+  updateUser: (data: UpdateUserData) => Promise<{
+    success: boolean;
+    message?: string;
+    errors?: { field: string; message: string }[];
+  }>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -140,8 +148,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         message:
           (error as unknown as { response: { data: { message: string } } })
             .response?.data?.message || 'Network error. Please try again.',
-        errors: (error as unknown as { response: { data: { errors: any[] } } })
-          .response?.data?.errors || [
+        errors: (
+          error as unknown as {
+            response: {
+              data: { errors: { field: string; message: string }[] };
+            };
+          }
+        ).response?.data?.errors || [
           { field: 'general', message: 'Network error' },
         ],
       };
@@ -170,8 +183,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         message:
           (error as unknown as { response: { data: { message: string } } })
             .response?.data?.message || 'Network error. Please try again.',
-        errors: (error as unknown as { response: { data: { errors: any[] } } })
-          .response?.data?.errors || [
+        errors: (
+          error as unknown as {
+            response: {
+              data: { errors: { field: string; message: string }[] };
+            };
+          }
+        ).response?.data?.errors || [
           { field: 'general', message: 'Network error' },
         ],
       };
@@ -210,8 +228,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         message:
           (error as unknown as { response: { data: { message: string } } })
             .response?.data?.message || 'Network error. Please try again.',
-        errors: (error as unknown as { response: { data: { errors: any[] } } })
-          .response?.data?.errors || [
+        errors: (
+          error as unknown as {
+            response: {
+              data: { errors: { field: string; message: string }[] };
+            };
+          }
+        ).response?.data?.errors || [
           { field: 'general', message: 'Network error' },
         ],
       };
