@@ -211,10 +211,10 @@ const Navbar = () => {
                         transition: { duration: 0.2, ease: 'easeOut' },
                       }}
                       whileTap={{ scale: 0.95 }}
-                      className="group relative rounded-lg bg-transparent border-2 border-primary px-6 py-2.5 text-sm font-medium text-primary shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-primary hover:text-black flex items-center gap-2"
+                      className="group relative rounded-lg bg-transparent border border-white px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-white/10 hover:text-white flex items-center gap-2"
                     >
                       {/* Animated background */}
-                      <div className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left" />
+                      <div className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left" />
 
                       {/* Glow effect */}
                       <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_20px_rgba(18,255,142,0.3)]" />
@@ -487,15 +487,15 @@ const Navbar = () => {
                             transition: { duration: 0.2, ease: 'easeOut' },
                           }}
                           whileTap={{ scale: 0.98 }}
-                          className="group relative w-full rounded-lg bg-transparent border-2 border-primary px-4 py-3 text-sm font-medium text-primary shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-primary hover:text-black flex items-center justify-center gap-2"
+                          className="group relative w-full rounded-lg bg-transparent border border-white px-4 py-3 text-sm font-medium text-white shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-white/10 hover:text-white flex items-center justify-center gap-2"
                         >
                           {/* Animated background */}
-                          <div className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left" />
+                          <div className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left" />
 
                           {/* Glow effect */}
                           <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_20px_rgba(18,255,142,0.3)]" />
 
-                          <LogIn className="w-4 h-4" />
+                          <LogIn className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                           <span className="relative z-10 transition-colors duration-300">
                             Login
                           </span>
@@ -518,7 +518,7 @@ const Navbar = () => {
                             transition: { duration: 0.2, ease: 'easeOut' },
                           }}
                           whileTap={{ scale: 0.98 }}
-                          className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:shadow-[0_0_20px_rgba(18,255,142,0.4)]"
+                          className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:shadow-[0_0_20px_rgba(18,255,142,0.4)] flex items-center justify-center gap-2"
                         >
                           {/* Animated background gradient */}
                           <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -526,7 +526,7 @@ const Navbar = () => {
                           {/* Shimmer effect */}
                           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
 
-                          <UserPlus className="w-4 h-4" />
+                          <UserPlus className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                           <span className="relative z-10 transition-colors duration-300">
                             Sign Up
                           </span>
