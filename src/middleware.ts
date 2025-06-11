@@ -86,7 +86,6 @@ export function middleware(request: NextRequest) {
   // Handle auth routes (redirect if already authenticated)
   if (isAuthRoute && accessToken) {
     try {
-      const payload = verifyAccessToken(accessToken);
       // User is authenticated, redirect to profile
       console.log('✅ User already authenticated, redirecting to profile');
       return NextResponse.redirect(new URL('/profile', request.url));
