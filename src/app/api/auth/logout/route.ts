@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getTokensFromRequest, createSuccessResponse } from '@/lib/api-auth';
 import { clearTokenCookies } from '@/lib/cookies';
 import { AuthService } from '@/lib/auth';

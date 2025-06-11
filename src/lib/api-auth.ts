@@ -28,6 +28,7 @@ export const verifyRequestAuth = (request: NextRequest): JWTPayload => {
   try {
     return verifyAccessToken(accessToken);
   } catch (error) {
+    console.error('Invalid or expired access token:', error);
     throw new Error('Invalid or expired access token');
   }
 };
@@ -49,7 +50,7 @@ export const createAuthErrorResponse = (
 
 // Create success response
 export const createSuccessResponse = (
-  data: any,
+  data: Record<string, unknown>,
   message: string = 'Success',
   status: number = 200
 ) => {
@@ -66,7 +67,7 @@ export const createSuccessResponse = (
 // Create error response
 export const createErrorResponse = (
   message: string,
-  errors: any[] = [],
+  errors: { field: string; message: string }[] = [],
   status: number = 500
 ) => {
   return NextResponse.json(
