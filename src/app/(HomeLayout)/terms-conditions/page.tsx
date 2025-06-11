@@ -19,7 +19,6 @@ import {
   Ban,
   Link,
   Database,
-  Users,
   Phone,
   Globe,
   Gavel,
@@ -538,10 +537,10 @@ Consistent traders usually limit themselves to a few assets rather than attempti
 Keep Yourself Updated on Global Events:
 Market movements are influenced by far more than just charts and technical indicators. Staying informed about economic developments, geopolitical events, technological innovations, and other global factors is crucial. This broader awareness helps you put market trends into context and adjust your strategy to evolving conditions. Being well-informed about the bigger picture is key to making sound decisions and staying competitive in the ever-changing financial landscape.
 
-Take Regular Breaks
+Take Regular Breaks   
 The importance of taking breaks while trading cannot be emphasized enough. When you're constantly exposed to market information and your emotions are running high, it becomes easy to make hasty decisions that could negatively impact your results. Overtrading and obsessively watching charts often lead to a destructive cycle of impulsive moves that undermine your success.
 
-To prevent this, it's crucial to step away periodically to clear your mind and regain focus. Taking breaks isn't a sign of laziness or lack of interest—it's a smart, strategic choice. By pausing and distancing yourself from the screen, you give yourself time to review your trades thoughtfully, assess whether your plan is still effective, and realign with your objectives.
+To prevent this, it&apos;s crucial to step away periodically to clear your mind and regain focus. Taking breaks isn&apos;t a sign of laziness or lack of interest—it's a smart, strategic choice. By pausing and distancing yourself from the screen, you give yourself time to review your trades thoughtfully, assess whether your plan is still effective, and realign with your objectives.
 
 Successful trading demands strong mental resilience, self-control, and patience. Scheduling deliberate breaks will sharpen your concentration and decision-making when you return. If you feel fatigued or mentally unfocused, taking time off will help you come back refreshed and ready to trade more effectively.
 

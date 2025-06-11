@@ -48,7 +48,8 @@ const FooterBottom = () => {
                 </Link>
 
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/fundingoptimal/"
+                  target="_blank"
                   className="relative w-8 h-8 bg-white/5 backdrop-blur-sm hover:border-primary/50 rounded-lg flex items-center justify-center transition-all duration-500 group hover:scale-110 hover:-rotate-3 hover:shadow-lg hover:shadow-primary/25"
                   aria-label="Instagram"
                 >
