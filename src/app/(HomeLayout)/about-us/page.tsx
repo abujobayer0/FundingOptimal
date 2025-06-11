@@ -1,14 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   HeroSection,
   MissionSection,
   VisionSection,
   FeaturesSection,
   AffiliateProgramSection,
-} from "../_components/module/aboutUs";
-import { SectionWrapper } from "../_components";
+  StorySection,
+  ValuesSection,
+} from '../_components/module/aboutUs';
+import { SectionWrapper } from '../_components';
 
 const AboutUsPage = () => {
   return (
@@ -23,6 +25,13 @@ const AboutUsPage = () => {
 
       <SectionWrapper>
         <VisionSection />
+      </SectionWrapper>
+      <SectionWrapper>
+        <ValuesSection />
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <StorySection />
       </SectionWrapper>
 
       <SectionWrapper fullWidth containerized={false}>
