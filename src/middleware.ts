@@ -7,89 +7,139 @@ const validateAccessToken = (accessToken: string) => {
   try {
     return verifyAccessToken(accessToken);
   } catch (error) {
-    console.error(
-      '❌ Token validation failed:',
-      error instanceof Error ? error.message : 'Unknown error'
-    );
+    const isDev = process.env.NODE_ENV === 'development';
+    if (isDev) {
+      console.error(
+        '❌ Token validation failed:',
+        error instanceof Error ? error.message : 'Unknown error'
+      );
+    }
     return null;
   }
 };
 
+// Helper to check if path requires authentication
+const isAuthRoute = (path: string) => path.startsWith('/auth');
+const isProtectedRoute = (path: string) => path.startsWith('/profile');
+const isApiRoute = (path: string) => path.startsWith('/api');
+
+// Helper to create redirect response with proper logging
+const createRedirect = (url: string, request: NextRequest, reason: string) => {
+  const isDev = process.env.NODE_ENV === 'development';
+  if (isDev) {
+    console.log(`🔄 Redirecting to ${url}: ${reason}`);
+  }
+  return NextResponse.redirect(new URL(url, request.url));
+};
+
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
+  const isDev = process.env.NODE_ENV === 'development';
 
-  // Define public and protected paths
-  const isPublicPath = path.startsWith('/auth');
-  const isProtectedPath = path.startsWith('/profile');
+  // Skip middleware for API routes (they handle their own auth)
+  if (isApiRoute(path)) {
+    return NextResponse.next();
+  }
 
-  // Get token from cookies
+  // Define route types
+  const isPublicPath = isAuthRoute(path);
+  const isProtectedPath = isProtectedRoute(path);
+
+  // Get tokens from cookies
   const token = request.cookies.get('accessToken')?.value || null;
   const refreshToken = request.cookies.get('refreshToken')?.value || null;
 
-  // Debug logging in development
-  if (process.env.NODE_ENV === 'development') {
+  // Debug logging in development only
+  if (isDev) {
     console.log('🔐 Middleware:', {
       path,
       hasToken: !!token,
       hasRefreshToken: !!refreshToken,
       isPublic: isPublicPath,
       isProtected: isProtectedPath,
-      tokenLength: token?.length || 0,
+      userAgent: request.headers.get('user-agent')?.substring(0, 50) + '...',
     });
   }
 
-  // Validate token if present
+  // Validate access token if present
   let tokenPayload = null;
+  let hasValidToken = false;
+
   if (token) {
     tokenPayload = validateAccessToken(token);
-    if (!tokenPayload && refreshToken) {
-      // Invalid access token but refresh token exists, let client handle refresh
-      console.log(
-        '🔄 Invalid access token but refresh token exists, allowing for client-side refresh'
-      );
-    } else if (!tokenPayload) {
-      // Invalid token and no refresh token, treat as unauthenticated
-      console.log('❌ Invalid token with no refresh token available');
+    hasValidToken = !!tokenPayload;
+
+    if (isDev && tokenPayload) {
+      console.log('✅ Valid token for user:', tokenPayload.userId);
     }
   }
 
-  // Redirect authenticated users from public (auth) routes to profile
-  if (isPublicPath && token && tokenPayload) {
-    console.log(
-      '✅ Authenticated user accessing auth route, redirecting to profile'
-    );
-    return NextResponse.redirect(new URL('/profile', request.url));
-  }
-
-  // Redirect unauthenticated users from protected routes to login
-  if (isProtectedPath && !token) {
-    console.log(
-      '🚫 Unauthenticated user accessing protected route, redirecting to login'
-    );
-    return NextResponse.redirect(new URL('/auth/login', request.url));
-  }
-
-  // If token exists but is invalid and no refresh token, redirect to login
-  if (isProtectedPath && token && !tokenPayload && !refreshToken) {
-    console.log(
-      '🚫 Invalid token with no refresh option, redirecting to login'
-    );
-    return NextResponse.redirect(new URL('/auth/login', request.url));
-  }
-
-  // Log successful access
-  if (tokenPayload) {
-    console.log(
-      '✅ Valid access for user:',
-      tokenPayload.userId,
-      'to path:',
-      path
+  // Handle authenticated users accessing auth routes
+  if (isPublicPath && hasValidToken) {
+    if (isDev) {
+      console.log('✅ Authenticated user redirected from auth route');
+    }
+    return createRedirect(
+      '/profile',
+      request,
+      'authenticated user on auth route'
     );
   }
 
+  // Handle unauthenticated users accessing protected routes
+  if (isProtectedPath) {
+    // No token at all - redirect to login
+    if (!token) {
+      return createRedirect('/auth/login', request, 'no access token');
+    }
+
+    // Invalid token but no refresh token - redirect to login
+    if (!hasValidToken && !refreshToken) {
+      if (isDev) {
+        console.log('🚫 Invalid token with no refresh option');
+      }
+      return createRedirect(
+        '/auth/login',
+        request,
+        'invalid token, no refresh available'
+      );
+    }
+
+    // Invalid token but has refresh token - allow through for client-side refresh
+    if (!hasValidToken && refreshToken) {
+      if (isDev) {
+        console.log(
+          '🔄 Invalid access token, but refresh token available - allowing for client refresh'
+        );
+      }
+      // Let the client handle the refresh
+      return NextResponse.next();
+    }
+  }
+
+  // Log successful access for debugging
+  if (isDev && tokenPayload && (isProtectedPath || isPublicPath)) {
+    console.log('✅ Access granted:', {
+      userId: tokenPayload.userId,
+      path: path,
+      email: tokenPayload.email,
+    });
+  }
+
+  // Allow request to proceed
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder files
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)',
+  ],
 };

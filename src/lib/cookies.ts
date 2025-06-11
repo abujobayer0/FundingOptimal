@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const COOKIE_DOMAIN = process.env.COOKIE_DOMAIN || 'localhost';
-const NODE_ENV = process.env.NODE_ENV || 'development';
-
 interface CookieOptions {
   httpOnly?: boolean;
   secure?: boolean;
@@ -12,20 +9,67 @@ interface CookieOptions {
   domain?: string;
 }
 
+// Helper to get the correct domain for cookies
+const getCookieDomain = () => {
+  const cookieDomain = process.env.COOKIE_DOMAIN;
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  // In production, only set domain if explicitly configured
+  // This allows cookies to work on subdomains when needed
+  if (isProduction && cookieDomain && cookieDomain !== 'localhost') {
+    return cookieDomain;
+  }
+
+  // Don't set domain for localhost or development
+  return undefined;
+};
+
+// Helper to determine if we should use secure cookies
+const shouldUseSecure = () => {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const forceSecure = process.env.FORCE_SECURE_COOKIES === 'true';
+
+  // Always use secure in production or when explicitly forced
+  return isProduction || forceSecure;
+};
+
+// Helper to get the correct SameSite setting
+const getSameSite = (): 'strict' | 'lax' | 'none' => {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const isSecure = shouldUseSecure();
+
+  // Use 'lax' for better compatibility across domains in production
+  // Use 'strict' only in development or when explicitly configured
+  if (isProduction) {
+    return isSecure ? 'lax' : 'lax';
+  }
+
+  return 'lax';
+};
+
 export const setTokenCookies = (
   response: NextResponse,
   accessToken: string,
   refreshToken: string
 ) => {
-  const isProduction = NODE_ENV === 'production';
+  const isSecure = shouldUseSecure();
+  const sameSite = getSameSite();
+  const domain = getCookieDomain();
 
   const cookieOptions: CookieOptions = {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'strict' : 'lax',
+    secure: isSecure,
+    sameSite,
     path: '/',
-    domain: isProduction ? COOKIE_DOMAIN : undefined,
+    domain,
   };
+
+  console.log('🍪 Setting cookies with options:', {
+    secure: isSecure,
+    sameSite,
+    domain: domain || 'not set',
+    httpOnly: true,
+  });
 
   // Set access token cookie (15 minutes)
   response.cookies.set('accessToken', accessToken, {
@@ -40,50 +84,72 @@ export const setTokenCookies = (
   });
 };
 
-// New client-accessible version (less secure, use only if needed)
+// Client-accessible version with access token readable by JS
 export const setClientAccessibleTokenCookies = (
   response: NextResponse,
   accessToken: string,
   refreshToken: string
 ) => {
-  const isProduction = NODE_ENV === 'production';
+  const isSecure = shouldUseSecure();
+  const sameSite = getSameSite();
+  const domain = getCookieDomain();
 
-  const cookieOptions: CookieOptions = {
-    httpOnly: false, // Allow JavaScript access
-    secure: isProduction,
-    sameSite: isProduction ? 'strict' : 'lax',
-    path: '/',
-    domain: isProduction ? COOKIE_DOMAIN : undefined,
-  };
+  console.log('🍪 Setting client-accessible cookies with options:', {
+    secure: isSecure,
+    sameSite,
+    domain: domain || 'not set',
+  });
 
-  // Set access token cookie (15 minutes)
+  // Set access token cookie (readable by JS for Authorization headers)
   response.cookies.set('accessToken', accessToken, {
-    ...cookieOptions,
+    httpOnly: false, // Allow JavaScript access
+    secure: isSecure,
+    sameSite,
+    path: '/',
+    domain,
     maxAge: 15 * 60, // 15 minutes in seconds
   });
 
-  // Set refresh token cookie (7 days) - keep this HTTP-only for security
+  // Set refresh token cookie (HTTP-only for security)
   response.cookies.set('refreshToken', refreshToken, {
-    ...cookieOptions,
     httpOnly: true, // Keep refresh token secure
+    secure: isSecure,
+    sameSite,
+    path: '/',
+    domain,
     maxAge: 7 * 24 * 60 * 60, // 7 days in seconds
   });
 };
 
 export const clearTokenCookies = (response: NextResponse) => {
-  const isProduction = NODE_ENV === 'production';
+  const isSecure = shouldUseSecure();
+  const sameSite = getSameSite();
+  const domain = getCookieDomain();
 
   const cookieOptions: CookieOptions = {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'strict' : 'lax',
+    secure: isSecure,
+    sameSite,
     path: '/',
-    domain: isProduction ? COOKIE_DOMAIN : undefined,
+    domain,
     maxAge: 0,
   };
 
+  console.log('🗑️ Clearing cookies with options:', {
+    secure: isSecure,
+    sameSite,
+    domain: domain || 'not set',
+  });
+
+  // Clear both with httpOnly true and false to ensure cleanup
   response.cookies.set('accessToken', '', cookieOptions);
   response.cookies.set('refreshToken', '', cookieOptions);
+
+  // Also clear non-httpOnly version of access token
+  response.cookies.set('accessToken', '', {
+    ...cookieOptions,
+    httpOnly: false,
+  });
 };
 
 export const getTokensFromCookies = (request: NextRequest) => {
