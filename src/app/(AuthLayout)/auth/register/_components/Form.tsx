@@ -5,7 +5,7 @@ import { itemVariants } from '../_animations/form.animation';
 import { containerVariants } from '../_animations/form.animation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAuth } from '@/contexts/AuthContext';
+import { useClientAuth } from '@/hooks/useClientAuth';
 import { useRouter } from 'next/navigation';
 
 import {
@@ -19,7 +19,7 @@ const Form = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { register } = useAuth();
+  const { register } = useClientAuth();
   const router = useRouter();
 
   const form = useForm<RegisterFormValues>({

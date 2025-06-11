@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginFormValues } from '../_validation/form.validation';
 import { loginSchema } from '../_validation/form.validation';
 import { containerVariants, itemVariants } from '../_animations/form.animation';
-import { useAuth } from '@/contexts/AuthContext';
+import { useClientAuth } from '@/hooks/useClientAuth';
 import { useRouter } from 'next/navigation';
 
 const Form = () => {
@@ -14,7 +14,7 @@ const Form = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { login } = useAuth();
+  const { login } = useClientAuth();
   const router = useRouter();
 
   const form = useForm<LoginFormValues>({

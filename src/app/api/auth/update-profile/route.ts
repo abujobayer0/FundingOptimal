@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { z } from 'zod';
-import { getTokensFromCookies } from '@/lib/cookies';
-import { verifyAccessToken } from '@/lib/jwt';
+import {
+  withAuth,
+  createSuccessResponse,
+  createErrorResponse,
+} from '@/lib/api-auth';
 import { AuthService } from '@/lib/auth';
 
 // Validation schema for profile update
@@ -22,125 +25,73 @@ const updateProfileSchema = z.object({
 });
 
 export async function PUT(request: NextRequest) {
-  try {
-    // Get and verify access token
-    const { accessToken } = getTokensFromCookies(request);
+  return withAuth(request, async (request, payload) => {
+    try {
+      // Parse request body
+      const body = await request.json();
 
-    if (!accessToken) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Access token not found',
-          errors: [{ field: 'auth', message: 'Authentication required' }],
-        },
-        { status: 401 }
+      // Validate request body
+      const validationResult = updateProfileSchema.safeParse(body);
+      if (!validationResult.success) {
+        const errors = validationResult.error.errors.map((err) => ({
+          field: err.path.join('.'),
+          message: err.message,
+        }));
+        return createErrorResponse('Validation failed', errors, 400);
+      }
+
+      const updateData = validationResult.data;
+
+      // Clean phone number (remove if empty string)
+      if (updateData.phone === '') {
+        updateData.phone = undefined;
+      }
+
+      // Update user profile using the verified user ID from token
+      const updatedUser = await AuthService.updateUser(
+        payload.userId,
+        updateData
       );
-    }
 
-    // Verify and decode token
-    const payload = verifyAccessToken(accessToken);
+      if (!updatedUser) {
+        return createErrorResponse(
+          'User not found',
+          [{ field: 'user', message: 'User not found' }],
+          404
+        );
+      }
 
-    // Parse request body
-    const body = await request.json();
-
-    // Validate request body
-    const validationResult = updateProfileSchema.safeParse(body);
-    if (!validationResult.success) {
-      return NextResponse.json(
+      // Return updated user data
+      return createSuccessResponse(
         {
-          success: false,
-          message: 'Validation failed',
-          errors: validationResult.error.errors.map((err) => ({
-            field: err.path.join('.'),
-            message: err.message,
-          })),
+          user: {
+            id: updatedUser._id.toString(),
+            firstName: updatedUser.firstName,
+            lastName: updatedUser.lastName,
+            email: updatedUser.email,
+            phone: updatedUser.phone,
+          },
         },
-        { status: 400 }
+        'Profile updated successfully'
       );
+    } catch (error: unknown) {
+      console.error('Update profile error:', error);
+
+      // Handle validation errors from MongoDB
+      if (error instanceof Error && error.name === 'ValidationError') {
+        const errors = Object.values(
+          (error as unknown as { errors: { path: string; message: string }[] })
+            .errors
+        ).map((err) => ({
+          field: err.path,
+          message: err.message,
+        }));
+
+        return createErrorResponse('Validation failed', errors, 400);
+      }
+
+      // Generic error response
+      return createErrorResponse('Failed to update profile. Please try again.');
     }
-
-    const updateData = validationResult.data;
-
-    // Clean phone number (remove if empty string)
-    if (updateData.phone === '') {
-      updateData.phone = undefined;
-    }
-
-    // Update user profile
-    const updatedUser = await AuthService.updateUser(
-      payload.userId,
-      updateData
-    );
-
-    if (!updatedUser) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'User not found',
-          errors: [{ field: 'user', message: 'User not found' }],
-        },
-        { status: 404 }
-      );
-    }
-
-    // Return updated user data
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Profile updated successfully',
-        user: {
-          id: updatedUser._id.toString(),
-          firstName: updatedUser.firstName,
-          lastName: updatedUser.lastName,
-          email: updatedUser.email,
-          phone: updatedUser.phone,
-        },
-      },
-      { status: 200 }
-    );
-  } catch (error: unknown) {
-    console.error('Update profile error:', error);
-
-    // Handle specific errors
-    if (error instanceof Error && error.message === 'Invalid access token') {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Invalid or expired access token',
-          errors: [{ field: 'auth', message: 'Session expired' }],
-        },
-        { status: 401 }
-      );
-    }
-
-    // Handle validation errors from MongoDB
-    if (error instanceof Error && error.name === 'ValidationError') {
-      const errors = Object.values(
-        (error as unknown as { errors: { path: string; message: string }[] })
-          .errors
-      ).map((err) => ({
-        field: err.path,
-        message: err.message,
-      }));
-
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Validation failed',
-          errors,
-        },
-        { status: 400 }
-      );
-    }
-
-    // Generic error response
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Failed to update profile. Please try again.',
-        errors: [{ field: 'general', message: 'An unexpected error occurred' }],
-      },
-      { status: 500 }
-    );
-  }
+  });
 }

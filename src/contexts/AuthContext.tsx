@@ -8,6 +8,12 @@ import React, {
   ReactNode,
 } from 'react';
 import axios from 'axios';
+import {
+  getAccessToken,
+  getRefreshToken,
+  clearAuthTokens,
+  isAuthenticated as checkIsAuthenticated,
+} from '@/lib/client-cookies';
 
 interface User {
   id: string;
@@ -74,7 +80,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const isAuthenticated = user !== null;
+  // Use client-cookies for authentication status
+  const isAuthenticated = checkIsAuthenticated() && user !== null;
 
   // Configure Axios to include credentials (cookies) with requests
   const axiosInstance = axios.create({
@@ -82,29 +89,101 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     withCredentials: true, // Include cookies for authentication
   });
 
+  // Add request interceptor to include access token in headers (optional, since cookies are already included)
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const accessToken = getAccessToken();
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  // Add response interceptor to handle token refresh
+  axiosInstance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      const originalRequest = error.config;
+
+      if (error.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+
+        const refreshToken = getRefreshToken();
+        if (refreshToken) {
+          const refreshSuccess = await refreshTokens();
+          if (refreshSuccess) {
+            // Retry original request with new token
+            const newAccessToken = getAccessToken();
+            if (newAccessToken) {
+              originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+              return axiosInstance(originalRequest);
+            }
+          }
+        }
+      }
+
+      return Promise.reject(error);
+    }
+  );
+
   // Check authentication status on app load
   useEffect(() => {
     checkAuthStatus();
   }, []);
 
+  // Also check when tokens change
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const hasTokens = checkIsAuthenticated();
+      if (!hasTokens && user) {
+        // Tokens were cleared, log out user
+        setUser(null);
+      } else if (hasTokens && !user) {
+        // Tokens exist but no user, check auth status
+        checkAuthStatus();
+      }
+    }, 1000); // Check every second
+
+    return () => clearInterval(interval);
+  }, [user]);
+
   const checkAuthStatus = async () => {
     try {
+      // Check if we have tokens first
+      if (!checkIsAuthenticated()) {
+        setUser(null);
+        setIsLoading(false);
+        return;
+      }
+
       const response = await axiosInstance.get('/me');
       const data = response.data;
 
       if (data.success && data.user) {
         setUser(data.user);
+      } else {
+        setUser(null);
       }
     } catch (error: unknown) {
+      console.error('Auth check failed:', error);
+
       if (
         error instanceof Error &&
         (error as unknown as { response: { status: number } }).response
           ?.status === 401
       ) {
         // Try to refresh token
-        await refreshTokens();
+        const refreshSuccess = await refreshTokens();
+        if (!refreshSuccess) {
+          setUser(null);
+          clearAuthTokens();
+        }
       } else {
-        console.error('Auth check failed:', error);
+        setUser(null);
       }
     } finally {
       setIsLoading(false);
@@ -113,6 +192,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const refreshTokens = async () => {
     try {
+      const refreshToken = getRefreshToken();
+      if (!refreshToken) {
+        return false;
+      }
+
       const response = await axiosInstance.post('/refresh');
       const data = response.data;
 
@@ -122,6 +206,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     } catch (error) {
       console.error('Token refresh failed:', error);
+      clearAuthTokens();
     }
     return false;
   };
@@ -133,6 +218,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       if (data.success) {
         setUser(data.user);
+        // Tokens are automatically set by the server via cookies
         return { success: true, message: data.message };
       } else {
         return {
@@ -168,6 +254,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       if (result.success) {
         setUser(result.user);
+        // Tokens are automatically set by the server via cookies
         return { success: true, message: result.message };
       } else {
         return {
@@ -202,6 +289,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
+      // Clear client-side tokens
+      clearAuthTokens();
       setUser(null);
     }
   };

@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 import { User, LogOut, LogIn, UserPlus } from 'lucide-react';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
-import { useAuth } from '@/contexts/AuthContext';
+import { useClientAuth } from '@/hooks/useClientAuth';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout } = useClientAuth();
 
   // Handle scroll behavior for navbar visibility
   useEffect(() => {
