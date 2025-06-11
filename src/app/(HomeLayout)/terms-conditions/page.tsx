@@ -381,10 +381,10 @@ You may not use the service:
 • To harass, threaten, demean, abuse, defame, or discriminate against anyone based on gender, sexual orientation, religion, ethnicity, race, age, nationality, or disability.
 • To submit inaccurate, misleading, or false information.
 • To upload or spread any viruses, malware, or other harmful code that could affect the functionality or operation of this site, related websites, or the wider internet.
-• To collect, store, or track others' personal information without consent.
+• To collect, store, or track others&apos; personal information without consent.
 • To engage in spamming, phishing, deceptive practices, data scraping, or unauthorized data crawling.
 • For any indecent, offensive, or immoral purposes.
-• To attempt to bypass or disable any of the site's security features or protections.
+• To attempt to bypass or disable any of the site&apos;s security features or protections.
 
 (b) Restrictions for Proprietary Traders
 Individuals affiliated with proprietary trading firms—including owners, staff, or representatives—are expressly prohibited from using FundingOptimal for trading.
