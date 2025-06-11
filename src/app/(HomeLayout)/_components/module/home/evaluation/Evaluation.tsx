@@ -1,9 +1,9 @@
-"use client";
-import { motion } from "motion/react";
-import React from "react";
-import { evaluationData } from "./data";
-import EvaluationSectionHeader from "./SectionHeader";
-import EvaluationCardComponent from "./EvaluationCard";
+'use client';
+import { motion } from 'motion/react';
+import React from 'react';
+import { evaluationData } from './data';
+import EvaluationSectionHeader from './SectionHeader';
+import EvaluationCardComponent from './EvaluationCard';
 
 const Evaluation: React.FC = () => {
   return (
@@ -19,10 +19,10 @@ const Evaluation: React.FC = () => {
           <EvaluationSectionHeader />
 
           <motion.div
-            className="grid grid-cols-1 items-center md:grid-cols-2 w-full lg:grid-cols-4"
+            className="grid grid-cols-1 items-center md:grid-cols-3 w-full lg:grid-cols-5"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{
               duration: 0.8,
               ease: [0.25, 0.46, 0.45, 0.94],

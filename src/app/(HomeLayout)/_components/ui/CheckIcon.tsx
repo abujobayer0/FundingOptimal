@@ -13,7 +13,7 @@ const CheckIcon: React.FC = () => (
     }}
   >
     <svg
-      className="w-6 h-6 p-1 text-white border rounded-full"
+      className="w-3 h-3 text-white border rounded-full"
       fill="currentColor"
       viewBox="0 0 20 20"
     >

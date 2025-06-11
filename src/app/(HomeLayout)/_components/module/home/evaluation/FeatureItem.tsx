@@ -1,6 +1,6 @@
-import React from "react";
-import CheckIcon from "../../../ui/CheckIcon";
-import { EvaluationFeature } from "../../../../../../types/evaluation.types";
+import React from 'react';
+import CheckIcon from '../../../ui/CheckIcon';
+import { EvaluationFeature } from '../../../../../../types/evaluation.types';
 
 interface FeatureItemProps {
   feature: EvaluationFeature;
@@ -9,7 +9,7 @@ interface FeatureItemProps {
 const FeatureItem: React.FC<FeatureItemProps> = ({ feature }) => (
   <div className="flex items-center gap-4">
     <CheckIcon />
-    <span className="text-[13px]">{feature.text}</span>
+    <span className="text-[12px]">{feature.text}</span>
   </div>
 );
 
