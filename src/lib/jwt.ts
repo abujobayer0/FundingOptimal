@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { Types } from 'mongoose';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-key';
@@ -36,7 +36,7 @@ export const generateAccessToken = (
   };
   // eslint-disable-next-line
   // @typescript-eslint/no-explicit-any
-  return jwt.sign(payload, JWT_SECRET, options as any);
+  return jwt.sign(payload, JWT_SECRET, options as SignOptions);
 };
 
 export const generateRefreshToken = (
@@ -54,7 +54,7 @@ export const generateRefreshToken = (
   };
   // eslint-disable-next-line
   // @typescript-eslint/no-explicit-any
-  return jwt.sign(payload, JWT_REFRESH_SECRET, options as any);
+  return jwt.sign(payload, JWT_REFRESH_SECRET, options as SignOptions);
 };
 
 export const verifyAccessToken = (token: string): JWTPayload => {
@@ -64,6 +64,7 @@ export const verifyAccessToken = (token: string): JWTPayload => {
       audience: 'fundingoptimal-users',
     }) as JWTPayload;
   } catch (error) {
+    console.error('Invalid access token', error);
     throw new Error('Invalid access token');
   }
 };
@@ -75,6 +76,7 @@ export const verifyRefreshToken = (token: string): RefreshTokenPayload => {
       audience: 'fundingoptimal-users',
     }) as RefreshTokenPayload;
   } catch (error) {
+    console.error('Invalid refresh token', error);
     throw new Error('Invalid refresh token');
   }
 };
