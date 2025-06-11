@@ -180,7 +180,7 @@ const Form = () => {
                 htmlFor="phone"
                 className="block text-base text-white mb-1 font-medium"
               >
-                Phone Number (Optional)
+                Phone Number
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white">
@@ -189,7 +189,7 @@ const Form = () => {
                 <input
                   id="phone"
                   type="tel"
-                  placeholder="Phone Number"
+                  placeholder="+1234567890"
                   className={`w-full pl-10 pr-3 py-3 rounded-md bg-[#FFFFFF14] border ${
                     form.formState.errors.phone
                       ? 'border-primary/50 focus:border-primary'
@@ -208,6 +208,9 @@ const Form = () => {
                   {form.formState.errors.phone.message}
                 </motion.p>
               )}
+              <div className="text-xs text-white mt-1">
+                Enter your phone number with country code (e.g., +1234567890)
+              </div>
             </motion.div>
 
             <motion.div variants={itemVariants}>

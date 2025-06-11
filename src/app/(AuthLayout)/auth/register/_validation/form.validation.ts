@@ -29,7 +29,13 @@ export const registerSchema = z
       .regex(/[^A-Za-z0-9]/, {
         message: 'Password must contain at least one special character',
       }),
-    phone: z.string().optional(),
+    phone: z
+      .string()
+      .nonempty('Phone number is required')
+      .min(10, { message: 'Phone number must be at least 10 digits' })
+      .regex(/^[\+]?[\s\-\(\)]*([0-9][\s\-\(\)]*)[\d\s\-\(\)]{8,}$/g, {
+        message: 'Please enter a valid phone number',
+      }),
     confirmPassword: z.string().nonempty('Please confirm your password'),
     terms: z.boolean().refine((value) => value === true, {
       message:
