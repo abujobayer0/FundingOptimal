@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     clearTokenCookies(response);
 
     return response;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Logout error:', error);
 
     // Even if there's an error, we should clear the cookies

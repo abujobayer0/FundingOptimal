@@ -34,6 +34,7 @@ export function middleware(request: NextRequest) {
       verifyAccessToken(accessToken);
       return NextResponse.next();
     } catch (error) {
+      console.error('Invalid token, allow access to auth routes', error);
       // Access token invalid, try refresh token
       if (refreshToken) {
         // Let the client handle token refresh
@@ -54,6 +55,7 @@ export function middleware(request: NextRequest) {
       // User is authenticated, redirect to dashboard or profile
       return NextResponse.redirect(new URL('/profile', request.url));
     } catch (error) {
+      console.error('Invalid token, allow access to auth routes', error);
       // Invalid token, allow access to auth routes
       return NextResponse.next();
     }

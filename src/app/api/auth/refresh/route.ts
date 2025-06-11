@@ -37,13 +37,14 @@ export async function POST(request: NextRequest) {
     setTokenCookies(response, authResult.accessToken, authResult.refreshToken);
 
     return response;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Token refresh error:', error);
 
     // Handle specific errors
     if (
-      error.message === 'Invalid or expired refresh token' ||
-      error.message === 'User not found'
+      error instanceof Error &&
+      (error.message === 'Invalid or expired refresh token' ||
+        error.message === 'User not found')
     ) {
       const response = NextResponse.json(
         {

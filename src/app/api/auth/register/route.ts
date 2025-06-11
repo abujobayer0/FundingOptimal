@@ -50,7 +50,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
+    // @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line
     const { confirmPassword, terms, ...userData } = validationResult.data;
 
     // Register user
@@ -70,17 +71,20 @@ export async function POST(request: NextRequest) {
     setTokenCookies(response, authResult.accessToken, authResult.refreshToken);
 
     return response;
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Enhanced error logging
     console.error('Registration error details:', {
-      message: error.message,
-      name: error.name,
-      stack: error.stack,
-      code: error.code,
+      message: error instanceof Error ? error.message : 'Unknown error',
+      name: error instanceof Error ? error.name : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'Unknown error',
+      code: (error as unknown as { code: number }).code,
     });
 
     // Handle specific errors
-    if (error.message === 'User already exists with this email') {
+    if (
+      error instanceof Error &&
+      error.message === 'User already exists with this email'
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -92,7 +96,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle MongoDB duplicate key error (E11000)
-    if (error.code === 11000 || error.message.includes('E11000')) {
+    if (
+      error instanceof Error &&
+      ((error as unknown as { code: number }).code === 11000 ||
+        (error as unknown as { code: number }).code === 11000)
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -104,8 +112,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle validation errors from MongoDB
-    if (error.name === 'ValidationError') {
-      const errors = Object.values(error.errors).map((err: any) => ({
+    if (error instanceof Error && error.name === 'ValidationError') {
+      const errors = Object.values(
+        (error as unknown as { errors: { path: string; message: string }[] })
+          .errors
+      ).map((err) => ({
         field: err.path,
         message: err.message,
       }));
@@ -122,8 +133,8 @@ export async function POST(request: NextRequest) {
 
     // Handle MongoDB connection errors
     if (
-      error.message.includes('connect') ||
-      error.name === 'MongoNetworkError'
+      error instanceof Error &&
+      (error.message.includes('connect') || error.name === 'MongoNetworkError')
     ) {
       console.error('Database connection error during registration');
       return NextResponse.json(
@@ -137,7 +148,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle JWT signing errors
-    if (error.message.includes('jwt') || error.message.includes('token')) {
+    if (
+      error instanceof Error &&
+      (error.message.includes('jwt') || error.message.includes('token'))
+    ) {
       console.error('JWT token generation error during registration');
       return NextResponse.json(
         {
@@ -150,7 +164,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle bcrypt/password hashing errors
-    if (error.message.includes('hash') || error.message.includes('bcrypt')) {
+    if (
+      error instanceof Error &&
+      (error.message.includes('hash') || error.message.includes('bcrypt'))
+    ) {
       console.error('Password hashing error during registration');
       return NextResponse.json(
         {
@@ -172,7 +189,9 @@ export async function POST(request: NextRequest) {
           {
             field: 'general',
             message: isDevelopment
-              ? `Error: ${error.message}`
+              ? `Error: ${
+                  error instanceof Error ? error.message : 'Unknown error'
+                }`
               : 'An unexpected error occurred',
           },
         ],

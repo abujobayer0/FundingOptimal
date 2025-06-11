@@ -48,10 +48,10 @@ export async function GET(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Get user error:', error);
 
-    if (error.message === 'Invalid access token') {
+    if (error instanceof Error && error.message === 'Invalid access token') {
       return NextResponse.json(
         {
           success: false,

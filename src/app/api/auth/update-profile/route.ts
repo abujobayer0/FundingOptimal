@@ -98,11 +98,11 @@ export async function PUT(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Update profile error:', error);
 
     // Handle specific errors
-    if (error.message === 'Invalid access token') {
+    if (error instanceof Error && error.message === 'Invalid access token') {
       return NextResponse.json(
         {
           success: false,
@@ -114,8 +114,11 @@ export async function PUT(request: NextRequest) {
     }
 
     // Handle validation errors from MongoDB
-    if (error.name === 'ValidationError') {
-      const errors = Object.values(error.errors).map((err: any) => ({
+    if (error instanceof Error && error.name === 'ValidationError') {
+      const errors = Object.values(
+        (error as unknown as { errors: { path: string; message: string }[] })
+          .errors
+      ).map((err) => ({
         field: err.path,
         message: err.message,
       }));

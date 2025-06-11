@@ -87,8 +87,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (data.success && data.user) {
         setUser(data.user);
       }
-    } catch (error: any) {
-      if (error.response?.status === 401) {
+    } catch (error: unknown) {
+      if (
+        error instanceof Error &&
+        (error as unknown as { response: { status: number } }).response
+          ?.status === 401
+      ) {
         // Try to refresh token
         await refreshTokens();
       } else {
@@ -129,13 +133,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           errors: data.errors,
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Login error:', error);
       return {
         success: false,
         message:
-          error.response?.data?.message || 'Network error. Please try again.',
-        errors: error.response?.data?.errors || [
+          (error as unknown as { response: { data: { message: string } } })
+            .response?.data?.message || 'Network error. Please try again.',
+        errors: (error as unknown as { response: { data: { errors: any[] } } })
+          .response?.data?.errors || [
           { field: 'general', message: 'Network error' },
         ],
       };
@@ -157,13 +163,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           errors: result.errors,
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Registration error:', error);
       return {
         success: false,
         message:
-          error.response?.data?.message || 'Network error. Please try again.',
-        errors: error.response?.data?.errors || [
+          (error as unknown as { response: { data: { message: string } } })
+            .response?.data?.message || 'Network error. Please try again.',
+        errors: (error as unknown as { response: { data: { errors: any[] } } })
+          .response?.data?.errors || [
           { field: 'general', message: 'Network error' },
         ],
       };
@@ -195,13 +203,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           errors: result.errors,
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Profile update error:', error);
       return {
         success: false,
         message:
-          error.response?.data?.message || 'Network error. Please try again.',
-        errors: error.response?.data?.errors || [
+          (error as unknown as { response: { data: { message: string } } })
+            .response?.data?.message || 'Network error. Please try again.',
+        errors: (error as unknown as { response: { data: { errors: any[] } } })
+          .response?.data?.errors || [
           { field: 'general', message: 'Network error' },
         ],
       };

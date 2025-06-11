@@ -48,11 +48,14 @@ export async function POST(request: NextRequest) {
     setTokenCookies(response, authResult.accessToken, authResult.refreshToken);
 
     return response;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Login error:', error);
 
     // Handle specific errors
-    if (error.message === 'Invalid email or password') {
+    if (
+      error instanceof Error &&
+      error.message === 'Invalid email or password'
+    ) {
       return NextResponse.json(
         {
           success: false,

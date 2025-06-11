@@ -15,7 +15,7 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
-  const { isAuthenticated, logout, user } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   // Handle scroll behavior for navbar visibility
   useEffect(() => {
