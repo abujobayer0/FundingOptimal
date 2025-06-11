@@ -4,15 +4,19 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { User, LogOut, LogIn, UserPlus } from 'lucide-react';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showNavbar, setShowNavbar] = useState(true);
-  const router = useRouter();
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+
+  const { isAuthenticated, logout, user } = useAuth();
+
   // Handle scroll behavior for navbar visibility
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +40,27 @@ const Navbar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        showProfileDropdown &&
+        !target.closest('.profile-dropdown-container')
+      ) {
+        setShowProfileDropdown(false);
+      }
+    };
+
+    if (showProfileDropdown) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showProfileDropdown]);
 
   // Close menu when clicking outside or on escape key
   useEffect(() => {
@@ -72,8 +97,12 @@ const Navbar = () => {
   };
 
   const closeMenu = () => {
-    router.push('https://dashboard.fundingoptimal.com');
     setIsMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    setShowProfileDropdown(false);
   };
 
   return (
@@ -82,7 +111,7 @@ const Navbar = () => {
         showNavbar ? 'translate-y-0' : 'md:-translate-y-full'
       }`}
     >
-      <header className="text-foreground shadow-sm max-w-7xl mx-auto py-6 relative overflow-hidden">
+      <header className="text-foreground shadow-sm max-w-7xl mx-auto py-6 relative">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -112,36 +141,112 @@ const Navbar = () => {
             </nav>
 
             <div className="hidden md:flex space-x-4">
-              <Link
-                href="https://dashboard.fundingoptimal.com/"
-                target="_blank"
-              >
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    y: -2,
-                    transition: { duration: 0.2, ease: 'easeOut' },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative rounded-md bg-primary px-4 py-2 text-sm text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
-                >
-                  {/* Animated background gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {isAuthenticated ? (
+                /* Profile Dropdown */
+                <div className="relative profile-dropdown-container">
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                      y: -2,
+                      transition: { duration: 0.2, ease: 'easeOut' },
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setShowProfileDropdown(!showProfileDropdown)}
+                    className="group relative rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-black shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:shadow-[0_0_20px_rgba(18,255,142,0.4)] flex items-center gap-2"
+                  >
+                    <User className="w-4 h-4" />
+                    <span className="relative z-10 transition-colors duration-300">
+                      Profile
+                    </span>
+                  </motion.button>
 
-                  {/* Ripple effect */}
-                  <div className="absolute inset-0 rounded-md bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+                  {/* Dropdown Menu */}
+                  {showProfileDropdown && (
+                    <div className="absolute right-0 mt-2 w-48 bg-black/90 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl py-2 z-[60]">
+                      <Link
+                        href="/profile"
+                        className="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-primary/20 transition-colors"
+                        onClick={() => setShowProfileDropdown(false)}
+                      >
+                        <User className="w-4 h-4" />
+                        My Profile
+                      </Link>
+                      <Link
+                        href="https://dashboard.fundingoptimal.com"
+                        className="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-primary/20 transition-colors"
+                        onClick={() => setShowProfileDropdown(false)}
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          />
+                        </svg>
+                        Dashboard
+                      </Link>
+                      <hr className="my-2 border-white/10" />
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-3 px-4 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/20 transition-colors w-full text-left"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* Login/Signup Buttons */
+                <>
+                  <Link href="/auth/login">
+                    <motion.button
+                      whileHover={{
+                        transition: { duration: 0.2, ease: 'easeOut' },
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="group relative rounded-lg bg-transparent border-2 border-primary px-6 py-2.5 text-sm font-medium text-primary shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-primary hover:text-black flex items-center gap-2"
+                    >
+                      {/* Animated background */}
+                      <div className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left" />
 
-                  {/* Enhanced glow */}
-                  <div className="absolute inset-0 rounded-md shadow-[0_0_0_1px_rgba(18,255,142,0.5)] group-hover:shadow-[0_0_0_1px_rgba(18,255,142,0.8),0_0_20px_rgba(18,255,142,0.4),0_0_40px_rgba(18,255,142,0.2)] transition-shadow duration-500" />
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_20px_rgba(18,255,142,0.3)]" />
 
-                  {/* Shimmer effect */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                      <LogIn className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      <span className="relative z-10 transition-colors duration-300">
+                        Login
+                      </span>
+                    </motion.button>
+                  </Link>
+                  <Link href="/auth/register">
+                    <motion.button
+                      whileHover={{
+                        transition: { duration: 0.2, ease: 'easeOut' },
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="group relative rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-black shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:shadow-[0_0_20px_rgba(18,255,142,0.4)] flex items-center gap-2"
+                    >
+                      {/* Animated background gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <span className="relative z-10 font-medium group-hover:text-black transition-colors duration-300">
-                    Dashboard
-                  </span>
-                </motion.button>
-              </Link>
+                      {/* Shimmer effect */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+
+                      <UserPlus className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      <span className="relative z-10 transition-colors duration-300">
+                        Sign Up
+                      </span>
+                    </motion.button>
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -267,46 +372,169 @@ const Navbar = () => {
               </nav>
 
               <div className="px-6 py-3 pb-8 border-t border-gray-700/50 space-y-3 flex-shrink-0">
-                <div
-                  className={`transform transition-all duration-300 ease-out ${
-                    isMenuOpen
-                      ? 'translate-x-0 opacity-100'
-                      : 'translate-x-8 opacity-0'
-                  }`}
-                  style={{ transitionDelay: '250ms' }}
-                ></div>
-                <div
-                  className={`transform transition-all duration-300 ease-out ${
-                    isMenuOpen
-                      ? 'translate-x-0 opacity-100'
-                      : 'translate-x-8 opacity-0'
-                  }`}
-                  style={{ transitionDelay: '300ms' }}
-                >
-                  <motion.button
-                    onClick={closeMenu}
-                    whileHover={{
-                      scale: 1.02,
-                      y: -1,
-                      transition: { duration: 0.2, ease: 'easeOut' },
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-500 ease-in-out overflow-hidden"
-                  >
-                    {/* Animated background gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {isAuthenticated ? (
+                  /* Mobile Profile Section */
+                  <>
+                    <div
+                      className={`transform transition-all duration-300 ease-out ${
+                        isMenuOpen
+                          ? 'translate-x-0 opacity-100'
+                          : 'translate-x-8 opacity-0'
+                      }`}
+                      style={{ transitionDelay: '250ms' }}
+                    >
+                      <Link href="/profile" onClick={closeMenu}>
+                        <motion.button
+                          whileHover={{
+                            scale: 1.02,
+                            y: -1,
+                            transition: { duration: 0.2, ease: 'easeOut' },
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                          className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:shadow-[0_0_20px_rgba(18,255,142,0.4)] flex items-center justify-center gap-2"
+                        >
+                          <User className="w-4 h-4" />
+                          <span className="relative z-10 transition-colors duration-300">
+                            My Profile
+                          </span>
+                        </motion.button>
+                      </Link>
+                    </div>
+                    <div
+                      className={`transform transition-all duration-300 ease-out ${
+                        isMenuOpen
+                          ? 'translate-x-0 opacity-100'
+                          : 'translate-x-8 opacity-0'
+                      }`}
+                      style={{ transitionDelay: '300ms' }}
+                    >
+                      <Link
+                        href="https://dashboard.fundingoptimal.com"
+                        onClick={closeMenu}
+                      >
+                        <motion.button
+                          whileHover={{
+                            scale: 1.02,
+                            y: -1,
+                            transition: { duration: 0.2, ease: 'easeOut' },
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                          className="group relative w-full rounded-lg bg-transparent border-2 border-primary px-4 py-3 text-sm font-medium text-primary shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-primary hover:text-black flex items-center justify-center gap-2"
+                        >
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                            />
+                          </svg>
+                          <span className="relative z-10 transition-colors duration-300">
+                            Dashboard
+                          </span>
+                        </motion.button>
+                      </Link>
+                    </div>
+                    <div
+                      className={`transform transition-all duration-300 ease-out ${
+                        isMenuOpen
+                          ? 'translate-x-0 opacity-100'
+                          : 'translate-x-8 opacity-0'
+                      }`}
+                      style={{ transitionDelay: '350ms' }}
+                    >
+                      <motion.button
+                        whileHover={{
+                          scale: 1.02,
+                          y: -1,
+                          transition: { duration: 0.2, ease: 'easeOut' },
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          handleLogout();
+                          closeMenu();
+                        }}
+                        className="group relative w-full rounded-lg bg-transparent border-2 border-red-500/50 px-4 py-3 text-sm font-medium text-red-400 shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-red-500/10 hover:border-red-500 flex items-center justify-center gap-2"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        <span className="relative z-10 transition-colors duration-300">
+                          Logout
+                        </span>
+                      </motion.button>
+                    </div>
+                  </>
+                ) : (
+                  /* Mobile Login/Signup Section */
+                  <>
+                    <div
+                      className={`transform transition-all duration-300 ease-out ${
+                        isMenuOpen
+                          ? 'translate-x-0 opacity-100'
+                          : 'translate-x-8 opacity-0'
+                      }`}
+                      style={{ transitionDelay: '250ms' }}
+                    >
+                      <Link href="/auth/login" onClick={closeMenu}>
+                        <motion.button
+                          whileHover={{
+                            scale: 1.02,
+                            y: -1,
+                            transition: { duration: 0.2, ease: 'easeOut' },
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                          className="group relative w-full rounded-lg bg-transparent border-2 border-primary px-4 py-3 text-sm font-medium text-primary shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:bg-primary hover:text-black flex items-center justify-center gap-2"
+                        >
+                          {/* Animated background */}
+                          <div className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left" />
 
-                    {/* Ripple effect */}
-                    <div className="absolute inset-0 rounded-lg bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out" />
+                          {/* Glow effect */}
+                          <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_20px_rgba(18,255,142,0.3)]" />
 
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                          <LogIn className="w-4 h-4" />
+                          <span className="relative z-10 transition-colors duration-300">
+                            Login
+                          </span>
+                        </motion.button>
+                      </Link>
+                    </div>
+                    <div
+                      className={`transform transition-all duration-300 ease-out ${
+                        isMenuOpen
+                          ? 'translate-x-0 opacity-100'
+                          : 'translate-x-8 opacity-0'
+                      }`}
+                      style={{ transitionDelay: '300ms' }}
+                    >
+                      <Link href="/auth/register" onClick={closeMenu}>
+                        <motion.button
+                          whileHover={{
+                            scale: 1.02,
+                            y: -1,
+                            transition: { duration: 0.2, ease: 'easeOut' },
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                          className="group relative w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-black shadow-sm transition-all duration-300 ease-in-out overflow-hidden hover:shadow-[0_0_20px_rgba(18,255,142,0.4)]"
+                        >
+                          {/* Animated background gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-                      Dashboard
-                    </span>
-                  </motion.button>
-                </div>
+                          {/* Shimmer effect */}
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+
+                          <UserPlus className="w-4 h-4" />
+                          <span className="relative z-10 transition-colors duration-300">
+                            Sign Up
+                          </span>
+                        </motion.button>
+                      </Link>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

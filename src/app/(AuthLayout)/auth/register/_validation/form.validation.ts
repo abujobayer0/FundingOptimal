@@ -30,7 +30,6 @@ export const registerSchema = z
         message: 'Password must contain at least one special character',
       }),
     phone: z.string().optional(),
-    referralCode: z.string().optional(),
     confirmPassword: z.string().nonempty('Please confirm your password'),
     terms: z.boolean().refine((value) => value === true, {
       message:

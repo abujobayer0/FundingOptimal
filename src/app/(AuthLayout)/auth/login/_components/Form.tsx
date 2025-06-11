@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
-
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginFormValues } from '../_validation/form.validation';
 import { loginSchema } from '../_validation/form.validation';
 import { containerVariants, itemVariants } from '../_animations/form.animation';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
 
 const Form = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { login } = useAuth();
+  const router = useRouter();
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -21,12 +25,27 @@ const Form = () => {
     },
   });
 
-  async function onSubmit() {
+  async function onSubmit(data: LoginFormValues) {
     setIsLoading(true);
     setError(null);
 
     try {
-      // await login(data);
+      const result = await login(data.email, data.password);
+
+      if (result.success) {
+        // Login successful, redirect to profile
+        router.push('/profile');
+      } else {
+        // Handle login errors
+        if (result.errors && result.errors.length > 0) {
+          const errorMessages = result.errors
+            .map((err) => err.message)
+            .join(', ');
+          setError(errorMessages);
+        } else {
+          setError(result.message || 'Login failed. Please try again.');
+        }
+      }
     } catch (err) {
       setError(
         err instanceof Error

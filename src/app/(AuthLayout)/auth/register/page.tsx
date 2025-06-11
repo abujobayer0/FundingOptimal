@@ -1,17 +1,14 @@
 'use client';
 
 import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Form from './_components/Form';
 import Info from './_components/Info';
 
 function RegisterContent() {
-  const searchParams = useSearchParams();
-  const referralCode = searchParams.get('referralCode') || '';
   return (
     <div className="min-h-screen flex items-center flex-col md:flex-row justify-center">
       <Info />
-      <Form referralCode={referralCode} />
+      <Form />
     </div>
   );
 }

@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import './globals.css';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 const inter = Poppins({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  title: "FundingOptimal",
-  description: "Your trusted partner in funding solutions",
+  title: 'FundingOptimal',
+  description: 'Your trusted partner in funding solutions',
 };
 
 export default function RootLayout({
@@ -25,7 +26,9 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.variable} antialiased bg-black min-h-screen`}>
-        <main className="mx-auto pt-8">{children}</main>
+        <AuthProvider>
+          <main className="mx-auto pt-8">{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

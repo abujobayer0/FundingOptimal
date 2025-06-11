@@ -1,25 +1,26 @@
-import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, User, Phone } from 'lucide-react';
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { itemVariants } from '../_animations/form.animation';
 import { containerVariants } from '../_animations/form.animation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
 
 import {
   RegisterFormValues,
   registerSchema,
 } from '../_validation/form.validation';
 
-interface FormProps {
-  referralCode?: string;
-}
-
-const Form = ({ referralCode = '' }: FormProps) => {
+const Form = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { register } = useAuth();
+  const router = useRouter();
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -29,25 +30,32 @@ const Form = ({ referralCode = '' }: FormProps) => {
       email: '',
       password: '',
       phone: '',
-      referralCode: referralCode,
       confirmPassword: '',
       terms: false,
     },
   });
 
-  async function onSubmit() {
+  async function onSubmit(data: RegisterFormValues) {
     setIsLoading(true);
     setError(null);
 
     try {
-      //    await register({
-      //   firstName: data.firstName,
-      //   lastName: data.lastName,
-      //   email: data.email,
-      //   password: data.password,
-      //   phone: data.phone,
-      //   referralCode: data.referralCode,
-      // });
+      const result = await register(data);
+
+      if (result.success) {
+        // Registration successful, redirect to profile
+        router.push('/profile');
+      } else {
+        // Handle registration errors
+        if (result.errors && result.errors.length > 0) {
+          const errorMessages = result.errors
+            .map((err) => err.message)
+            .join(', ');
+          setError(errorMessages);
+        } else {
+          setError(result.message || 'Registration failed. Please try again.');
+        }
+      }
     } catch (err) {
       setError(
         err instanceof Error
@@ -166,40 +174,42 @@ const Form = ({ referralCode = '' }: FormProps) => {
                 )}
               </div>
             </motion.div>
+
             <motion.div variants={itemVariants}>
               <label
-                htmlFor="referralCode"
+                htmlFor="phone"
                 className="block text-base text-white mb-1 font-medium"
               >
-                Referral Code (Optional)
+                Phone Number (Optional)
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white">
-                  <User className="w-5 h-5" />
+                  <Phone className="w-5 h-5" />
                 </span>
                 <input
-                  id="referralCode"
-                  type="text"
-                  placeholder="Referral Code"
+                  id="phone"
+                  type="tel"
+                  placeholder="Phone Number"
                   className={`w-full pl-10 pr-3 py-3 rounded-md bg-[#FFFFFF14] border ${
-                    form.formState.errors.referralCode
+                    form.formState.errors.phone
                       ? 'border-primary/50 focus:border-primary'
                       : 'border-transparent'
                   } text-white placeholder-[#FFFFFF72] focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-base`}
-                  {...form.register('referralCode')}
+                  {...form.register('phone')}
                 />
               </div>
-              {form.formState.errors.referralCode && (
+              {form.formState.errors.phone && (
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-1 text-sm text-primary flex items-center gap-1"
                 >
                   <span className="text-primary">•</span>
-                  {form.formState.errors.referralCode.message}
+                  {form.formState.errors.phone.message}
                 </motion.p>
               )}
             </motion.div>
+
             <motion.div variants={itemVariants}>
               <label
                 htmlFor="email"
