@@ -40,6 +40,36 @@ export const setTokenCookies = (
   });
 };
 
+// New client-accessible version (less secure, use only if needed)
+export const setClientAccessibleTokenCookies = (
+  response: NextResponse,
+  accessToken: string,
+  refreshToken: string
+) => {
+  const isProduction = NODE_ENV === 'production';
+
+  const cookieOptions: CookieOptions = {
+    httpOnly: false, // Allow JavaScript access
+    secure: isProduction,
+    sameSite: isProduction ? 'strict' : 'lax',
+    path: '/',
+    domain: isProduction ? COOKIE_DOMAIN : undefined,
+  };
+
+  // Set access token cookie (15 minutes)
+  response.cookies.set('accessToken', accessToken, {
+    ...cookieOptions,
+    maxAge: 15 * 60, // 15 minutes in seconds
+  });
+
+  // Set refresh token cookie (7 days) - keep this HTTP-only for security
+  response.cookies.set('refreshToken', refreshToken, {
+    ...cookieOptions,
+    httpOnly: true, // Keep refresh token secure
+    maxAge: 7 * 24 * 60 * 60, // 7 days in seconds
+  });
+};
+
 export const clearTokenCookies = (response: NextResponse) => {
   const isProduction = NODE_ENV === 'production';
 
