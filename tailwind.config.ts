@@ -21,6 +21,15 @@ export default {
         // We will map --primary to the new primary color in globals.css
         // primary: 'var(--primary)', // Removed as we will map directly in CSS variables
       },
+      keyframes: {
+        'slide-left': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        'slide-left': 'slide-left 30s linear infinite',
+      },
     },
   },
   plugins: [],

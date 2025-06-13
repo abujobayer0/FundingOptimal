@@ -8,6 +8,7 @@ import React from 'react';
 import { ProfitCalculator, TradingStepsUI } from './_components/module/home';
 import Features from './_components/module/home/features';
 import { DemoAccountNotice, Footer } from './_components/ui';
+import SponsorLogoSlider from '@/components/ui/animated/sponsor-logo-slider/SponsorLogoSlider';
 
 const Page = () => {
   return (
@@ -19,6 +20,7 @@ const Page = () => {
       <Steps />
       <Evaluation />
       <TradingStepsUI />
+      <SponsorLogoSlider />
       <Features />
       <AnalyticsDashboard />
       <ProfitCalculator />
