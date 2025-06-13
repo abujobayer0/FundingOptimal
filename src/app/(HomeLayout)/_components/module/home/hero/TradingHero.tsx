@@ -8,6 +8,7 @@ import TitleWithIcon from '../../../ui/TitleWithIcon';
 import GradientButton from '../../../../../../components/ui/button/GradientButton';
 import OutlineButton from '../../../../../../components/ui/button/OutlineButton';
 import { useScrollTo } from '@/hooks/useScrollTo';
+import Sphere from '@/components/ui/animated/sphere/Sphere';
 
 const useCountAnimation = (targetValue: number) => {
   const count = useMotionValue(0);
@@ -41,8 +42,12 @@ const TradingHero = () => {
   const supportCount = useCountAnimation(24);
 
   return (
-    <div className="bg-black mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <div className="bg-transparent mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
       <TitleWithIcon title="We Fund the Fearless" />
+
+      <div className="absolute -top-14 md:-top-32 -left-0 w-full  p-10 scale-90 h-full z-0 ">
+        <Sphere />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="mx-auto">

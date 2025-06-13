@@ -3,7 +3,7 @@ import React from 'react';
 const BackgroundSVG: React.FC = () => (
   <svg
     viewBox="0 0 800 180"
-    className="w-full h-full object-cover -mt-8 md:-mt-28"
+    className="w-full h-full object-cover -mt-8 md:-mt-28 z-0"
   >
     <defs>
       <linearGradient id="verticalGradient" x1="0%" y1="0%" x2="0%" y2="100%">
