@@ -58,7 +58,6 @@ export class AuthService {
       email: userData.email.toLowerCase(),
       password: userData.password,
       phone: userData.phone,
-      role: 'user', // Set default role
     });
 
     await user.save();
