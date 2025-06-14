@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import TradingStepsCard from './TradingStepsCard';
 import { amounts, steps } from './data';
 import { motion } from 'motion/react';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const stepToChallengeMap: { [key: string]: string } = {
   'One Step': 'one-step',
@@ -24,6 +25,40 @@ const amountToCapitalMap: { [key: string]: number } = {
 export default function TradingStepsUI() {
   const [selectedStep, setSelectedStep] = useState('One Step');
   const [selectedAmount, setSelectedAmount] = useState('$5k');
+  const getProductUrl = (id: string) => {
+    console.log('Getting product URL for ID:', id);
+    const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
+    let url;
+    switch (id) {
+      case 'one-step':
+        url = `${baseUrl}/one-step-evaluation/`;
+        break;
+      case 'two-step':
+        url = `${baseUrl}/two-step-evaluation/`;
+        break;
+      case 'instant-funding':
+        url = `${baseUrl}/instant-funding/`;
+        break;
+      default:
+        url = '#get-funded';
+    }
+    console.log('Generated URL:', url);
+    return url;
+  };
+  const { scrollTo } = useScrollTo();
+
+  const handleBuyNowClick = (id: string) => {
+    console.log('handleBuyNowClick called with ID:', id);
+    const productUrl = getProductUrl(id);
+    console.log('Product URL:', productUrl);
+    if (productUrl.startsWith('http')) {
+      console.log('Opening URL in new tab:', productUrl);
+      window.open(productUrl, '_blank');
+    } else {
+      console.log('Scrolling to:', productUrl.substring(1));
+      scrollTo('get-funded');
+    }
+  };
 
   return (
     <motion.section
@@ -152,6 +187,7 @@ export default function TradingStepsUI() {
         viewport={{ once: true }}
       >
         <TradingStepsCard
+          getProductUrl={handleBuyNowClick}
           className="bg-gradient-to-br from-primary/20 via-primary/5 to-transparent"
           challengeId={stepToChallengeMap[selectedStep] || 'one-step'}
           selectedCapital={amountToCapitalMap[selectedAmount] || 5000}

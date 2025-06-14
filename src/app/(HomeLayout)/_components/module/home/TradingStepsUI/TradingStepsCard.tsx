@@ -6,10 +6,12 @@ export default function TradingStepsCard({
   className,
   challengeId = 'one-step',
   selectedCapital: externalSelectedCapital,
+  getProductUrl,
 }: {
   className?: string;
   challengeId?: string;
   selectedCapital?: number;
+  getProductUrl: (id: string) => void;
 }) {
   const [selectedCapital, setSelectedCapital] = useState(
     externalSelectedCapital || 5000
@@ -30,6 +32,12 @@ export default function TradingStepsCard({
   const midPoint = Math.ceil(challenge.features.length / 2);
   const leftFeatures = challenge.features.slice(0, midPoint);
   const rightFeatures = challenge.features.slice(midPoint);
+
+  const handleBuyNowClick = (id: string) => {
+    console.log('handleBuyNowClick called with ID:', id);
+    const productUrl = getProductUrl(id);
+    console.log('Product URL:', productUrl);
+  };
 
   return (
     <div
@@ -61,7 +69,10 @@ export default function TradingStepsCard({
           </div>
         </div>
 
-        <button className="w-full mt-4  md:mt-0 max-w-xs py-2 rounded-lg border-[0.5px] border-white/50 text-white bg-transparent hover:bg-primary/10 transition font-normal text-sm">
+        <button
+          onClick={() => handleBuyNowClick(challengeId)}
+          className="w-full mt-4  md:mt-0 max-w-xs py-2 rounded-lg border-[0.5px] border-white/50 text-white bg-transparent hover:bg-primary/10 transition font-normal text-sm"
+        >
           Buy Now
         </button>
       </div>

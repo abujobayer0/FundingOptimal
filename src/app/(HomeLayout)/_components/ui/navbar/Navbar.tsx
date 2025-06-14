@@ -104,7 +104,6 @@ const Navbar = () => {
     await logout();
     setShowProfileDropdown(false);
   };
-  console.log(user);
   return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 h-auto bg-black transition-transform duration-300 ease-in-out ${
