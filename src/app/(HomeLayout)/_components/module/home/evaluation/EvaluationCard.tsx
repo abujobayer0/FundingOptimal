@@ -8,11 +8,13 @@ import { useScrollTo } from '@/hooks/useScrollTo';
 interface EvaluationCardProps {
   card: EvaluationCard;
   index: number;
+  handleBuyNowClick: (id: string) => void;
 }
 
 const EvaluationCardComponent: React.FC<EvaluationCardProps> = ({
   card,
   index,
+  handleBuyNowClick,
 }) => {
   const { scrollTo } = useScrollTo();
 
@@ -107,7 +109,7 @@ const EvaluationCardComponent: React.FC<EvaluationCardProps> = ({
         </div>
       </motion.div>
       <motion.button
-        onClick={() => scrollTo('get-funded')}
+        onClick={() => handleBuyNowClick(card.id)}
         className="w-full py-2 px-3 border border-primary/30 text-white rounded-lg relative overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:bg-primary/5 text-sm"
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}

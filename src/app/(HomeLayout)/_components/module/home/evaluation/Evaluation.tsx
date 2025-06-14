@@ -4,8 +4,44 @@ import React from 'react';
 import { evaluationData } from './data';
 import EvaluationSectionHeader from './SectionHeader';
 import EvaluationCardComponent from './EvaluationCard';
+import { useScrollTo } from '@/hooks/useScrollTo';
 
 const Evaluation: React.FC = () => {
+  const getProductUrl = (id: string) => {
+    console.log('Getting product URL for ID:', id);
+    const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
+    let url;
+    switch (id) {
+      case 'one-step':
+        url = `${baseUrl}/one-step-evaluation/`;
+        break;
+      case 'two-step':
+        url = `${baseUrl}/two-step-evaluation/`;
+        break;
+      case 'instant-funding':
+        url = `${baseUrl}/instant-funding/`;
+        break;
+      default:
+        url = '#get-funded';
+    }
+    console.log('Generated URL:', url);
+    return url;
+  };
+  const { scrollTo } = useScrollTo();
+
+  const handleBuyNowClick = (id: string) => {
+    console.log('handleBuyNowClick called with ID:', id);
+    const productUrl = getProductUrl(id);
+    console.log('Product URL:', productUrl);
+    if (productUrl.startsWith('http')) {
+      console.log('Opening URL in new tab:', productUrl);
+      window.open(productUrl, '_blank');
+    } else {
+      console.log('Scrolling to:', productUrl.substring(1));
+      scrollTo('get-funded');
+    }
+  };
+
   return (
     <section className="bg-black text-white pt-20">
       <motion.div
@@ -33,6 +69,7 @@ const Evaluation: React.FC = () => {
                 key={card.id}
                 card={card}
                 index={index}
+                handleBuyNowClick={handleBuyNowClick}
               />
             ))}
           </motion.div>
