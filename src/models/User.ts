@@ -1,11 +1,14 @@
 import mongoose, { Schema, Document, Types, CallbackError } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
+export type UserRole = 'user' | 'admin';
+
 export interface IUser extends Document {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+  role: UserRole;
   _id: Types.ObjectId;
   phone?: string;
   createdAt: Date;
@@ -43,6 +46,12 @@ const UserSchema = new Schema<IUser>(
       required: [true, 'Password is required'],
       minlength: [6, 'Password must be at least 6 characters'],
       select: false, // Don't include password in queries by default
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user',
+      required: true,
     },
     phone: {
       type: String,

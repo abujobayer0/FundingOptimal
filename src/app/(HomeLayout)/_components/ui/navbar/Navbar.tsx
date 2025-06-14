@@ -15,7 +15,7 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
-  const { isAuthenticated, logout } = useClientAuth();
+  const { isAuthenticated, logout, user } = useClientAuth();
 
   // Handle scroll behavior for navbar visibility
   useEffect(() => {
@@ -104,7 +104,7 @@ const Navbar = () => {
     await logout();
     setShowProfileDropdown(false);
   };
-
+  console.log(user);
   return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 h-auto bg-black transition-transform duration-300 ease-in-out ${
@@ -171,14 +171,17 @@ const Navbar = () => {
                         <User className="w-4 h-4" />
                         My Profile
                       </Link>
-                      <Link
-                        href="/admin"
-                        className="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-primary/20 transition-colors"
-                        onClick={() => setShowProfileDropdown(false)}
-                      >
-                        <Users className="w-4 h-4" />
-                        All Users
-                      </Link>
+                      {/* Show admin link only for admin users */}
+                      {user?.role === 'admin' && (
+                        <Link
+                          href="/admin"
+                          className="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-primary/20 transition-colors"
+                          onClick={() => setShowProfileDropdown(false)}
+                        >
+                          <Users className="w-4 h-4" />
+                          All Users
+                        </Link>
+                      )}
                       <Link
                         href="https://dashboard.fundingoptimal.com"
                         className="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-primary/20 transition-colors"

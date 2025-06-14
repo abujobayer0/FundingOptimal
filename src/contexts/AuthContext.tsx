@@ -14,12 +14,14 @@ import {
   clearAuthTokens,
   isAuthenticated as checkIsAuthenticated,
 } from '@/lib/client-cookies';
+import { UserRole } from '@/models/User';
 
 interface User {
   id: string;
   firstName: string;
   lastName: string;
   email: string;
+  role: UserRole;
   phone?: string;
   createdAt: Date;
 }
@@ -28,6 +30,7 @@ interface AuthContextType {
   user: User | null;
   isLoading: boolean;
   isAuthenticated: boolean;
+  isAdmin: boolean;
   login: (
     email: string,
     password: string
@@ -82,6 +85,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Use client-cookies for authentication status
   const isAuthenticated = checkIsAuthenticated() && user !== null;
+  const isAdmin = user?.role === 'admin';
 
   // Configure Axios to include credentials (cookies) with requests
   const axiosInstance = axios.create({
@@ -338,6 +342,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     user,
     isLoading,
     isAuthenticated,
+    isAdmin,
     login,
     register,
     updateUser,

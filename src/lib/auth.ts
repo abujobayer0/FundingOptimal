@@ -30,6 +30,7 @@ export interface AuthTokens {
     firstName: string;
     lastName: string;
     email: string;
+    role: string;
     phone?: string;
   };
 }
@@ -57,6 +58,7 @@ export class AuthService {
       email: userData.email.toLowerCase(),
       password: userData.password,
       phone: userData.phone,
+      role: 'user', // Set default role
     });
 
     await user.save();
@@ -189,6 +191,7 @@ export class AuthService {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        role: user.role,
         phone: user.phone,
       },
     };
