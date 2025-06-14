@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import React from 'react';
 import FeatureItem from './FeatureItem';
 import { EvaluationCard } from '@/types';
-import { useScrollTo } from '@/hooks/useScrollTo';
 
 interface EvaluationCardProps {
   card: EvaluationCard;
@@ -16,8 +15,6 @@ const EvaluationCardComponent: React.FC<EvaluationCardProps> = ({
   index,
   handleBuyNowClick,
 }) => {
-  const { scrollTo } = useScrollTo();
-
   const baseClasses =
     'transition-all duration-300 flex flex-col justify-center relative border';
 
