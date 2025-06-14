@@ -180,7 +180,7 @@ const DemoAccountNotice: React.FC<DemoAccountNoticeProps> = ({
             initial={{ x: 400, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 400, opacity: 0 }}
-            className="fixed bottom-6 right-6 z-40 max-w-sm"
+            className="fixed bottom-6 left-6 z-40 max-w-sm"
           >
             <div
               className="bg-[#0A0A0A] border border-[#12FF8E]/30 rounded-xl p-4 shadow-2xl

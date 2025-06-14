@@ -15,10 +15,13 @@ const SponsorLogoSlider = () => {
   const duplicatedLogos = [...logos, ...logos];
 
   return (
-    <div className="w-full overflow-hidden bg-background py-8">
+    <div className="w-full overflow-hidden max-w-7xl mx-auto bg-background py-8">
       <div className="relative flex items-center">
+        {/* Gradient overlay - left side */}
+        <div className="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-background to-transparent z-10" />
+
         {/* First set of logos */}
-        <div className="flex animate-slide-left gap-16 pr-16">
+        <div className="flex animate-slide-left gap-32 pr-16">
           {duplicatedLogos.map((logo, index) => (
             <div
               key={index}
@@ -34,6 +37,9 @@ const SponsorLogoSlider = () => {
             </div>
           ))}
         </div>
+
+        {/* Gradient overlay - right side */}
+        <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-background to-transparent z-10" />
       </div>
     </div>
   );

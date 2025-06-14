@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { User, LogOut, LogIn, UserPlus } from 'lucide-react';
+import { User, LogOut, LogIn, UserPlus, Users } from 'lucide-react';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
 import { useClientAuth } from '@/hooks/useClientAuth';
@@ -170,6 +170,14 @@ const Navbar = () => {
                       >
                         <User className="w-4 h-4" />
                         My Profile
+                      </Link>
+                      <Link
+                        href="/admin"
+                        className="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-primary/20 transition-colors"
+                        onClick={() => setShowProfileDropdown(false)}
+                      >
+                        <Users className="w-4 h-4" />
+                        All Users
                       </Link>
                       <Link
                         href="https://dashboard.fundingoptimal.com"
