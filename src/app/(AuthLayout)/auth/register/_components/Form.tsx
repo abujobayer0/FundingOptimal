@@ -355,16 +355,14 @@ const Form = () => {
               <label htmlFor="terms" className="text-green-100 text-base">
                 I agree to the{' '}
                 <a
-                  href={`${process.env.NEXT_PUBLIC_LANDING_PAGE_URL}/terms-and-conditions`}
-                  target="_blank"
+                  href={`/terms-conditions`}
                   className="text-primary hover:underline"
                 >
-                  Terms of Service
+                  Terms and Conditions
                 </a>{' '}
                 and{' '}
                 <a
-                  href={`${process.env.NEXT_PUBLIC_LANDING_PAGE_URL}/privacy-policy`}
-                  target="_blank"
+                  href={`/privacy-policy`}
                   className="text-primary hover:underline"
                 >
                   Privacy Policy

@@ -22,7 +22,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
       >
         <div className="absolute top-0 rounded-lg right-0 w-full h-full   bg-gradient-to-bl from-primary/70 via-transparent to-transparent rounded-tr-lg pointer-events-none"></div>
         <div className="absolute bottom-0 rounded-lg left-0 w-full h-full bg-gradient-to-tr from-primary/70 via-transparent to-transparent rounded-bl-lg pointer-events-none"></div>
-        <div className="bg-[#000] rounded-md relative z-10 w-full h-full">
+        <div className="bg-[#050505] rounded-md relative z-10 w-full h-full">
           <div className="relative z-10 bg-primary/5 rounded-md p-3 h-full">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-gray-400 text-[12px] font-medium">{title}</h3>
