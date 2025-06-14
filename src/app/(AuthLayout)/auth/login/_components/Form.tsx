@@ -167,14 +167,14 @@ const Form = () => {
               {form.formState.errors.password.message}
             </motion.p>
           )}
-          <div className="flex items-center justify-end mt-3">
+          {/* <div className="flex items-center justify-end mt-3">
             <a
               href="/auth/forgot-password"
               className="text-xs text-primary hover:text-green-200 transition-colors font-medium"
             >
               Forgot your password?
             </a>
-          </div>
+          </div> */}
         </motion.div>
         <motion.div variants={itemVariants} className="flex items-center gap-2">
           <input
