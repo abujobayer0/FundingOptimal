@@ -7,7 +7,7 @@ import StepCard from './StepCard';
 
 const Steps: React.FC = () => {
   return (
-    <div className="w-full h-full z-10 bg-black">
+    <div className="w-full h-full z-10 bg-[#050505]">
       <BackgroundSVG />
       <div className="px-4 md:px-8 lg:px-16">
         <SectionHeader

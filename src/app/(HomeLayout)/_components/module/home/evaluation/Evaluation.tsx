@@ -43,7 +43,7 @@ const Evaluation: React.FC = () => {
   };
 
   return (
-    <section className="bg-black text-white pt-20">
+    <section className="bg-[#050505] text-white pt-20">
       <motion.div
         className="md:bg-gradient-to-t from-primary/10 pb-24 via-primary/5 to-transparent"
         initial={{ opacity: 0 }}

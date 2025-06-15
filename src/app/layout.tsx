@@ -27,19 +27,21 @@ export default function RootLayout({
         <Script id="helpcrunch-settings" strategy="beforeInteractive">
           {`
             window.helpcrunchSettings = {
-              organization: 'plexifly',
-              appId: '20bdedd6-1a8a-4343-bec1-78f08ff21e89',
+  organization: 'fundingoptimal',
+    appId: 'be74a889-1e8c-4eed-9b46-6483daed88ea',
             };
           `}
         </Script>
         <Script id="helpcrunch-loader" strategy="beforeInteractive">
           {`
-            (function(w,d){var hS=w.helpcrunchSettings;if(!hS||!hS.organization){return;}var widgetSrc='https://embed.helpcrunch.com/sdk.js';w.HelpCrunch=function(){w.HelpCrunch.q.push(arguments)};w.HelpCrunch.q=[];function r(){if (d.querySelector('script[src="' + widgetSrc + '"')) { return; }var s=d.createElement('script');s.async=1;s.type='text/javascript';s.src=widgetSrc;(d.body||d.head).appendChild(s);}if(d.readyState === 'complete'||hS.loadImmediately){r();} else if(w.attachEvent){w.attachEvent('onload',r)}else{w.addEventListener('load',r,false)}})(window, document)
+  (function(w,d){var hS=w.helpcrunchSettings;if(!hS||!hS.organization){return;}var widgetSrc='https://embed.helpcrunch.com/sdk.js';w.HelpCrunch=function(){w.HelpCrunch.q.push(arguments)};w.HelpCrunch.q=[];function r(){if (d.querySelector('script[src="' + widgetSrc + '"')) { return; }var s=d.createElement('script');s.async=1;s.type='text/javascript';s.src=widgetSrc;(d.body||d.head).appendChild(s);}if(d.readyState === 'complete'||hS.loadImmediately){r();} else if(w.attachEvent){w.attachEvent('onload',r)}else{w.addEventListener('load',r,false)}})(window, document)
           `}
         </Script>
       </head>
 
-      <body className={`${inter.variable} antialiased bg-black min-h-screen`}>
+      <body
+        className={`${inter.variable} antialiased bg-[#050505] min-h-screen`}
+      >
         <AuthProvider>
           <main className="mx-auto pt-8">{children}</main>
         </AuthProvider>

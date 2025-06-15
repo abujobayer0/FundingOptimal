@@ -135,7 +135,7 @@ export const AffiliateProgramSection: React.FC = () => {
   const secondRowSteps = AFFILIATE_STEPS.slice(2, 4);
 
   return (
-    <div className="bg-black text-white">
+    <div className="bg-[#050505] text-white">
       <div className="max-w-7xl mx-auto px-4 relative md:px-6">
         <SectionHeader />
         <StepsGrid

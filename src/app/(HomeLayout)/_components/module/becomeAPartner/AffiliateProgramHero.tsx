@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React from "react";
-import { TitleWithIcon } from "@/app/(HomeLayout)/_components/ui";
-import { GradientButton, OutlineButton } from "@/components";
-import HeroIcon from "../../ui/icons/HeroIcon";
+import React from 'react';
+import { TitleWithIcon } from '@/app/(HomeLayout)/_components/ui';
+import { GradientButton, OutlineButton } from '@/components';
+import HeroIcon from '../../ui/icons/HeroIcon';
 
 const AffiliateProgramHero = () => {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-[#050505] text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6 mt-[80px] md:mt-[170px]">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-4 md:space-y-8">
@@ -42,7 +42,7 @@ const AffiliateProgramHero = () => {
             <div
               className="animate-pulse w-full"
               style={{
-                animation: "float 3s ease-in-out infinite",
+                animation: 'float 3s ease-in-out infinite',
               }}
             >
               <HeroIcon />

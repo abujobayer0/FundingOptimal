@@ -26,7 +26,6 @@ export default function TradingStepsUI() {
   const [selectedStep, setSelectedStep] = useState('One Step');
   const [selectedAmount, setSelectedAmount] = useState('$5k');
   const getProductUrl = (id: string) => {
-    console.log('Getting product URL for ID:', id);
     const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
     let url;
     switch (id) {
@@ -42,20 +41,16 @@ export default function TradingStepsUI() {
       default:
         url = '#get-funded';
     }
-    console.log('Generated URL:', url);
+
     return url;
   };
   const { scrollTo } = useScrollTo();
 
   const handleBuyNowClick = (id: string) => {
-    console.log('handleBuyNowClick called with ID:', id);
     const productUrl = getProductUrl(id);
-    console.log('Product URL:', productUrl);
     if (productUrl.startsWith('http')) {
-      console.log('Opening URL in new tab:', productUrl);
       window.open(productUrl, '_blank');
     } else {
-      console.log('Scrolling to:', productUrl.substring(1));
       scrollTo('get-funded');
     }
   };

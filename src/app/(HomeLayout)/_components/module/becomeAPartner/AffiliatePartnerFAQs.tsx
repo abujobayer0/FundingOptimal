@@ -49,7 +49,7 @@ const AffiliatePartnerFAQs: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black text-white py-16">
+    <div className="bg-[#050505] text-white py-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-6 items-start">
           {/* Left Content */}

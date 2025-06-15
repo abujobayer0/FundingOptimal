@@ -8,7 +8,7 @@ const SliderItem = ({ title, slug, id, questions }: FAQ) => {
   return (
     <Link href={`/faqs/${slug || id}`}>
       <motion.div
-        className="bg-black rounded-2xl p-4 overflow-hidden border relative border-white/10 hover:border-primary transition-all duration-500 group cursor-pointer h-60"
+        className="bg-[#050505] rounded-2xl p-4 overflow-hidden border relative border-white/10 hover:border-primary transition-all duration-500 group cursor-pointer h-60"
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
         <div className="absolute top-1/3 right-0 w-44 h-44 bg-primary/20 group-hover:bg-primary/40 blur-3xl rounded-full transition-all duration-500 group-hover:scale-125"></div>

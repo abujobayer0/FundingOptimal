@@ -106,7 +106,7 @@ const Navbar = () => {
   };
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 h-auto bg-black transition-transform duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 h-auto bg-[#050505] transition-transform duration-300 ease-in-out ${
         showNavbar ? 'translate-y-0' : 'md:-translate-y-full'
       }`}
     >

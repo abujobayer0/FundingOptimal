@@ -43,7 +43,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
 
   return (
     <motion.div
-      className="max-w-7xl h-full mx-auto bg-[#000] text-white px-4 sm:px-6 lg:px-8"
+      className="max-w-7xl h-full mx-auto bg-[#050505] text-white px-4 sm:px-6 lg:px-8"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -81,7 +81,7 @@ const AnalyticsDashboard: React.FC<DashboardProps> = ({
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <motion.div
-          className="lg:hidden flex justify-between items-center p-4 border border-white/10 rounded-xl bg-black mb-4"
+          className="lg:hidden flex justify-between items-center p-4 border border-white/10 rounded-xl bg-[#050505] mb-4"
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
