@@ -37,11 +37,6 @@ const AffiliatePartnerFAQs: React.FC = () => {
         'You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.',
     },
     {
-      question: 'When Can I Request A Payout For My Commissions?',
-      answer:
-        'You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.',
-    },
-    {
       question: 'Are There Any Additional Resources For Affiliates?',
       answer:
         'Yes, we provide comprehensive marketing materials, tracking tools, dedicated affiliate support, and regular training sessions to help you maximize your earning potential.',

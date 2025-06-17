@@ -22,7 +22,7 @@ We don't aim to be average — we aim to be exceptional. Whether it's our techno
 Dedication to Growth
 Your progress is our purpose. We're not just here to fund trades — we're here to help you develop, scale, and thrive. That means investing in better tools, smarter systems, and more opportunities for advancement. Our commitment is to grow with you, every step of the way."
       buttonText="View Programs"
-      imageSrc="/weStandFor.png"
+      imageSrc="/westandfor.jpeg"
       imageAlt="What We Stand For"
       showStats={false}
       showButton={false}

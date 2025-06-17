@@ -19,7 +19,7 @@ Beyond funding and profits, we are building a global community grounded in trust
 
 At FundingOptimal, we don't just invest in trades — we invest in traders."
       buttonText="Learn More"
-      imageSrc="/vision.png"
+      imageSrc="/vision.jpeg"
       imageAlt="Our Vision"
       reverse={true}
       showStats={true}

@@ -19,7 +19,7 @@ This isn't just a trading firm — it's a thriving community built on opportunit
 
 Join us as we shape the future of funded trading — together."
       buttonText="Join Our Community"
-      imageSrc="/beAPartOfUs.png"
+      imageSrc="/beapart.jpeg"
       imageAlt="Be Part of Our Story"
       reverse={true}
       showButton={false}
