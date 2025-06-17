@@ -342,8 +342,8 @@ const Navbar = () => {
                 {[
                   { href: '/', label: 'Home' },
                   { href: '/become-a-partner', label: 'Become A Partner' },
-                  { href: '/about', label: 'About Us' },
-                  { href: '/contact', label: 'Contact Us' },
+                  { href: '/about-us', label: 'About Us' },
+                  { href: '/contact-us', label: 'Contact Us' },
                   { href: '/faqs', label: 'FAQs' },
                 ].map((item, index) => (
                   <div

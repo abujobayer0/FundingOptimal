@@ -68,7 +68,7 @@ const SectionHeader: React.FC = () => (
 );
 
 const BlurBackground: React.FC = () => (
-  <div className="w-[600px] h-[200px] bg-primary/20 blur-[150px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
+  <div className="w-[200px] md:w-[600px] h-[200px] bg-primary/20 blur-[150px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
 );
 
 const StepCard: React.FC<StepCardProps> = ({

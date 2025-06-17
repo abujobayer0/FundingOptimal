@@ -10,7 +10,7 @@ import { useScrollTo } from '@/hooks/useScrollTo';
 export const HeroSection = () => {
   const { scrollTo } = useScrollTo();
   return (
-    <div className="text-center space-y-8">
+    <div className="text-center mt-10 space-y-8">
       <SectionHeader
         animation={false}
         title="About {FundingOptimal}"
