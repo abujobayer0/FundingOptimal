@@ -2,45 +2,44 @@
 
 import React, { useState } from 'react';
 import { AccountSizeSlider } from '../../ui';
-import { useScrollTo } from '@/hooks/useScrollTo';
 
 const challengePricing = {
   'Two Step Challenge': {
-    5000: 35.99,
-    10000: 71.99,
-    25000: 167.99,
-    50000: 299.99,
-    100000: 599.99,
-    200000: 1079.99,
+    5000: { price: 35.99, id: 66 },
+    10000: { price: 71.99, id: 67 },
+    25000: { price: 167.99, id: 68 },
+    50000: { price: 299.99, id: 69 },
+    100000: { price: 599.99, id: 70 },
+    200000: { price: 1079.99, id: 71 },
   },
   'One Step Challenge': {
-    5000: 59.99,
-    10000: 107.99,
-    25000: 215.99,
-    50000: 323.99,
-    100000: 575.99,
-    200000: 1139.99,
+    5000: { price: 59.99, id: 73 },
+    10000: { price: 107.99, id: 74 },
+    25000: { price: 215.99, id: 75 },
+    50000: { price: 323.99, id: 78 },
+    100000: { price: 575.99, id: 76 },
+    200000: { price: 1139.99, id: 77 },
   },
   'Instant Funding': {
-    5000: 78.0,
-    10000: 114.0,
-    25000: 226.8,
-    50000: 334.8,
-    100000: 586.8,
-    200000: 1173.6,
+    5000: { price: 78.0, id: 80 },
+    10000: { price: 114.0, id: 81 },
+    25000: { price: 226.8, id: 82 },
+    50000: { price: 334.8, id: 83 },
+    100000: { price: 586.8, id: 84 },
+    200000: { price: 1173.6, id: 85 },
   },
   'Three Steps Challenge': {
-    25000: 180.0,
-    50000: 288.0,
-    100000: 468.0,
-    200000: 816.0,
+    25000: { price: 180.0, id: 133 },
+    50000: { price: 288.0, id: 134 },
+    100000: { price: 468.0, id: 135 },
+    200000: { price: 816.0, id: 136 },
   },
   'Africa Starter Challenge': {
-    2500: 23.99,
-    5000: 41.99,
-    10000: 71.99,
-    25000: 131.99,
-    50000: 227.99,
+    2500: { price: 23.99, id: 139 },
+    5000: { price: 41.99, id: 140 },
+    10000: { price: 71.99, id: 141 },
+    25000: { price: 131.99, id: 142 },
+    50000: { price: 227.99, id: 143 },
   },
 };
 
@@ -49,7 +48,7 @@ const ProfitCalculator = () => {
   const [profitMode, setProfitMode] = useState(10);
   const [calculatedProfit, setCalculatedProfit] = useState(10000);
   const [challengeType, setChallengeType] = useState('Two Step Challenge');
-  const { scrollTo } = useScrollTo();
+
   const getAvailableAccountSizes = (type: string) => {
     const pricing = challengePricing[type as keyof typeof challengePricing];
     return Object.keys(pricing)
@@ -59,7 +58,7 @@ const ProfitCalculator = () => {
 
   const getChallengeCost = (size: number, type: string) => {
     const pricing = challengePricing[type as keyof typeof challengePricing];
-    if (!pricing) return 0;
+    if (!pricing) return { price: 0, id: 0 };
 
     const availableSizes = Object.keys(pricing)
       .map(Number)
@@ -72,7 +71,17 @@ const ProfitCalculator = () => {
       Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
     );
 
-    return pricing[closestSize as keyof typeof pricing] || 0;
+    return pricing[closestSize as keyof typeof pricing] || { price: 0, id: 0 };
+  };
+
+  const getProductUrl = (id: number) => {
+    return `https://fundingoptimal.com/checkout/?add-to-cart=${id}&quantity=1`;
+  };
+
+  const handleBuyNowClick = () => {
+    const challengeData = getChallengeCost(accountSize, challengeType);
+    const productUrl = getProductUrl(challengeData.id);
+    window.open(productUrl, '_blank');
   };
 
   const handleAccountSizeChange = (newAccountSize: number) => {
@@ -172,9 +181,7 @@ const ProfitCalculator = () => {
             </div>
 
             <button
-              onClick={() => {
-                scrollTo('get-funded');
-              }}
+              onClick={handleBuyNowClick}
               className="group relative w-full bg-primary text-black py-2 sm:py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 text-sm sm:text-base overflow-hidden before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-all before:duration-700 hover:before:left-full before:skew-x-12"
             >
               Get Funded Now
@@ -197,7 +204,7 @@ const ProfitCalculator = () => {
                   Challenge Cost
                 </p>
                 <span className="text-xl sm:text-4xl font-bold">
-                  ${challengeCost.toFixed(2)}
+                  ${challengeCost.price.toFixed(2)}
                 </span>
               </div>
             </div>

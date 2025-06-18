@@ -11,7 +11,7 @@ export default function TradingStepsCard({
   className?: string;
   challengeId?: string;
   selectedCapital?: number;
-  getProductUrl: (id: string) => void;
+  getProductUrl: (id: number) => void;
 }) {
   const [selectedCapital, setSelectedCapital] = useState(
     externalSelectedCapital || 5000
@@ -33,7 +33,7 @@ export default function TradingStepsCard({
   const leftFeatures = challenge.features.slice(0, midPoint);
   const rightFeatures = challenge.features.slice(midPoint);
 
-  const handleBuyNowClick = (id: string) => {
+  const handleBuyNowClick = (id: number) => {
     console.log('handleBuyNowClick called with ID:', id);
     const productUrl = getProductUrl(id);
     console.log('Product URL:', productUrl);
@@ -70,7 +70,7 @@ export default function TradingStepsCard({
         </div>
 
         <button
-          onClick={() => handleBuyNowClick(challengeId)}
+          onClick={() => handleBuyNowClick(selectedPricing.id)}
           className="w-full mt-4  md:mt-0 max-w-xs py-2 rounded-lg border-[0.5px] border-white/50 text-white bg-transparent hover:bg-primary/10 transition font-normal text-sm"
         >
           Buy Now

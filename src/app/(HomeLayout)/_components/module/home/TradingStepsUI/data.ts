@@ -3,6 +3,7 @@ export const steps = [
   { label: 'Two Step' },
   { label: 'Three Step' },
   { label: 'Instant Funding' },
+  { label: 'Africa Starter' },
 ];
 
 export const amounts = [
@@ -25,6 +26,7 @@ export interface ChallengeProgram {
   pricing: Array<{
     capital: number;
     price: number;
+    id: number;
   }>;
 }
 
@@ -44,12 +46,12 @@ export const challengePrograms: ChallengeProgram[] = [
       { label: 'Stage 2 Profit Target', value: '5%' },
     ],
     pricing: [
-      { capital: 5000, price: 35.99 },
-      { capital: 10000, price: 71.99 },
-      { capital: 25000, price: 167.99 },
-      { capital: 50000, price: 299.99 },
-      { capital: 100000, price: 599.99 },
-      { capital: 200000, price: 1079.99 },
+      { capital: 5000, price: 35.99, id: 66 },
+      { capital: 10000, price: 71.99, id: 67 },
+      { capital: 25000, price: 167.99, id: 68 },
+      { capital: 50000, price: 299.99, id: 69 },
+      { capital: 100000, price: 599.99, id: 70 },
+      { capital: 200000, price: 1079.99, id: 71 },
     ],
   },
   {
@@ -66,12 +68,12 @@ export const challengePrograms: ChallengeProgram[] = [
       { label: 'Trading Leverage', value: '1:50' },
     ],
     pricing: [
-      { capital: 5000, price: 59.99 },
-      { capital: 10000, price: 107.99 },
-      { capital: 25000, price: 215.99 },
-      { capital: 50000, price: 323.99 },
-      { capital: 100000, price: 575.99 },
-      { capital: 200000, price: 1139.99 },
+      { capital: 5000, price: 59.99, id: 73 },
+      { capital: 10000, price: 107.99, id: 74 },
+      { capital: 25000, price: 215.99, id: 75 },
+      { capital: 50000, price: 323.99, id: 78 },
+      { capital: 100000, price: 575.99, id: 76 },
+      { capital: 200000, price: 1139.99, id: 77 },
     ],
   },
   {
@@ -88,12 +90,12 @@ export const challengePrograms: ChallengeProgram[] = [
       { label: 'Consistency to Rewards', value: '13%' },
     ],
     pricing: [
-      { capital: 5000, price: 78.0 },
-      { capital: 10000, price: 114.0 },
-      { capital: 25000, price: 226.8 },
-      { capital: 50000, price: 334.8 },
-      { capital: 100000, price: 586.8 },
-      { capital: 200000, price: 1173.6 },
+      { capital: 5000, price: 78.0, id: 80 },
+      { capital: 10000, price: 114.0, id: 81 },
+      { capital: 25000, price: 226.8, id: 82 },
+      { capital: 50000, price: 334.8, id: 83 },
+      { capital: 100000, price: 586.8, id: 84 },
+      { capital: 200000, price: 1173.6, id: 85 },
     ],
   },
   {
@@ -111,10 +113,10 @@ export const challengePrograms: ChallengeProgram[] = [
       { label: 'Leverage', value: '1:50' },
     ],
     pricing: [
-      { capital: 25000, price: 180.0 },
-      { capital: 50000, price: 288.0 },
-      { capital: 100000, price: 468.0 },
-      { capital: 200000, price: 816.0 },
+      { capital: 25000, price: 180.0, id: 133 },
+      { capital: 50000, price: 288.0, id: 134 },
+      { capital: 100000, price: 468.0, id: 135 },
+      { capital: 200000, price: 816.0, id: 136 },
     ],
   },
   {
@@ -132,11 +134,11 @@ export const challengePrograms: ChallengeProgram[] = [
       { label: 'Leverage', value: '1:100' },
     ],
     pricing: [
-      { capital: 2500, price: 23.99 },
-      { capital: 5000, price: 41.99 },
-      { capital: 10000, price: 71.99 },
-      { capital: 25000, price: 131.99 },
-      { capital: 50000, price: 227.99 },
+      { capital: 2500, price: 23.99, id: 139 },
+      { capital: 5000, price: 41.99, id: 140 },
+      { capital: 10000, price: 71.99, id: 141 },
+      { capital: 25000, price: 131.99, id: 142 },
+      { capital: 50000, price: 227.99, id: 143 },
     ],
   },
 ];

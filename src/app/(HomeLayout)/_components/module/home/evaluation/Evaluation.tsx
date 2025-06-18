@@ -8,7 +8,6 @@ import { useScrollTo } from '@/hooks/useScrollTo';
 
 const Evaluation: React.FC = () => {
   const getProductUrl = (id: string) => {
-    console.log('Getting product URL for ID:', id);
     const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
     let url;
     switch (id) {
@@ -21,10 +20,15 @@ const Evaluation: React.FC = () => {
       case 'instant-funding':
         url = `${baseUrl}/instant-funding/`;
         break;
+      case 'three-step':
+        url = `${baseUrl}/three-step-evaluation/`;
+        break;
+      case 'africa-starter':
+        url = `${baseUrl}/africa-starter/`;
+        break;
       default:
         url = '#get-funded';
     }
-    console.log('Generated URL:', url);
     return url;
   };
   const { scrollTo } = useScrollTo();

@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { StepCardProps } from './types';
+import { useRouter } from 'next/navigation';
 
 const StepCard: React.FC<StepCardProps> = ({
   icon,
@@ -11,6 +12,7 @@ const StepCard: React.FC<StepCardProps> = ({
   gradientIntensity,
   index,
 }) => {
+  const router = useRouter();
   const gradientClasses = {
     light:
       'bg-gradient-to-br from-green-900/30 via-green-800/10 to-transparent',
@@ -36,7 +38,10 @@ const StepCard: React.FC<StepCardProps> = ({
       </div>
       <h3 className="text-[20px] font-semibold mb-3 text-white">{title}</h3>
       <p className="text-[#A7A7A7] text-[16px] leading-6 mb-6">{description}</p>
-      <button className="w-full py-3 px-4 border border-green-500/30 text-white rounded-lg relative overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/20 hover:border-green-400/50 hover:bg-green-500/5">
+      <button
+        onClick={() => router.push('#get-funded')}
+        className="w-full py-3 px-4 border border-green-500/30 text-white rounded-lg relative overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/20 hover:border-green-400/50 hover:bg-green-500/5"
+      >
         <span className="relative z-10 transition-all duration-300 group-hover:text-green-300">
           {buttonText}
         </span>

@@ -11,6 +11,7 @@ const stepToChallengeMap: { [key: string]: string } = {
   'Two Step': 'two-step',
   'Three Step': 'three-steps',
   'Instant Funding': 'instant-funding',
+  'Africa Starter': 'africa-starter',
 };
 
 const amountToCapitalMap: { [key: string]: number } = {
@@ -25,28 +26,30 @@ const amountToCapitalMap: { [key: string]: number } = {
 export default function TradingStepsUI() {
   const [selectedStep, setSelectedStep] = useState('One Step');
   const [selectedAmount, setSelectedAmount] = useState('$5k');
-  const getProductUrl = (id: string) => {
-    const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
-    let url;
-    switch (id) {
-      case 'one-step':
-        url = `${baseUrl}/one-step-evaluation/`;
-        break;
-      case 'two-step':
-        url = `${baseUrl}/two-step-evaluation/`;
-        break;
-      case 'instant-funding':
-        url = `${baseUrl}/instant-funding/`;
-        break;
-      default:
-        url = '#get-funded';
-    }
+  const getProductUrl = (id: number) => {
+    // const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
+    const baseUrl = `https://fundingoptimal.com/checkout/?add-to-cart=${id}&quantity=1`;
+    // let url;
+    // switch (id) {
+    //   case 'one-step':
+    //     url = `${baseUrl}/one-step-evaluation/`;
+    //     break;
+    //   case 'two-step':
+    //     url = `${baseUrl}/two-step-evaluation/`;
+    //     break;
+    //   case 'instant-funding':
+    //     url = `${baseUrl}/instant-funding/`;
+    //     break;
+    //   default:
+    //     url = '#get-funded';
+    // }
 
-    return url;
+    return baseUrl;
   };
+
   const { scrollTo } = useScrollTo();
 
-  const handleBuyNowClick = (id: string) => {
+  const handleBuyNowClick = (id: number) => {
     const productUrl = getProductUrl(id);
     if (productUrl.startsWith('http')) {
       window.open(productUrl, '_blank');
