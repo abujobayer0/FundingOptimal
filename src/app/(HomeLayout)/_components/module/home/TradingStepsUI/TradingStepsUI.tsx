@@ -15,6 +15,7 @@ const stepToChallengeMap: { [key: string]: string } = {
 };
 
 const amountToCapitalMap: { [key: string]: number } = {
+  '$2.5k': 2500,
   $5k: 5000,
   $10k: 10000,
   $25k: 25000,
@@ -26,24 +27,42 @@ const amountToCapitalMap: { [key: string]: number } = {
 export default function TradingStepsUI() {
   const [selectedStep, setSelectedStep] = useState('One Step');
   const [selectedAmount, setSelectedAmount] = useState('$5k');
-  const getProductUrl = (id: number) => {
-    // const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
-    const baseUrl = `https://fundingoptimal.com/checkout/?add-to-cart=${id}&quantity=1`;
-    // let url;
-    // switch (id) {
-    //   case 'one-step':
-    //     url = `${baseUrl}/one-step-evaluation/`;
-    //     break;
-    //   case 'two-step':
-    //     url = `${baseUrl}/two-step-evaluation/`;
-    //     break;
-    //   case 'instant-funding':
-    //     url = `${baseUrl}/instant-funding/`;
-    //     break;
-    //   default:
-    //     url = '#get-funded';
-    // }
 
+  const getAvailableAmounts = (stepLabel: string) => {
+    const challengeId = stepToChallengeMap[stepLabel];
+
+    if (challengeId === 'africa-starter') {
+      return [
+        { label: '$2.5k' },
+        { label: '$5k' },
+        { label: '$10k' },
+        { label: '$25k' },
+        { label: '$50k' },
+      ];
+    }
+
+    if (challengeId === 'three-steps') {
+      return [
+        { label: '$25k' },
+        { label: '$50k' },
+        { label: '$100k' },
+        { label: '$200k' },
+      ];
+    }
+
+    return amounts;
+  };
+
+  const availableAmounts = getAvailableAmounts(selectedStep);
+
+  React.useEffect(() => {
+    if (!availableAmounts.find((amt) => amt.label === selectedAmount)) {
+      setSelectedAmount(availableAmounts[0]?.label || '$5k');
+    }
+  }, [selectedStep, availableAmounts, selectedAmount]);
+
+  const getProductUrl = (id: number) => {
+    const baseUrl = `https://fundingoptimal.com/checkout/?add-to-cart=${id}&quantity=1`;
     return baseUrl;
   };
 
@@ -138,7 +157,7 @@ export default function TradingStepsUI() {
         transition={{ duration: 0.7, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        {amounts.map((amt, idx) => (
+        {availableAmounts.map((amt, idx) => (
           <React.Fragment key={amt.label}>
             <div
               className="flex flex-col items-center min-w-fit cursor-pointer transition-all"
@@ -170,7 +189,7 @@ export default function TradingStepsUI() {
                 {amt.label}
               </span>
             </div>
-            {idx < amounts.length - 1 && (
+            {idx < availableAmounts.length - 1 && (
               <div className="flex-1 h-[2px] bg-gray-100/30 mx-3 md:mx-7 min-w-[20px]" />
             )}
           </React.Fragment>
