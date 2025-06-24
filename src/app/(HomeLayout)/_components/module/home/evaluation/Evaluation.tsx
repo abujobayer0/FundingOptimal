@@ -8,7 +8,7 @@ import { useScrollTo } from '@/hooks/useScrollTo';
 
 const Evaluation: React.FC = () => {
   const getProductUrl = (id: string) => {
-    const baseUrl = 'https://fundingoptimal.com/checkout/index.php/product';
+    const baseUrl = 'https://checkout.fundingoptimal.com/index.php/product';
     let url;
     switch (id) {
       case 'one-step':

@@ -75,7 +75,7 @@ const ProfitCalculator = () => {
   };
 
   const getProductUrl = (id: number) => {
-    return `https://fundingoptimal.com/checkout/?add-to-cart=${id}&quantity=1`;
+    return `https://checkout.fundingoptimal.com/?add-to-cart=${id}&quantity=1`;
   };
 
   const handleBuyNowClick = () => {

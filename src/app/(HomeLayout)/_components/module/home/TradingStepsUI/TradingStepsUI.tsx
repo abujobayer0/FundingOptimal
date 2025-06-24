@@ -62,7 +62,7 @@ export default function TradingStepsUI() {
   }, [selectedStep, availableAmounts, selectedAmount]);
 
   const getProductUrl = (id: number) => {
-    const baseUrl = `https://fundingoptimal.com/checkout/?add-to-cart=${id}&quantity=1`;
+    const baseUrl = `https://checkout.fundingoptimal.com/?add-to-cart=${id}&quantity=1`;
     return baseUrl;
   };
 
