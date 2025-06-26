@@ -4,8 +4,10 @@ import React from 'react';
 import { TitleWithIcon } from '@/app/(HomeLayout)/_components/ui';
 import { GradientButton, OutlineButton } from '@/components';
 import HeroIcon from '../../ui/icons/HeroIcon';
+import { useRouter } from 'next/navigation';
 
 const AffiliateProgramHero = () => {
+  const router = useRouter();
   return (
     <div className="bg-[#050505] text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6 mt-[80px] md:mt-[170px]">
@@ -33,8 +35,18 @@ const AffiliateProgramHero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 space-y-2 pt-2 md:space-y-0">
-              <GradientButton showIcon>Become A Partner</GradientButton>
-              <OutlineButton showIcon>Get Funded</OutlineButton>
+              <GradientButton
+                onClick={() => router.push('/become-a-partner')}
+                showIcon
+              >
+                Become A Partner
+              </GradientButton>
+              <OutlineButton
+                onClick={() => router.push('/#get-funded')}
+                showIcon
+              >
+                Get Funded
+              </OutlineButton>
             </div>
           </div>
 

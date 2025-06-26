@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
-import { ArrowLeftRight, DollarSign } from 'lucide-react';
 import { motion, useInView, useSpring, useMotionValue } from 'motion/react';
-import { StatCard } from '../../../ui';
 import TrustpilotRating from '../../../ui/TrustPilot';
 import TitleWithIcon from '../../../ui/TitleWithIcon';
 import GradientButton from '../../../../../../components/ui/button/GradientButton';
@@ -43,30 +41,20 @@ const TradingHero = () => {
 
   return (
     <>
-      <div className="absolute -top-14 md:-top-0 -left-0 w-full  p-10 scale-90 h-full z-0 ">
-        <Sphere />
-      </div>
       <div className="bg-transparent mt-24 md:mt-32 text-white relative overflow-hidden px-4 sm:px-6 lg:px-8">
-        <TitleWithIcon title="We Fund the Fearless" />
+        {/* Background animated sphere */}
+        <div className="absolute inset-0 flex items-center -top-32 justify-center p-10 scale-75 -z-10 pointer-events-none">
+          <Sphere />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center justify-center min-h-[600px]">
+          <div className="mx-auto w-full flex flex-col items-center">
+            {/* this is 1 */}
+            <TitleWithIcon
+              title="We Fund the Fearless"
+              className="justify-center !pt-0 !pb-0 !md:py-0 mb-4"
+            />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="mx-auto">
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-12 space-y-8 lg:space-y-0">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="hidden lg:block"
-              >
-                <StatCard
-                  title="Withdrawal Amount"
-                  value={30}
-                  suffix="k+"
-                  icon={ArrowLeftRight}
-                  gradientDirection="bl"
-                />
-              </motion.div>
-
+            <div className="flex flex-col lg:flex-row lg:justify-center lg:items-center mb-12 space-y-8 lg:space-y-0">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -77,7 +65,7 @@ const TradingHero = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="text-xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold md:mb-4 leading-tight"
+                  className="text-2xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold md:mb-4 leading-tight"
                 >
                   <span className="bg-gradient-to-l from-primary via-primary to-white bg-clip-text text-transparent">
                     Master yourself,achieve the optimal.
@@ -119,38 +107,6 @@ const TradingHero = () => {
                   <OutlineButton showIcon>Learn More</OutlineButton>
                 </motion.div>
               </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="hidden lg:block"
-              >
-                <StatCard
-                  title="Total Amount Earned"
-                  value={44}
-                  suffix="k+"
-                  icon={DollarSign}
-                  gradientDirection="br"
-                />
-              </motion.div>
-            </div>
-
-            <div className="flex flex-row lg:hidden gap-4 mb-12 w-full justify-center items-center mx-auto">
-              <StatCard
-                title="Withdrawal Amount"
-                value={44}
-                suffix="k+"
-                icon={ArrowLeftRight}
-                gradientDirection="bl"
-              />
-              <StatCard
-                title="Total Amount Earned"
-                value={44}
-                icon={DollarSign}
-                suffix="k+"
-                gradientDirection="br"
-              />
             </div>
 
             <div

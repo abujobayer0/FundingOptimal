@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import FAQAccordion from './FAQAccordion';
+import { useRouter } from 'next/navigation';
 
 interface FAQItem {
   question: string;
@@ -15,6 +16,7 @@ const textFadeUp = {
 };
 
 const AffiliatePartnerFAQs: React.FC = () => {
+  const router = useRouter();
   const faqItems: FAQItem[] = [
     {
       question: 'Are There Any Fees Associated With The Withdrawal Request?',
@@ -71,7 +73,10 @@ const AffiliatePartnerFAQs: React.FC = () => {
             </p>
 
             <div className="md:pt-4 pb-4 md:pb-0">
-              <button className="bg-primary hover:bg-primary text-black font-medium px-8 py-3 rounded-lg transition-all duration-200 hover:scale-105">
+              <button
+                onClick={() => router.push('/faqs/general')}
+                className="bg-primary hover:bg-primary text-black font-medium px-8 py-3 rounded-lg transition-all duration-200 hover:scale-105"
+              >
                 See Affiliate FAQs
               </button>
             </div>

@@ -6,9 +6,11 @@ import { OutlineButton } from '@/components';
 import { GradientButton } from '@/components';
 import { SectionHeader } from '../../ui';
 import { useScrollTo } from '@/hooks/useScrollTo';
+import { useRouter } from 'next/navigation';
 
 export const HeroSection = () => {
   const { scrollTo } = useScrollTo();
+  const router = useRouter();
   return (
     <div className="text-center mt-10 space-y-8">
       <SectionHeader
@@ -27,7 +29,11 @@ export const HeroSection = () => {
         >
           Get Funded Now
         </GradientButton>
-        <OutlineButton animation={false} showIcon>
+        <OutlineButton
+          animation={false}
+          showIcon
+          onClick={() => router.push('/faqs')}
+        >
           Learn More
         </OutlineButton>
       </motion.div>
