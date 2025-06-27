@@ -36,7 +36,7 @@ const AffiliateProgramHero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 space-y-2 pt-2 md:space-y-0">
               <GradientButton
-                onClick={() => router.push('/become-a-partner')}
+                onClick={() => router.push('/contact-us')}
                 showIcon
               >
                 Become A Partner
