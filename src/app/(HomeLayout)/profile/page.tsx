@@ -14,6 +14,21 @@ import {
 import Link from 'next/link';
 import { useClientAuth } from '@/hooks/useClientAuth';
 
+// Simple outlined button used only on this page
+const ActionOutlineButton: React.FC<
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+> = ({ children, className = '', ...rest }) => (
+  <button
+    {...rest}
+    className={`group relative w-full sm:w-auto px-6 py-3 border border-primary rounded-lg text-primary flex items-center justify-center overflow-hidden transition-colors duration-300 hover:bg-primary/10 hover:border-primary/60 ${className}`}
+  >
+    <span className="mr-2 group-hover:text-primary/80 transition-colors duration-300">
+      {children}
+    </span>
+    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+  </button>
+);
+
 const ProfilePage = () => {
   const { user, updateUser } = useClientAuth();
   const [isEditing, setIsEditing] = useState(false);
@@ -298,26 +313,50 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          {/* Dashboard Link Card */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl blur-lg opacity-50" />
-            <div className="relative bg-black/40 backdrop-blur-2xl border border-white/10 rounded-xl p-6 text-center">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-6 h-6 text-black" />
+          {/* Quick Access Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Dashboard Link Card */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl blur-lg opacity-50" />
+              <div className="relative bg-black/40 backdrop-blur-2xl border border-white/10 rounded-xl p-6 text-center h-full flex flex-col items-center justify-center">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <BarChart3 className="w-6 h-6 text-black" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Trading Dashboard
+                </h3>
+                <p className="text-secondary-text mb-4">
+                  Access your trading dashboard to monitor positions and analyze
+                  performance.
+                </p>
+                <Link href="https://dashboard.fundingoptimal.com">
+                  <button className="inline-flex items-center gap-2 px-4 py-3 bg-primary hover:bg-primary/90 text-black font-semibold rounded-lg transition-colors">
+                    <span>Launch Dashboard</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">
-                Trading Dashboard
-              </h3>
-              <p className="text-secondary-text mb-4">
-                Access your trading dashboard to monitor positions and analyze
-                performance.
-              </p>
-              <Link href="https://dashboard.fundingoptimal.com">
-                <button className="inline-flex items-center gap-2 px-4 py-3 bg-primary hover:bg-primary/90 text-black font-semibold rounded-lg transition-colors">
-                  <span>Launch Dashboard</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </Link>
+            </div>
+
+            {/* Get Funded Link Card */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl blur-lg opacity-50" />
+              <div className="relative bg-black/40 backdrop-blur-2xl border border-white/10 rounded-xl p-6 text-center h-full flex flex-col items-center justify-center">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <ArrowRight className="w-6 h-6 text-black" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Get Funded
+                </h3>
+                <p className="text-secondary-text mb-4">
+                  Apply for funding and take your trading to the next level.
+                </p>
+                <Link href="https://checkout.fundingoptimal.com/index.php/shop/">
+                  <ActionOutlineButton className="w-full sm:w-auto">
+                    Get Funded Now
+                  </ActionOutlineButton>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

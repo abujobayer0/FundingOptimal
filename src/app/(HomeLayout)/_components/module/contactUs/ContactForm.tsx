@@ -25,10 +25,30 @@ const ContactForm: React.FC = () => {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    console.log('Form Data:', data);
-    // You can add additional logic here like API calls
-    reset(); // Reset form after submission
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error('Something went wrong while sending your message.');
+      }
+
+      // Success: reset the form and optionally show a toast/alert
+      reset();
+      alert('Your message has been sent successfully!');
+    } catch (error) {
+      console.error(error);
+      alert(
+        (error as Error).message ||
+          'Unable to send message right now, please try again later.'
+      );
+    }
   };
 
   return (
