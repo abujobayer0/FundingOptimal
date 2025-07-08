@@ -19,29 +19,34 @@ const AffiliatePartnerFAQs: React.FC = () => {
   const router = useRouter();
   const faqItems: FAQItem[] = [
     {
-      question: 'Are There Any Fees Associated With The Withdrawal Request?',
+      question: 'What is the FundingOptimal Affiliate Program?',
       answer:
-        'No, there are no fees associated with withdrawal requests. All commission payouts are processed without any deductions or hidden charges.',
+        'The FundingOptimal Affiliate Program lets you earn commissions by referring traders. When someone signs up and purchases a challenge using your link, you earn a cut of the sale.',
     },
     {
-      question: 'How Do I Request A Commission Payout?',
+      question: 'How much can I earn as an affiliate?',
       answer:
-        'You can request a commission payout through your affiliate dashboard. Simply navigate to the payouts section and submit your withdrawal request with your preferred payment method.',
+        'Affiliates earn a commission on each successful referral. The percentage may increase based on your performance. High-performing affiliates can unlock better deals.',
     },
     {
-      question: 'When Will My Payout Request Be Processed?',
+      question: 'How do I sign up as an affiliate?',
       answer:
-        'Payout requests are typically processed within 24-48 hours during business days. You will receive a confirmation email once your payout has been initiated.',
+        'Go to our Affiliate Page, complete the signup form, and once approved, you’ll get access to your dashboard and referral tools.',
     },
     {
-      question: 'When Can I Request A Payout For My Commissions?',
+      question: 'When and how do I get paid?',
       answer:
-        'You can request a payout for your commissions once you have reached the minimum payout threshold of $100. Payouts can be requested at any time after reaching this threshold.',
+        'All payouts are made via cryptocurrency. Once you reach the $100 minimum threshold, you can request a withdrawal. Payments are processed on a regular schedule.',
     },
     {
-      question: 'Are There Any Additional Resources For Affiliates?',
+      question: 'What is the minimum payout amount?',
       answer:
-        'Yes, we provide comprehensive marketing materials, tracking tools, dedicated affiliate support, and regular training sessions to help you maximize your earning potential.',
+        'The minimum payout amount is $100. You can request a withdrawal once your earnings reach this threshold.',
+    },
+    {
+      question: 'Can I refer myself or use my own link?',
+      answer:
+        'No, self-referrals are not allowed. Doing so can lead to account termination and forfeiture of commissions.',
     },
   ];
 
@@ -74,7 +79,7 @@ const AffiliatePartnerFAQs: React.FC = () => {
 
             <div className="md:pt-4 pb-4 md:pb-0">
               <button
-                onClick={() => router.push('/faqs/general')}
+                onClick={() => router.push('/faqs/affiliate')}
                 className="bg-primary hover:bg-primary text-black font-medium px-8 py-3 rounded-lg transition-all duration-200 hover:scale-105"
               >
                 See Affiliate FAQs

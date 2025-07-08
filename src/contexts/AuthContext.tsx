@@ -166,13 +166,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       const response = await axiosInstance.get('/me');
       const data = response.data;
-
+      console.log(data);
       if (data.success && data.user) {
         setUser(data.user);
       } else {
         setUser(null);
       }
     } catch (error: unknown) {
+      logout();
       console.error('Auth check failed:', error);
 
       if (
@@ -289,12 +290,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     try {
-      await axiosInstance.post('/logout');
-    } catch (error) {
-      console.error('Logout error:', error);
+      await axiosInstance.post('/logout'); // <-- clears httpOnly cookies
     } finally {
-      // Clear client-side tokens
-      clearAuthTokens();
+      clearAuthTokens(); // removes any non-httpOnly copies you keep for convenience
       setUser(null);
     }
   };

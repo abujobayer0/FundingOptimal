@@ -1,38 +1,20 @@
-import { NextRequest } from 'next/server';
-import { getTokensFromRequest, createSuccessResponse } from '@/lib/api-auth';
-import { clearTokenCookies } from '@/lib/cookies';
-import { AuthService } from '@/lib/auth';
+import { NextResponse } from 'next/server';
+import { serialize } from 'cookie';
 
-export async function POST(request: NextRequest) {
-  try {
-    const { refreshToken } = getTokensFromRequest(request);
+export async function POST() {
+  // the attributes **must** match the ones used on login
+  const common = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax' as const,
+    path: '/', // <= match login
+    expires: new Date(0), // remove immediately
+  };
 
-    // Revoke refresh token if it exists
-    if (refreshToken) {
-      try {
-        await AuthService.revokeRefreshToken(refreshToken);
-        console.log('✅ Refresh token revoked successfully');
-      } catch (error) {
-        // Log but don't fail the logout process
-        console.error('⚠️ Error revoking refresh token:', error);
-      }
-    }
+  const res = NextResponse.json({ success: true });
 
-    // Create response and clear cookies
-    const response = createSuccessResponse({}, 'Logged out successfully');
+  res.headers.append('Set-Cookie', serialize('accessToken', '', common));
+  res.headers.append('Set-Cookie', serialize('refreshToken', '', common));
 
-    // Clear authentication cookies
-    clearTokenCookies(response);
-
-    console.log('🚪 User logged out successfully');
-    return response;
-  } catch (error: unknown) {
-    console.error('❌ Logout error:', error);
-
-    // Even if there's an error, we should clear the cookies
-    const response = createSuccessResponse({}, 'Logged out successfully');
-    clearTokenCookies(response);
-
-    return response;
-  }
+  return res;
 }

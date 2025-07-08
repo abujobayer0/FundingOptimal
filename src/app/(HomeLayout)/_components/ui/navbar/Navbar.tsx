@@ -8,6 +8,7 @@ import { User, LogOut, LogIn, UserPlus, Users } from 'lucide-react';
 import NavLink from './NavLink';
 import logo from '@/assets/fundingoptimal-logo.png';
 import { useClientAuth } from '@/hooks/useClientAuth';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
   const { isAuthenticated, logout, user } = useClientAuth();
-
+  const router = useRouter();
   // Handle scroll behavior for navbar visibility
   useEffect(() => {
     const handleScroll = () => {
@@ -102,6 +103,8 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await logout();
+
+    router.push('/auth/login');
     setShowProfileDropdown(false);
   };
   return (

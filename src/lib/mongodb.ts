@@ -45,6 +45,28 @@ async function connectDB() {
     });
 
     console.log('MongoDB connected successfully');
+
+    // Ensure a default admin account exists
+    try {
+      const { default: User } = await import('@/models/User');
+      const adminEmail = 'admin_profile@fundingoptimal.com';
+
+      // Check if the admin user already exists
+      const existingAdmin = await User.findOne({ email: adminEmail });
+      if (!existingAdmin) {
+        await User.create({
+          firstName: 'Admin',
+          lastName: 'Profile',
+          email: adminEmail,
+          // Use an env variable for the initial password or fallback to a strong default
+          password: process.env.ADMIN_INITIAL_PASSWORD ?? 'ChangeMe123!',
+          role: 'admin',
+        });
+        console.log(`Seeded default admin user → ${adminEmail}`);
+      }
+    } catch (seedError) {
+      console.error('Failed to seed default admin user:', seedError);
+    }
     isConnecting = false;
   } catch (error) {
     isConnecting = false;

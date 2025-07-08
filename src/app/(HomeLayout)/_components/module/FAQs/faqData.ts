@@ -197,6 +197,71 @@ export const faqs = [
     ],
   },
   {
+    id: 'affiliate',
+    badge: '11+ Questions',
+    title: 'Affiliate Program',
+    slug: 'affiliate',
+    description:
+      'Frequently asked questions about the FundingOptimal Affiliate Program.',
+    questions: [
+      {
+        question: 'What is the FundingOptimal Affiliate Program?',
+        answer:
+          'The FundingOptimal Affiliate Program lets you earn commissions by referring traders. When someone signs up and purchases a challenge using your link, you earn a cut of the sale.',
+      },
+      {
+        question: 'How much can I earn as an affiliate?',
+        answer:
+          'Affiliates earn a commission on each successful referral. The percentage may increase based on your performance. High-performing affiliates can unlock better deals.',
+      },
+      {
+        question: 'How do I sign up as an affiliate?',
+        answer:
+          'Go to our Affiliate Page, complete the signup form, and once approved, you’ll get access to your dashboard and referral tools.',
+      },
+      {
+        question: 'When and how do I get paid?',
+        answer:
+          'All payouts are made via cryptocurrency. Once you reach the $100 minimum threshold, you can request a withdrawal. Payments are processed on a regular schedule.',
+      },
+      {
+        question: 'What is the minimum payout amount?',
+        answer:
+          'The minimum payout amount is $100. You can request a withdrawal once your earnings reach this threshold.',
+      },
+      {
+        question: 'Can I refer myself or use my own link?',
+        answer:
+          'No, self-referrals are not allowed. Doing so can lead to account termination and forfeiture of commissions.',
+      },
+      {
+        question: 'How do I track referrals and commissions?',
+        answer:
+          'After logging into your dashboard, you can track clicks, signups, earnings, and payment history in real time.',
+      },
+      {
+        question: 'Do I need to be a trader to join?',
+        answer:
+          'No! Anyone can join the affiliate program — you don’t need to be a FundingOptimal trader or customer.',
+      },
+      {
+        question: 'Can I promote FundingOptimal on social media or ads?',
+        answer:
+          "Yes, social media and paid ads are allowed — as long as you're honest and don't impersonate the brand or mislead potential users.",
+      },
+      {
+        question: 'What kind of content works best?',
+        answer:
+          'Our top affiliates succeed with:\n\n• YouTube reviews and tutorials\n\n• Blog posts and newsletters\n\n• TikTok & Instagram Reels\n\n• Trading-related Discord and Telegram communities\n\nWe also provide ready-to-use promotional assets to help you succeed.',
+      },
+      {
+        question: 'Who do I contact for affiliate support?',
+        answer:
+          'You can reach us anytime at affiliate@fundingoptimal.com for help with your account, links, or payments.',
+      },
+    ],
+  },
+  {
     id: 'trading-rules-policies',
     badge: '12+ Questions',
     title: 'Trading Rules & Policies',
