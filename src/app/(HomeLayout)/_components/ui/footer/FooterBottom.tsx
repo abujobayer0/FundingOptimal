@@ -148,6 +148,14 @@ const FooterBottom = () => {
                       About Us
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/terms-of-use"
+                      className="text-[#a7a7a7] hover:text-primary transition-colors duration-300 text-sm  relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                    >
+                      Terms of use
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
